@@ -1,0 +1,1 @@
+python send_mission.py <farm_id> <json_file>

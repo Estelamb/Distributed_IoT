@@ -1,0 +1,19 @@
+services:
+  fleet_manager:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fleet_manager:latest
+    networks:
+      fleet_net:
+        ipv4_address: 192.168.100.140
+    ports:
+      - "1883:1883"
+      - "51001:51001"
+    container_name: fleet_manager
+    volumes:
+      - ./Logs:/home/FleetManager/Logs
+
+networks:
+  fleet_net:
+    external: true
