@@ -1,7 +1,4 @@
 """
-send_mission.py
-===============
-
 This module allows testing of the Fleet Manager system without using the Node-RED dashboard.
 
 It reads a mission definition from a JSON file and publishes it to the appropriate

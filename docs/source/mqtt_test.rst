@@ -1,5 +1,5 @@
-MQTT Test
-=========
+Send mission test
+=================
 
-.. automodule:: send_mqtt
+.. automodule:: send_mission
    :members:
