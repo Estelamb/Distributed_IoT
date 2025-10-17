@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /tmp/
-RUN pip install --break-system-packages -r /tmp/requirements.txt
+RUN pip install --break-system-packages --ignore-installed -r /tmp/requirements.txt
 
 # Crear workspace y copiar proyecto
 RUN mkdir -p /home/Drone
@@ -50,4 +50,4 @@ COPY . /home/Drone/
 
 RUN /bin/bash -c "source /opt/ros/jazzy/setup.bash && colcon build"
 
-CMD ["bash", "-c", "source /opt/ros/jazzy/setup.bash && source install/setup.bash && python3 drone.py --drone_id 1"]
+CMD ["bash", "-c", "source /opt/ros/jazzy/setup.bash && source install/setup.bash && python3 init_drone.py --drone_id 1"]

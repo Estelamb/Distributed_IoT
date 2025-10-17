@@ -25,7 +25,7 @@ class CommandsActionClient(Node):
     def send_goal(self, drone_id, commands_list):
         if self.drone_busy.get(drone_id, False):
             self.fleet_logger.warning(f"[ROS2] - Drone {drone_id} is busy, rejecting new mission.")
-            mqtt_warning(self.farm_id, f"Drone {drone_id} is currently busy.")
+            mqtt_warning(self.farm_id, f"Drone {drone_id} is currently busy.", self.fleet_logger)
             return
 
         if drone_id not in self.action_clients:

@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /tmp/
-RUN pip install --break-system-packages -r /tmp/requirements.txt
+RUN pip install --break-system-packages --ignore-installed -r /tmp/requirements.txt
 
 # Crear workspace y copiar proyecto
 RUN mkdir -p /home/Fleet

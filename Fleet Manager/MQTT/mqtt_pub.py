@@ -1,7 +1,7 @@
 import paho.mqtt.client as mqtt
 import json
 
-MQTT_BROKER = "localhost"
+MQTT_BROKER = "host.docker.internal"
 MQTT_PORT = 1883
 MQTT_KEEPALIVE = 60 
 

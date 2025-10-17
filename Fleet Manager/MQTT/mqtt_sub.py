@@ -2,7 +2,7 @@ import json
 import paho.mqtt.client as mqtt
 import threading
 
-def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker="localhost", mqtt_port=1883):
+def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker="host.docker.internal", mqtt_port=1883):
     topic = f"farm/{farm_id}"
 
     def on_connect(client, userdata, flags, rc):
@@ -22,7 +22,19 @@ def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker="localhost", 
             commands_list = payload.get("commands", [])
 
             if drone_id is not None and commands_list:
-                ros2_client.send_goal(drone_id, commands_list)
+                # --- Convertir cada comando a JSON string ---
+                string_commands = []
+                for cmd in commands_list:
+                    string_cmd = json.dumps({
+                        "missionId": cmd.get("missionId", 0),
+                        "commandId": cmd.get("commandId", 0),
+                        "commandType": str(cmd.get("commandType", "")),
+                        "params": cmd.get("params", {})
+                    })
+                    string_commands.append(string_cmd)
+                # --- Fin conversión ---
+
+                ros2_client.send_goal(drone_id, string_commands)
             else:
                 fleet_logger.warning("[MQTT] - Invalid message format. 'vehicleId' or 'commands' missing.")
         except Exception as e:

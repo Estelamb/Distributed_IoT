@@ -1,0 +1,52 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      working-directory: docs
+      run: pip install -r requirements.txt
+
+    - name: Build documentation
+      working-directory: docs
+      run: |
+        rm -rf build/ pdfbuild/
+        sphinx-build -b html source build
+        sphinx-build -b simplepdf source pdfbuild
+        mkdir -p build  # Ensure build directory exists before moving or touching
+        mv pdfbuild/*.pdf build || echo "No PDF files to move"
+        touch build/.nojekyll
+
+    - name: Configure Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4  # UPDATED TO V4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}  # RECOMMENDED FIX
+        publish_dir: docs/build
+        keep_files: false
+        force_orphan: true

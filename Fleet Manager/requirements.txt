@@ -1,3 +1,4 @@
+paho.mqtt
 grpcio
 grpcio-tools
 concurrent-log-handler
@@ -5,4 +6,3 @@ numpy
 catkin_pkg
 empy
 lark
-concurrent_log_handler

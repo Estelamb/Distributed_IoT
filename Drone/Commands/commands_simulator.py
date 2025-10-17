@@ -1,3 +1,6 @@
+import base64
+import json
+import os
 import time
 import random
 import logging
@@ -23,8 +26,8 @@ class Command(ABC):
 class TakeOff(Command):
     def __init__(self, mission_id, command_id, command_type, params, logger):
         super().__init__(mission_id, command_id, command_type, logger)
-        self.latitude = params[0]
-        self.longitude = params[1]
+        self.latitude = params["latitude"]
+        self.longitude = params["longitude"]
         
     def execute(self):
         self.logger.info("[TAKEOFF] - Taking off...")
@@ -38,8 +41,8 @@ class TakeOff(Command):
 class Land(Command):
     def __init__(self, mission_id, command_id, command_type, params, logger):
         super().__init__(mission_id, command_id, command_type, logger)
-        self.latitude = params[0]
-        self.longitude = params[1]
+        self.latitude = params["latitude"]
+        self.longitude = params["longitude"]
         
     def execute(self):
         self.logger.info("[LAND] - Landing...")
@@ -53,8 +56,8 @@ class Land(Command):
 class Go_Waypoint(Command):
     def __init__(self, mission_id, command_id, command_type, params, logger):
         super().__init__(mission_id, command_id, command_type, logger)
-        self.latitude = params[0]
-        self.longitude = params[1]
+        self.latitude = params["latitude"]
+        self.longitude = params["longitude"]
         
     def execute(self):
         self.logger.info("[GO_WAYPOINT] - Going to WP...")
@@ -68,8 +71,8 @@ class Go_Waypoint(Command):
 class Go_Home(Command):
     def __init__(self, mission_id, command_id, command_type, params, logger):
         super().__init__(mission_id, command_id, command_type, logger)
-        self.latitude = params[0]
-        self.longitude = params[1]
+        self.latitude = params["latitude"]
+        self.longitude = params["longitude"]
         
     def execute(self):
         self.logger.info("[GO_HOME] - Returning home...")
@@ -80,48 +83,86 @@ class Go_Home(Command):
         return {"mission_id": self.mission_id, "command_id": self.command_id, "message": "Returned home", "latitude": self.latitude, "longitude": self.longitude}
 
 
+
 class Take_Picture(Command):
     def __init__(self, mission_id, command_id, command_type, params, logger):
         super().__init__(mission_id, command_id, command_type, logger)
-        self.latitude = params[0]
-        self.longitude = params[1]
-        self.camera_device = params[2]
+        self.latitude = params["latitude"]
+        self.longitude = params["longitude"]
+        self.camera_device = params["cameraDevice"]
+        self.image_b64 = None
         
     def execute(self):
         self.logger.info("[TAKE_PICTURE] - Taking picture...")
+
+        # Simula la captura de una imagen
+        image_path = os.path.join("Data", f"{self.latitude:.6f}_{self.longitude:.6f}.png")
+
+        try:
+            with open(image_path, "rb") as img_file:
+                image_bytes = img_file.read()
+                self.image_b64 = "data:image/png;base64," + base64.b64encode(image_bytes).decode("utf-8")
+                self.logger.info(f"[TAKE_PICTURE] - Image loaded from {image_path}")
+        except FileNotFoundError:
+            self.logger.warning(f"[TAKE_PICTURE] - Image not found at {image_path}")
+            self.image_b64 = None
+
         time.sleep(1)
-        
-        self.logger.info(f"[TAKE_PICTURE] - Picture taken successfully as {self.latitude}_{self.longitude}.jpg")
 
     def result(self):
 
-        return {"mission_id": self.mission_id, "command_id": self.command_id, "message": f"Picture taken with {self.camera_device}", "latitude": self.latitude, "longitude": self.longitude}
+        return {"mission_id": self.mission_id, "command_id": self.command_id, "message": [f"Picture taken with {self.camera_device}", self.image_b64], "latitude": self.latitude, "longitude": self.longitude}
 
 
 class Analyse_Image(Command):
     def __init__(self, mission_id, command_id, command_type, params, logger):
         super().__init__(mission_id, command_id, command_type, logger)
-        self.latitude = params[0]
-        self.longitude = params[1]
-        self.analyse_model = params[2]
+        self.latitude = params["latitude"]
+        self.longitude = params["longitude"]
+        self.analyse_model = params["analyseModel"]
         self.amount = None
+        self.image_b64 = None
         
     def execute(self):
         self.logger.info("[ANALYSE_IMAGE] - Analysing image...")
+
+        key = f"{self.latitude:.6f}_{self.longitude:.6f}"
+        amount_path = os.path.join("Data", "amounts.json")
+        analysed_img_path = os.path.join("Data", f"{key}_analysed.png")
+
+        # Leer amount desde JSON
+        try:
+            with open(amount_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            self.amount = data.get(key, 0)
+        except Exception as e:
+            self.logger.error(f"[ANALYSE_IMAGE] - Error reading {amount_path}: {e}")
+            self.amount = 0
+
+        # Leer imagen analizada
+        try:
+            with open(analysed_img_path, "rb") as img_file:
+                image_bytes = img_file.read()
+                self.image_b64 = "data:image/png;base64," + base64.b64encode(image_bytes).decode("utf-8")
+                self.logger.info(f"[ANALYSE_IMAGE] - Loaded analysed image {analysed_img_path}")
+        except FileNotFoundError:
+            self.logger.warning(f"[ANALYSE_IMAGE] - Analysed image not found at {analysed_img_path}")
+            self.image_b64 = None
+
         time.sleep(1)
         
     def result(self):
         self.logger.info("[ANALYSE_IMAGE] - Analysis completed")
-        return {"mission_id": self.mission_id, "command_id": self.command_id, "message": f"Picture analysed: {self.amount}", "latitude": self.latitude, "longitude": self.longitude}
+        return {"mission_id": self.mission_id, "command_id": self.command_id, "message": [f"Picture analysed: {self.amount}", self.image_b64], "latitude": self.latitude, "longitude": self.longitude}
 
 
 class Treatment(Command):
     def __init__(self, mission_id, command_id, command_type, params, logger):
         super().__init__(mission_id, command_id, command_type, logger)
-        self.latitude = params[0]
-        self.longitude = params[1]
-        self.treatment = params[2]
-        self.amount = params[3]
+        self.latitude = params["latitude"]
+        self.longitude = params["longitude"]
+        self.treatment = params["treatment"]
+        self.amount = params["amount"]
         
     def execute(self):
         self.logger.info("[TREATMENT] - Applying treatment...")

@@ -6,7 +6,7 @@ from rclpy.action import ActionServer
 from rclpy.node import Node
 from rclpy.executors import MultiThreadedExecutor
 
-from src.commands_action_interface.action import Commands
+from commands_action_interface.action import Commands
 from Commands.commands_processor import process_command
 
 
