@@ -1,7 +1,4 @@
 """
-mqtt_pub.py
-===========
-
 This module provides utility functions for publishing messages to the MQTT broker
 from the Fleet Manager system. It acts as the outbound communication interface,
 sending updates to Node-RED or other subscribers.

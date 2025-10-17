@@ -1,7 +1,4 @@
 """
-mqtt_sub.py
-============
-
 This module manages the MQTT subscription component of the Fleet Manager system.
 It listens for incoming mission commands from Node-RED (or test tools) and forwards
 them to the appropriate drones via the ROS2 Action Client.

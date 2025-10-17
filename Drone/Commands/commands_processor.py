@@ -1,7 +1,4 @@
 """
-commands_processor.py
-=====================
-
 This module is responsible for parsing, interpreting, and executing mission commands
 received by the drone's ROS2 Action Server. It serves as the bridge between the
 high-level mission definitions (sent by the Fleet Manager) and the specific simulated

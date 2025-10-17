@@ -1,7 +1,4 @@
 """
-commands_simulator.py
-=====================
-
 This module simulates the execution of drone mission commands in a controlled
 environment. It defines a hierarchy of command classes representing possible
 actions a drone can perform, such as takeoff, landing, moving to a waypoint,

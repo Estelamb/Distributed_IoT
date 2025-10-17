@@ -1,7 +1,4 @@
 """
-init_drone.py
-==============
-
 This module initializes the ROS2 drone system and starts the drone's Action Server.
 It is the entry point for the **Drone Container** in the distributed UAV Fleet Management
 architecture.

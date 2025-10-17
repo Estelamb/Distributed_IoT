@@ -1,3 +1,6 @@
+Fleet Manager
+=============
+
 .. toctree::
    :maxdepth: 1
 

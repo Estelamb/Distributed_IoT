@@ -1,7 +1,4 @@
 """
-commands_action_client.py
-=========================
-
 This module manages the communication between the Fleet Manager and the drones
 using ROS2 Actions. It supports automatic drone discovery, concurrent communication
 with multiple drones, and integrates with MQTT for mission status reporting.

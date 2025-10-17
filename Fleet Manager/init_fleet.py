@@ -1,7 +1,4 @@
 """
-init_fleet.py
-=============
-
 This module initializes and runs the Fleet Manager system for a specific farm.
 
 It performs the following main tasks:

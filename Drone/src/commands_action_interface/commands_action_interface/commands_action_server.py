@@ -1,7 +1,4 @@
 """
-commands_action_server.py
-==========================
-
 This module implements the **ROS2 Action Server** for each drone in the fleet.
 It defines how the drone receives mission commands from the Fleet Manager via ROS2 Actions,
 processes them sequentially, and reports real-time feedback and final results.
