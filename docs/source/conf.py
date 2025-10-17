@@ -30,6 +30,8 @@ sys.path.insert(0, os.path.abspath('../../Drone/Commands'))
 sys.path.insert(0, os.path.abspath('../../Drone/Logs'))
 sys.path.insert(0, os.path.abspath('../../Drone/src/commands_action_interface/commands_action_interface'))
 
+sys.path.insert(0, os.path.abspath('../../User'))
+
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',

@@ -1,3 +1,33 @@
+"""
+commands_action_server.py
+==========================
+
+This module implements the **ROS2 Action Server** for each drone in the fleet.
+It defines how the drone receives mission commands from the Fleet Manager via ROS2 Actions,
+processes them sequentially, and reports real-time feedback and final results.
+
+Main responsibilities:
+-----------------------
+1. **Initialize** a ROS2 Action Server in a drone-specific namespace (`/drone<ID>/commands`).
+2. **Receive** missions as lists of commands from the Fleet Manager.
+3. **Execute** each command using the `process_command` function.
+4. **Publish feedback** for each executed command.
+5. **Return results** once the entire command sequence is completed.
+
+Flow overview:
+--------------
+.. code-block:: text
+
+    Fleet Manager  -->  ROS2 Action Client  -->  Drone Action Server
+         ↑                                              ↓
+         └────────── Feedback / Result Messages ─────────┘
+
+Each command received is processed sequentially, and a delay (`sleep`) is introduced to
+simulate realistic drone behavior. Feedback messages are sent after each command, while
+results are sent once all commands have been processed.
+
+"""
+
 import time
 import threading
 
@@ -11,6 +41,18 @@ from Commands.commands_processor import process_command
 
 
 class CommandsActionServer(Node):
+    """
+    ROS2 Action Server node responsible for executing drone missions.
+
+    This class handles incoming action goals from the Fleet Manager, simulates
+    command execution using the `process_command` function, publishes feedback messages,
+    and returns results when the mission completes.
+
+    :param drone_id: Unique identifier of the drone instance.
+    :type drone_id: int
+    :param drone_logger: Logger instance used for recording drone system activity.
+    :type drone_logger: logging.Logger
+    """
 
     def __init__(self, drone_id: int, drone_logger):
         super().__init__(
@@ -32,6 +74,23 @@ class CommandsActionServer(Node):
         self.drone_logger.info(f"[ROS2] - Action service available at: /drone{drone_id}/commands")
 
     def execute_callback(self, goal_handle):
+        """
+        Executes a mission goal received from the Fleet Manager.
+
+        This method processes each command in the received mission sequentially.
+        For each command:
+        - It simulates execution via `process_command()`
+        - Publishes feedback with the current command status
+        - Waits briefly between commands to emulate real drone timing
+
+        Once all commands are executed, it publishes the final result.
+
+        :param goal_handle: Handle representing the received goal.
+        :type goal_handle: rclpy.action.server.ServerGoalHandle
+        :return: Result message containing mission completion information.
+        :rtype: commands_action_interface.action.Commands.Result
+        :raises Exception: If the ROS2 system is interrupted or a command fails.
+        """
         self.drone_logger.info(f"[ROS2] - Executing command sequence goal with {len(goal_handle.request.commands_list)} commands")
         feedback_msg = Commands.Feedback()
 
@@ -64,6 +123,18 @@ class CommandsActionServer(Node):
 
 
 def run_action_server(drone_id: int, drone_logger):
+    """
+    Starts and manages the ROS2 Action Server for a given drone.
+
+    This function initializes the ROS2 environment, spins up the action server,
+    and handles clean shutdowns upon keyboard interruption or system stop.
+
+    :param drone_id: Unique identifier of the drone instance.
+    :type drone_id: int
+    :param drone_logger: Logger instance used for recording drone system activity.
+    :type drone_logger: logging.Logger
+    :return: None
+    """
     rclpy.init()
     server = CommandsActionServer(drone_id, drone_logger)
     executor = MultiThreadedExecutor()

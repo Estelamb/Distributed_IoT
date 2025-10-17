@@ -1,3 +1,19 @@
+"""
+init_fleet.py
+=============
+
+This module initializes and runs the Fleet Manager system for a specific farm.
+
+It performs the following main tasks:
+1. Creates a thread-safe logger for recording system activity.
+2. Initializes a ROS2 Action Client used for communicating with drones.
+3. Starts the MQTT subscriber to receive mission commands from Node-RED (or other sources).
+4. Keeps the Fleet Manager running continuously until manually terminated.
+
+This module serves as the entry point for the Fleet Manager container in the
+distributed UAV control architecture, coordinating MQTT and ROS2 communication layers.
+"""
+
 import argparse
 import logging
 import queue
@@ -9,7 +25,21 @@ from concurrent_log_handler import ConcurrentRotatingFileHandler
 from MQTT.mqtt_sub import start_mqtt_sub
 from src.commands_action_interface.commands_action_interface.commands_action_client import create_ros2_action_client
 
+
 def create_logger(logger_name: str, log_file: str) -> logging.Logger:
+    """
+    Creates and configures a thread-safe logger for the Fleet Manager system.
+
+    The logger writes logs both to the console and to a rotating log file.
+    It uses `ConcurrentRotatingFileHandler` to ensure safe access from multiple threads.
+
+    :param logger_name: The name to assign to the logger instance.
+    :type logger_name: str
+    :param log_file: Path to the log file where entries will be stored.
+    :type log_file: str
+    :return: A configured logger instance.
+    :rtype: logging.Logger
+    """
     logger = logging.getLogger(logger_name)
     logger.setLevel(logging.INFO)
 
@@ -24,7 +54,20 @@ def create_logger(logger_name: str, log_file: str) -> logging.Logger:
     logger.addHandler(console_handler)
     return logger
 
+
 def main(farm_id: int) -> None:
+    """
+    Initializes and runs the Fleet Manager system for a specific farm.
+
+    This function sets up the logger, initializes the ROS2 action client, and
+    starts the MQTT subscriber. Once initialized, it keeps the system running
+    until the user stops it manually (e.g., with Ctrl+C).
+
+    :param farm_id: Unique identifier of the farm instance.
+    :type farm_id: int
+    :return: None
+    :rtype: None
+    """
     fleet_logger = create_logger(f'Farm {farm_id}', f'Logs/Farm_{farm_id}.log')
     fleet_logger.info(f"[Init Fleet] - Initializing Fleet Manager system for Farm ID: {farm_id}")
 
@@ -41,6 +84,19 @@ def main(farm_id: int) -> None:
 
 
 if __name__ == "__main__":
+    """
+    Command-line entry point for initializing the Fleet Manager system.
+
+    This script starts a Fleet Manager instance for a specific farm,
+    identified by its unique ID. The system initializes ROS2, starts
+    the MQTT subscriber, and logs all activity to both the console
+    and a file under the `Logs/` directory.
+
+    Example:
+        python init_fleet.py --farm_id 1
+
+    :raises SystemExit: If the farm ID is invalid or a critical error occurs.
+    """
     parser = argparse.ArgumentParser(
         description='Fleet Manager System - Agricultural Drone Management Platform'
     )
