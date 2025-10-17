@@ -9,9 +9,9 @@ import sys
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'SMART-PM'
-copyright = '2025, Estela Mora Barba'
-author = 'Estela Mora Barba'
+project = 'Fleet Manager - Distributed Systems for IoT'
+copyright = '2025, Alejandro Botas Bárcena, Javier Grimaldos Chavarría, Estela Mora Barba'
+author = 'Alejandro Botas Bárcena, Javier Grimaldos Chavarría, Estela Mora Barba'
 
 version = '1.0'
 release = '1.0'
