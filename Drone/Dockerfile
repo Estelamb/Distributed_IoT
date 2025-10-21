@@ -30,6 +30,12 @@ RUN apt-get update && apt-get upgrade -y && \
 RUN echo "source /opt/ros/jazzy/setup.bash" >> /root/.bashrc && \
     echo "export ROS_DOMAIN_ID=1" >> /root/.bashrc
 
+# Configuración de CycloneDDS para usar interfaces de red reales
+RUN mkdir -p /etc/ros
+COPY cyclonedds.xml /etc/ros/cyclonedds.xml
+
+ENV CYCLONEDDS_URI=file:///etc/ros/cyclonedds.xml
+
 # Default shell when container runs
 CMD [ "bash" ]
 

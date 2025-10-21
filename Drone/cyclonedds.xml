@@ -1,0 +1,8 @@
+<CycloneDDS>
+  <Domain id="1">
+    <General>
+      <!-- Usa automáticamente la interfaz de red correcta (no loopback) -->
+      <NetworkInterfaceAddress>auto</NetworkInterfaceAddress>
+    </General>
+  </Domain>
+</CycloneDDS>

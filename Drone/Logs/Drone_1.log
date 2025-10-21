@@ -1,0 +1,7 @@
+[2025-10-21 10:33:25,715][Drone 1][INFO][Init ROS2] - Initializing ROS2 drone system for drone ID: 1
+[2025-10-21 10:33:25,794][Drone 1][INFO][ROS2] - Commands action server initialized for drone 1
+[2025-10-21 10:33:25,796][Drone 1][INFO][ROS2] - Action service available at: /drone1/commands
+[2025-10-21 10:35:18,731][Drone 1][INFO][ROS2] - Cleaning up executor and server
+[2025-10-21 10:45:55,637][Drone 1][INFO][Init ROS2] - Initializing ROS2 drone system for drone ID: 1
+[2025-10-21 10:45:55,845][Drone 1][INFO][ROS2] - Commands action server initialized for drone 1
+[2025-10-21 10:45:55,846][Drone 1][INFO][ROS2] - Action service available at: /drone1/commands
