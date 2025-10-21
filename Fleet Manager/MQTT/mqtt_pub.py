@@ -52,7 +52,7 @@ def mqtt_goal(farm_id, drone_id, message, fleet_logger):
     :return: None
     :rtype: None
     """
-    topic = f"farm/{farm_id}/{drone_id}"
+    topic = f"farms/farm_{farm_id}/drone_{drone_id}"
     payload = json.dumps({
         "message": message
     })
@@ -78,7 +78,7 @@ def mqtt_feedback(farm_id, drone_id, message, fleet_logger):
     :return: None
     :rtype: None
     """
-    topic = f"farm/{farm_id}/{drone_id}"
+    topic = f"farms/farm_{farm_id}/drone_{drone_id}"
     payload = json.dumps({
         "message": message
     })
@@ -104,7 +104,7 @@ def mqtt_result(farm_id, drone_id, message, fleet_logger):
     :return: None
     :rtype: None
     """
-    topic = f"farm/{farm_id}/{drone_id}"
+    topic = f"farms/farm_{farm_id}/drone_{drone_id}"
     payload = json.dumps({
         "message": message
     })
@@ -129,7 +129,7 @@ def mqtt_warning(farm_id, message, fleet_logger):
     :return: None
     :rtype: None
     """
-    topic = f"farm/{farm_id}/warning"
+    topic = f"farms/farm_{farm_id}/warning"
     payload = json.dumps({
         "message": message
     })

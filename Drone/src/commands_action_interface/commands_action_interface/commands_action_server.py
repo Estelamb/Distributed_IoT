@@ -100,7 +100,7 @@ class CommandsActionServer(Node):
                 self.drone_logger.info(f"[ROS2] - Processing command {idx + 1}/{len(goal_handle.request.commands_list)}: {command}")
                 command_id, command_data = process_command(command, self.drone_logger)
 
-                feedback_msg.command_status = [str(self.vehicle_id), str("Feedback"), str(command_data)]
+                feedback_msg.command_status = str(command_data)
                 goal_handle.publish_feedback(feedback_msg)
 
                 self.drone_logger.info(f"[ROS2] - Feedback published: {feedback_msg.command_status}")

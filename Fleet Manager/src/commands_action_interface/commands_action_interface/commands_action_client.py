@@ -13,6 +13,7 @@ It serves as the core bridge between the ROS2-based drone layer and the MQTT-bas
 Fleet Manager system.
 """
 
+import ast
 import json
 import logging
 import rclpy
@@ -154,9 +155,10 @@ class CommandsActionClient(Node):
         :rtype: None
         """
         result = future.result().result
+        parsed_result = parse_feedback_data(result.plan_result)
 
-        self.fleet_logger.info(f"[ROS2] - Drone {drone_id}: Result: {result.plan_result}")
-        mqtt_result(self.farm_id, drone_id, f"Drone {drone_id} mission result: {result.plan_result}", self.fleet_logger)
+        self.fleet_logger.info(f"[ROS2] - Drone {drone_id}: Result: {parsed_result}")
+        mqtt_result(self.farm_id, drone_id, json.dumps(parsed_result), self.fleet_logger)
 
         self.drone_busy[drone_id] = False
 
@@ -175,8 +177,9 @@ class CommandsActionClient(Node):
         :rtype: None
         """
         feedback = feedback_msg.feedback
-        self.fleet_logger.info(f"[ROS2] - Drone {drone_id}: Feedback: {feedback.command_status}")
-        mqtt_feedback(self.farm_id, drone_id, f"Drone {drone_id} feedback: {feedback.command_status}", self.fleet_logger)
+        parsed_feedback = parse_feedback_data(feedback.command_status)
+        self.fleet_logger.info(f"[ROS2] - Drone {drone_id}: Feedback: {parsed_feedback}")
+        mqtt_feedback(self.farm_id, drone_id, json.dumps(parsed_feedback), self.fleet_logger)
 
 
 def create_ros2_action_client(farm_id, fleet_logger):
@@ -204,3 +207,29 @@ def create_ros2_action_client(farm_id, fleet_logger):
     thread.start()
 
     return action_client
+
+def parse_feedback_data(data):
+    """
+    Attempts to convert the incoming data to a dict.
+    Accepts:
+      - dict objects directly
+      - JSON strings
+      - strings using single quotes like a Python dict
+      - lists of characters (as you're receiving)
+    """
+    if isinstance(data, dict):
+        return data
+    
+    if isinstance(data, list):
+        data = ''.join(data)
+
+    if isinstance(data, str):
+        try:
+            return json.loads(data)
+        except json.JSONDecodeError:
+            try:
+                return ast.literal_eval(data)
+            except Exception:
+                return {'raw_data': data}
+
+    return {'raw_data': str(data)}

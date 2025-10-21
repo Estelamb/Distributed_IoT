@@ -44,7 +44,7 @@ def send_mission_from_file(farm_id, json_file):
     :return: None
     :rtype: None
     """
-    topic = f"farm/{farm_id}"
+    topic = f"farms/farm_{farm_id}/mission"
     
     with open(json_file, "r") as f:
         payload = json.load(f)

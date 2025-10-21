@@ -63,7 +63,7 @@ def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker="host.docker.
     :return: Configured MQTT client instance.
     :rtype: paho.mqtt.client.Client
     """
-    topic = f"farm/{farm_id}"
+    topic = f"farms/farm_{farm_id}/mission"
 
     def on_connect(client, userdata, flags, rc):
         """
