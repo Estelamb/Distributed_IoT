@@ -3,12 +3,14 @@ How to run
 
 Requirements
 ------------
-- Laptop/PC with Docker installed (Follow the :doc:`docker` tutorial to install Docker on your machine).
+- Laptop/PC (Windows 11) with Docker installed (Follow the :doc:`docker` tutorial to install Docker on your machine).
 - Raspberry Pi 5 with Raspberry Pi OS (64-bit). (Optional)
 
 
 Fleet Manager
 -------------
+
+If it is going to run on the Laptop/PC with Windows 11, start ``Docker Desktop``.
 
 In the ``Fleet Manager`` directory, run the following command:
 
@@ -25,6 +27,8 @@ To start the ``Fleet Manager``, execute:
 
 Drone
 -----
+
+If it is going to run on the Laptop/PC with Windows 11, start ``Docker Desktop``.
 
 In the ``Drone`` directory, run the following command (If it's the same machine as the Fleet Manager, skip this step):
 

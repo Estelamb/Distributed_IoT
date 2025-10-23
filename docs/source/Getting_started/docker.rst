@@ -83,6 +83,16 @@ To confirm Docker is installed and working correctly, run:
 
 You should see a message confirming successful installation.
 
+Add Docker sudo privileges
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To manage Docker as a non-root user, add your user to the `docker` group:
+
+.. code-block:: bash
+
+   sudo usermod -aG docker $USER
+
+Log out and log back in for the changes to take effect.
 
 References
 ~~~~~~~~~~
