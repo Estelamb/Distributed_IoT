@@ -158,7 +158,7 @@ class CommandsActionClient(Node):
         parsed_result = parse_feedback_data(result.plan_result)
 
         self.fleet_logger.info(f"[ROS2] - Drone {drone_id}: Result: {parsed_result}")
-        mqtt_result(self.farm_id, drone_id, json.dumps(parsed_result), self.fleet_logger)
+        mqtt_result(self.farm_id, drone_id, f"Drone {drone_id} mission successful.", self.fleet_logger)
 
         self.drone_busy[drone_id] = False
 

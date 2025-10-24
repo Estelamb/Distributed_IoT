@@ -12,7 +12,7 @@ services:
       - "51001:51001"
     container_name: fleet_manager
     volumes:
-      - ./Logs:/home/Fleet Manager/Logs
+      - ./Logs:/home/Fleet/Logs
 
 networks:
   fleet_net:
