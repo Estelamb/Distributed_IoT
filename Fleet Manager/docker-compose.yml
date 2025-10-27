@@ -9,7 +9,6 @@ services:
         ipv4_address: 192.168.100.140
     ports:
       - "1883:1883"
-      - "51001:51001"
     container_name: fleet_manager
     volumes:
       - ./Logs:/home/Fleet/Logs

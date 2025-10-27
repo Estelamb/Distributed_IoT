@@ -19,7 +19,7 @@ import paho.mqtt.client as mqtt
 import json
 
 #: MQTT broker hostname or IP address (Docker bridge host).
-MQTT_BROKER = "host.docker.internal"
+MQTT_BROKER = "10.19.138.150"
 
 #: Port number for the MQTT connection.
 MQTT_PORT = 1883
