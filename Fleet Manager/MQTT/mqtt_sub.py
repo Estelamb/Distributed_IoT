@@ -42,7 +42,7 @@ import paho.mqtt.client as mqtt
 import threading
 
 
-def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker="10.19.138.150", mqtt_port=1883):
+def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker="10.19.138.150", mqtt_port=1884):
     """
     Starts an MQTT subscriber for the specified farm.
 
