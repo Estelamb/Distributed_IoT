@@ -30,7 +30,6 @@ RUN apt-get update && apt-get upgrade -y && \
 RUN echo "source /opt/ros/jazzy/setup.bash" >> /root/.bashrc && \
     echo "export ROS_DOMAIN_ID=1" >> /root/.bashrc
 
-# Default shell when container runs
 CMD [ "bash" ]
 
 RUN apt-get update && apt-get install -y \
@@ -42,7 +41,6 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt /tmp/
 RUN pip install --break-system-packages --ignore-installed -r /tmp/requirements.txt
 
-# Crear workspace y copiar proyecto
 RUN mkdir -p /home/Fleet
 WORKDIR /home/Fleet
 
@@ -50,7 +48,8 @@ COPY . /home/Fleet/
 
 RUN /bin/bash -c "source /opt/ros/jazzy/setup.bash && colcon build"
 
-EXPOSE 1883
-EXPOSE 51001
+ENV FARM_ID="1"
+ENV MQTT_BROKER_ADDR="10.138.137.150"
+ENV MQTT_PORT_NUM="1884"
 
-CMD ["bash", "-c", "source /opt/ros/jazzy/setup.bash && source install/setup.bash && python3 init_fleet.py --farm_id 1"]
+CMD ["bash", "-c", "source /opt/ros/jazzy/setup.bash && source install/setup.bash && python3 init_fleet.py --farm_id $FARM_ID --mqtt_broker $MQTT_BROKER_ADDR --mqtt_port $MQTT_PORT_NUM"]

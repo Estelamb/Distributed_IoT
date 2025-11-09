@@ -4,10 +4,11 @@ It listens for incoming mission commands from Node-RED (or test tools) and forwa
 them to the appropriate drones via the ROS2 Action Client.
 
 Main responsibilities:
-1. **Subscribe** to farm-specific MQTT topics (e.g., `farm/<farm_id>`).
+1. **Subscribe** to farm-specific MQTT topics (e.g., `farm/<farm_id>`) with QoS 2.
 2. **Receive** mission messages in JSON format.
 3. **Parse** mission data to extract `vehicleId` and the list of commands.
 4. **Forward** parsed commands to the ROS2 Action Client for drone execution.
+5. **Set Last Will** for unexpected disconnections.
 
 Expected message format:
 -------------------------
@@ -42,13 +43,13 @@ import paho.mqtt.client as mqtt
 import threading
 
 
-def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker="10.19.138.150", mqtt_port=1884):
+def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker: str, mqtt_port: int):
     """
     Starts an MQTT subscriber for the specified farm.
 
     This function connects to the MQTT broker, subscribes to the topic corresponding
-    to the given farm ID, and handles incoming mission messages. Each message is parsed,
-    validated, and then dispatched to the ROS2 Action Client for further processing.
+    to the given farm ID with **Quality of Service 2 (QoS 2)**, and sets a
+    **Last Will and Testament (LWT)** message for unexpected disconnections.
 
     :param farm_id: Unique identifier of the farm instance.
     :type farm_id: int
@@ -56,21 +57,30 @@ def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker="10.19.138.15
     :type ros2_client: CommandsActionClient
     :param fleet_logger: Logger instance used for recording system activity.
     :type fleet_logger: logging.Logger
-    :param mqtt_broker: Hostname or IP address of the MQTT broker. Defaults to "host.docker.internal".
-    :type mqtt_broker: str, optional
-    :param mqtt_port: Port number of the MQTT broker. Defaults to 1883.
-    :type mqtt_port: int, optional
+    :param mqtt_broker: Hostname or IP address of the MQTT broker.
+    :type mqtt_broker: str
+    :param mqtt_port: Port number of the MQTT broker.
+    :type mqtt_port: int
     :return: Configured MQTT client instance.
     :rtype: paho.mqtt.client.Client
     """
-    topic = f"farms/farm_{farm_id}/mission"
+    # Topic for mission commands (subscription target)
+    mission_topic = f"farms/farm_{farm_id}/mission"
+    
+    # Configuration for Last Will and Testament (LWT)
+    lwt_topic = f"farms/farm_{farm_id}/status"
+    lwt_payload = json.dumps({"status": "offline", "reason": "Client disconnected unexpectedly"})
+    
+    # Assign a unique Client ID for proper session handling (important for LWT)
+    client_id = f"fleet_manager_farm_{farm_id}"
+
 
     def on_connect(client, userdata, flags, rc):
         """
         Callback triggered when the MQTT client connects to the broker.
 
-        Subscribes to the topic associated with the specified farm if the
-        connection is successful.
+        Subscribes to the mission topic using **QoS 2** if the connection is successful.
+        QoS 2 ensures the message is received exactly once.
 
         :param client: The MQTT client instance.
         :type client: paho.mqtt.client.Client
@@ -83,8 +93,12 @@ def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker="10.19.138.15
         """
         if rc == 0:
             fleet_logger.info(f"[MQTT] - Connected to broker at {mqtt_broker}:{mqtt_port}")
-            client.subscribe(topic)
-            fleet_logger.info(f"[MQTT] - Subscribed to topic: {topic}")
+            
+            # --- MODIFICATION 1: Subscribe with QoS 2 ---
+            # Use tuple (topic, qos) to specify QoS level for subscription
+            client.subscribe((mission_topic, 2))
+            
+            fleet_logger.info(f"[MQTT] - Subscribed to topic: {mission_topic} with QoS 2")
         else:
             fleet_logger.error(f"[MQTT] - Connection failed with code {rc}")
 
@@ -105,7 +119,7 @@ def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker="10.19.138.15
         """
         try:
             payload = json.loads(msg.payload.decode())
-            fleet_logger.info(f"[MQTT] - Received message on {msg.topic}: {json.dumps(payload)}")
+            fleet_logger.info(f"[MQTT] - Received message on {msg.topic} (QoS {msg.qos}): {json.dumps(payload)}")
             
             drone_id = payload.get("vehicleId")
             commands_list = payload.get("commands", [])
@@ -129,10 +143,23 @@ def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker="10.19.138.15
         except Exception as e:
             fleet_logger.error(f"[MQTT] - Failed to process message: {e}")
 
-    mqtt_client = mqtt.Client()
+    # Initialize MQTT Client with a specific ID
+    mqtt_client = mqtt.Client(client_id=client_id)
     mqtt_client.on_connect = on_connect
     mqtt_client.on_message = on_message
 
+    # --- MODIFICATION 2: Configure Last Will and Testament (LWT) ---
+    # The LWT message will be published by the broker if the client disconnects uncleanly.
+    # QoS=1 ensures delivery; Retain=True ensures the status remains for new subscribers.
+    mqtt_client.will_set(
+        lwt_topic, 
+        lwt_payload, 
+        qos=1, 
+        retain=True
+    )
+    fleet_logger.info(f"[MQTT] - Last Will configured on topic {lwt_topic} with payload: {lwt_payload}")
+
+    # --- MODIFICATION: Use dynamic parameters for connect ---
     mqtt_client.connect(mqtt_broker, mqtt_port, keepalive=60)
 
     mqtt_thread = threading.Thread(target=mqtt_client.loop_forever, daemon=True)

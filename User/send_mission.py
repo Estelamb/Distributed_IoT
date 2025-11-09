@@ -18,7 +18,7 @@ import sys
 MQTT_BROKER = "localhost"
 
 #: Port number used for the MQTT connection.
-MQTT_PORT = 1883
+MQTT_PORT = 1884
 
 #: Keepalive interval (in seconds) for the MQTT connection.
 MQTT_KEEPALIVE = 60 
