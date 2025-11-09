@@ -50,6 +50,7 @@ COPY . /home/Drone/
 
 RUN /bin/bash -c "source /opt/ros/jazzy/setup.bash && colcon build"
 
-ENV DRONE_ID="1"
+ARG DRONE_ID
+ENV DRONE_ID=${DRONE_ID}
 
 CMD ["bash", "-c", "source /opt/ros/jazzy/setup.bash && source install/setup.bash && python3 init_drone.py --drone_id $DRONE_ID"]

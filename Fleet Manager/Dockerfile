@@ -48,8 +48,12 @@ COPY . /home/Fleet/
 
 RUN /bin/bash -c "source /opt/ros/jazzy/setup.bash && colcon build"
 
-ENV FARM_ID="1"
-ENV MQTT_BROKER_ADDR="10.138.137.150"
-ENV MQTT_PORT_NUM="1884"
+ARG FARM_ID
+ARG MQTT_BROKER_ADDR
+ARG MQTT_PORT_NUM
+
+ENV FARM_ID=${FARM_ID}
+ENV MQTT_BROKER_ADDR=${MQTT_BROKER_ADDR}
+ENV MQTT_PORT_NUM=${MQTT_PORT_NUM}
 
 CMD ["bash", "-c", "source /opt/ros/jazzy/setup.bash && source install/setup.bash && python3 init_fleet.py --farm_id $FARM_ID --mqtt_broker $MQTT_BROKER_ADDR --mqtt_port $MQTT_PORT_NUM"]

@@ -319,3 +319,7 @@ Traceback (most recent call last):
   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/action/server.py", line 147, in publish_feedback
     self._action_server._handle.publish_feedback(feedback_message)
 rclpy._rclpy_pybind11.RCLError: Failed to publish feedback with an action server: feedback publisher is invalid, at ./src/rcl_action/action_server.c:984
+[2025-11-09 10:54:01,469][Drone 1][INFO][Init ROS2] - Initializing ROS2 drone system for drone ID: 1
+[2025-11-09 10:54:01,549][Drone 1][INFO][ROS2] - Commands action server initialized for drone 1
+[2025-11-09 10:54:01,550][Drone 1][INFO][ROS2] - Action service available at: /drone1/commands
+[2025-11-09 10:54:05,374][Drone 1][INFO][ROS2] - Cleaning up executor and server
