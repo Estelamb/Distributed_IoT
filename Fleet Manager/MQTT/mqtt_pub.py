@@ -25,14 +25,13 @@ MQTT_KEEPALIVE = 60
 mqtt_client = None
 
 # --- Last Will Configuration ---
-LWT_TOPIC = "fleet_manager/status"
 LWT_PAYLOAD = json.dumps({"status": "offline", "service": "FleetManagerPublisher"})
 LWT_QOS = 1
 LWT_RETAIN = True
 CLIENT_ID = "fleet_manager_publisher_client"
 
 
-def initialize_publisher_client(fleet_logger, mqtt_broker: str, mqtt_port: int) -> None:
+def initialize_publisher_client(farm_id, fleet_logger, mqtt_broker: str, mqtt_port: int) -> None:
     """
     Initializes the global MQTT publishing client, configures the Last Will and 
     Testament (LWT), connects to the broker, and starts the network loop.
@@ -58,25 +57,25 @@ def initialize_publisher_client(fleet_logger, mqtt_broker: str, mqtt_port: int) 
 
     # --- Set Last Will and Testament (LWT) before connecting ---
     mqtt_client.will_set(
-        LWT_TOPIC, 
+        f"farm/farm_{farm_id}/pub_status", 
         LWT_PAYLOAD, 
         qos=LWT_QOS, 
         retain=LWT_RETAIN
     )
-    fleet_logger.info(f"[MQTT] - Last Will configured on topic {LWT_TOPIC}. Status: offline")
+    fleet_logger.info(f"[MQTT] - Last Will configured on topic farm/farm_{farm_id}/pub_status. Status: offline")
     
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
             fleet_logger.info(f"[MQTT] - Publisher connected to broker at {mqtt_broker}:{mqtt_port}")
-            # Optional: Publish an 'online' status immediately after connection
-            client.publish(LWT_TOPIC, json.dumps({"status": "online", "service": "FleetManagerPublisher"}), qos=1, retain=True)
+            
+            client.publish(f"farm/farm_{farm_id}/pub_status", json.dumps({"status": "online", "service": "FleetManagerPublisher"}), qos=1, retain=True)
         else:
             fleet_logger.error(f"[MQTT] - Publisher connection failed with code {rc}")
 
     mqtt_client.on_connect = on_connect
     
     try:
-        # --- MODIFICATION: Use dynamic parameters for connect ---
+        # --- Use dynamic parameters for connect ---
         mqtt_client.connect(mqtt_broker, mqtt_port, MQTT_KEEPALIVE)
         mqtt_client.loop_start()
         fleet_logger.info("[MQTT] - Publisher network loop started.")
@@ -111,7 +110,7 @@ def mqtt_goal(farm_id, drone_id, message, fleet_logger):
         "message": message
     })
     
-    # --- MODIFICATION: Publish with QoS 2 (Exactly Once) ---
+    # --- Publish with QoS 2 (Exactly Once) ---
     mqtt_client.publish(topic, payload, qos=2)
     fleet_logger.info(f"[MQTT] - Published goal -> {topic}: {payload} (QoS 2)")
 
@@ -143,7 +142,7 @@ def mqtt_feedback(farm_id, drone_id, message, fleet_logger):
         "message": message
     })
     
-    # --- MODIFICATION: Publish with QoS 2 (Exactly Once) ---
+    # --- Publish with QoS 2 (Exactly Once) ---
     mqtt_client.publish(topic, payload, qos=2)
     fleet_logger.info(f"[MQTT] - Published feedback -> {topic}: {payload} (QoS 2)")
 
@@ -175,7 +174,7 @@ def mqtt_result(farm_id, drone_id, message, fleet_logger):
         "message": message
     })
     
-    # --- MODIFICATION: Publish with QoS 2 (Exactly Once) ---
+    # --- Publish with QoS 2 (Exactly Once) ---
     mqtt_client.publish(topic, payload, qos=2)
     fleet_logger.info(f"[MQTT] - Published result -> {topic}: {payload} (QoS 2)")
 
@@ -206,6 +205,6 @@ def mqtt_warning(farm_id, message, fleet_logger):
         "message": message
     })
     
-    # --- MODIFICATION: Publish with QoS 2 (Exactly Once) ---
+    # --- Publish with QoS 2 (Exactly Once) ---
     mqtt_client.publish(topic, payload, qos=2)
     fleet_logger.info(f"[MQTT] - Published warning -> {topic}: {payload} (QoS 2)")

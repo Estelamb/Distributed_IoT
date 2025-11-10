@@ -323,3 +323,30 @@ rclpy._rclpy_pybind11.RCLError: Failed to publish feedback with an action server
 [2025-11-09 10:54:01,549][Drone 1][INFO][ROS2] - Commands action server initialized for drone 1
 [2025-11-09 10:54:01,550][Drone 1][INFO][ROS2] - Action service available at: /drone1/commands
 [2025-11-09 10:54:05,374][Drone 1][INFO][ROS2] - Cleaning up executor and server
+[2025-11-09 10:54:20,753][Drone 1][INFO][Init ROS2] - Initializing ROS2 drone system for drone ID: 1
+[2025-11-09 10:54:20,803][Drone 1][INFO][ROS2] - Commands action server initialized for drone 1
+[2025-11-09 10:54:20,806][Drone 1][INFO][ROS2] - Action service available at: /drone1/commands
+[2025-11-09 10:54:50,270][Drone 1][INFO][ROS2] - Executing command sequence goal with 40 commands
+[2025-11-09 10:54:50,271][Drone 1][INFO][ROS2] - Processing command 1/40: {"missionId": 1, "commandId": 1, "commandType": "TAKEOFF", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-09 10:54:50,272][Drone 1][INFO][COMMANDS] - Processing TAKEOFF command
+[2025-11-09 10:54:50,274][Drone 1][INFO][TAKEOFF] - Taking off...
+[2025-11-09 10:55:00,276][Drone 1][INFO][TAKEOFF] - Takeoff successful
+[2025-11-09 10:55:00,278][Drone 1][INFO][COMMANDS] - Command executed successfully
+[2025-11-09 10:55:00,280][Drone 1][INFO][ROS2] - Feedback published: {'mission_id': 1, 'command_id': 1, 'message': 'Takeoff successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-09 10:55:01,349][Drone 1][INFO][ROS2] - Processing command 2/40: {"missionId": 1, "commandId": 2, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443587, "longitude": -3.738355}}
+[2025-11-09 10:55:01,351][Drone 1][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-09 10:55:01,353][Drone 1][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-09 10:55:01,490][Drone 1][INFO][ROS2] - Cleaning up executor and server
+[2025-11-09 10:55:11,354][Drone 1][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-09 10:55:11,358][Drone 1][INFO][COMMANDS] - Command executed successfully
+[2025-11-09 10:55:11,360][Drone 1][ERROR][ROS2] - Error during command execution: Failed to publish feedback with an action server: feedback publisher is invalid, at ./src/rcl_action/action_server.c:984
+Traceback (most recent call last):
+  File "/home/Drone/src/commands_action_interface/commands_action_interface/commands_action_server.py", line 104, in execute_callback
+    goal_handle.publish_feedback(feedback_msg)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/action/server.py", line 147, in publish_feedback
+    self._action_server._handle.publish_feedback(feedback_message)
+rclpy._rclpy_pybind11.RCLError: Failed to publish feedback with an action server: feedback publisher is invalid, at ./src/rcl_action/action_server.c:984
+[2025-11-09 16:58:43,834][Drone 1][INFO][Init ROS2] - Initializing ROS2 drone system for drone ID: 1
+[2025-11-09 16:58:43,906][Drone 1][INFO][ROS2] - Commands action server initialized for drone 1
+[2025-11-09 16:58:43,908][Drone 1][INFO][ROS2] - Action service available at: /drone1/commands
+[2025-11-09 17:04:22,532][Drone 1][INFO][ROS2] - Cleaning up executor and server

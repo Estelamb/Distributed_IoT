@@ -68,7 +68,7 @@ def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker: str, mqtt_po
     mission_topic = f"farms/farm_{farm_id}/mission"
     
     # Configuration for Last Will and Testament (LWT)
-    lwt_topic = f"farms/farm_{farm_id}/status"
+    lwt_topic = f"farms/farm_{farm_id}/sub_status"
     lwt_payload = json.dumps({"status": "offline", "reason": "Client disconnected unexpectedly"})
     
     # Assign a unique Client ID for proper session handling (important for LWT)
@@ -94,7 +94,7 @@ def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker: str, mqtt_po
         if rc == 0:
             fleet_logger.info(f"[MQTT] - Connected to broker at {mqtt_broker}:{mqtt_port}")
             
-            # --- MODIFICATION 1: Subscribe with QoS 2 ---
+            # --- Subscribe with QoS 2 ---
             # Use tuple (topic, qos) to specify QoS level for subscription
             client.subscribe((mission_topic, 2))
             
@@ -148,7 +148,7 @@ def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker: str, mqtt_po
     mqtt_client.on_connect = on_connect
     mqtt_client.on_message = on_message
 
-    # --- MODIFICATION 2: Configure Last Will and Testament (LWT) ---
+    # --- Configure Last Will and Testament (LWT) ---
     # The LWT message will be published by the broker if the client disconnects uncleanly.
     # QoS=1 ensures delivery; Retain=True ensures the status remains for new subscribers.
     mqtt_client.will_set(
@@ -159,7 +159,7 @@ def start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker: str, mqtt_po
     )
     fleet_logger.info(f"[MQTT] - Last Will configured on topic {lwt_topic} with payload: {lwt_payload}")
 
-    # --- MODIFICATION: Use dynamic parameters for connect ---
+    # --- Use dynamic parameters for connect ---
     mqtt_client.connect(mqtt_broker, mqtt_port, keepalive=60)
 
     mqtt_thread = threading.Thread(target=mqtt_client.loop_forever, daemon=True)

@@ -21,7 +21,7 @@ import threading
 from concurrent_log_handler import ConcurrentRotatingFileHandler
 
 from MQTT.mqtt_sub import start_mqtt_sub
-from MQTT.mqtt_pub import initialize_publisher_client # New import
+from MQTT.mqtt_pub import initialize_publisher_client
 from src.commands_action_interface.commands_action_interface.commands_action_client import create_ros2_action_client
 
 
@@ -77,10 +77,10 @@ def main(farm_id: int, mqtt_broker: str, mqtt_port: int) -> None:
 
     ros2_client = create_ros2_action_client(farm_id, fleet_logger)
 
-    # --- MODIFICATION: Initialize the publisher client with dynamic broker/port ---
-    initialize_publisher_client(fleet_logger, mqtt_broker, mqtt_port)
+    # --- Initialize the publisher client with dynamic broker/port ---
+    initialize_publisher_client(farm_id, fleet_logger, mqtt_broker, mqtt_port)
     
-    # --- MODIFICATION: Start the subscriber with dynamic broker/port ---
+    # --- Start the subscriber with dynamic broker/port ---
     start_mqtt_sub(farm_id, ros2_client, fleet_logger, mqtt_broker, mqtt_port)
     
     fleet_logger.info("[Init Fleet] - Fleet Manager system is running. Press Ctrl+C to exit.")
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     )
     parser.add_argument('--farm_id', type=int, required=True, help='Unique ID of the farm instance')
     
-    # --- MODIFICATION: New MQTT Broker arguments ---
+    # --- New MQTT Broker arguments ---
     parser.add_argument(
         '--mqtt_broker', 
         type=str, 
