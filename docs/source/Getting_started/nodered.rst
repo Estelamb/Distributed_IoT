@@ -9,23 +9,23 @@ Install Node.js
 Download and Install
 ~~~~~~~~~~~~~~~~~~~~
 
-1. Open **PowerShell** as Administrator.
+1. Open **bash** as Administrator.
 
 2. Install **Chocolatey** (a Windows package manager):
 
-   .. code-block:: powershell
+   .. code-block:: bash
 
-      powershell -c "irm https://community.chocolatey.org/install.ps1|iex"
+      bash -c "irm https://community.chocolatey.org/install.ps1|iex"
 
 3. Use Chocolatey to install **Node.js** version 24.11.1:
 
-   .. code-block:: powershell
+   .. code-block:: bash
 
       choco install nodejs --version="24.11.1"
 
 4. Verify the installation:
 
-   .. code-block:: powershell
+   .. code-block:: bash
 
       node -v   # Should print "v24.11.1"
       npm -v    # Should print "11.6.2"
@@ -37,7 +37,7 @@ Install Node-RED
 
 After Node.js is installed, use **npm** to install Node-RED globally:
 
-.. code-block:: powershell
+.. code-block:: bash
 
    npm install -g --unsafe-perm node-red
 
@@ -46,19 +46,18 @@ Reboot the laptop once the installation completes.
 Run Node-RED
 ------------
 
-To start Node-RED, open **PowerShell** and run:
+To start Node-RED, open **bash** and run:
 
-.. code-block:: powershell
+.. code-block:: bash
 
    node-red
 
 This will start the Node-RED server. You can then open your browser and navigate to:
 
-.. code-block:: powershell
+.. code-block:: bash
+   
     http://localhost:1880
 
-
-to access the Node-RED editor.
 
 References
 ~~~~~~~~~~~
