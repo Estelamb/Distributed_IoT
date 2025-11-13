@@ -63,6 +63,8 @@ Add Docker’s Repository to APT Sources:
      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
    sudo apt-get update
 
+Reboot the RPI5.
+
 Install the Docker packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

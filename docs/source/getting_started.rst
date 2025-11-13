@@ -3,3 +3,4 @@
 
    Getting_started/how_to_run
    Getting_started/docker
+   Getting_started/nodered

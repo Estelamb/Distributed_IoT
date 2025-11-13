@@ -6,4 +6,3 @@ Code documentation
 
    Fleet_module/index
    Drone_module/index
-   mqtt_test
