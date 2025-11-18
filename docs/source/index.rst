@@ -33,6 +33,9 @@ Examples of commands include:
 - Return Home: The vehicle returns to its starting point.
 - Land: The vehicle lands safely on the ground.
 
+Getting Started
+----------------
+
 .. toctree::
    :maxdepth: 2
    
