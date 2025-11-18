@@ -60,7 +60,7 @@ This will start the Node-RED server. You can then open your browser and navigate
 
 
 References
-~~~~~~~~~~~
+----------
 
 - Node-RED Official Documentation (On Windows): https://nodered.org/docs/getting-started/windows
 - Node.js Official Website (Download): https://nodejs.org/en/download

@@ -38,7 +38,7 @@ You should see a message confirming that Docker is installed and running correct
 
 
 Docker Engine for RPI5
-----------------
+----------------------
 
 Set up Docker’s APT repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -97,7 +97,7 @@ To manage Docker as a non-root user, add your user to the `docker` group:
 Log out and log back in for the changes to take effect.
 
 References
-~~~~~~~~~~
+----------
 
 - Docker Desktop for Windows documentation:
   https://docs.docker.com/desktop/install/windows-install/
