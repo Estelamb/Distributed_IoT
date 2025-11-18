@@ -1,0 +1,125 @@
+[
+    {
+        "id": "bf3c2ba19d26938f",
+        "type": "ui-template",
+        "z": "cb6456942b7c2176",
+        "group": "f326f63daacd7c5e",
+        "page": "",
+        "ui": "",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<div style=\"text-align: center; padding: 10px;\">\n    <img src=\"data:image/svg+xml;base64,{{msg.image}}\" \n         alt=\"Imagen del dron\" \n         style=\"max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 4px;\" />\n</div>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 700,
+        "y": 920,
+        "wires": [
+            [
+                "dd6de23b8b38b49c"
+            ]
+        ]
+    },
+    {
+        "id": "f326f63daacd7c5e",
+        "type": "ui-group",
+        "name": "Image",
+        "page": "d776ec1af93d5c84",
+        "width": 6,
+        "height": 1,
+        "order": -1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "d776ec1af93d5c84",
+        "type": "ui-page",
+        "name": "Farm 1 Dron 1",
+        "ui": "debfeef4d9f08595",
+        "path": "/farm1/dron1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "bebf3513799e0627",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "debfeef4d9f08595",
+        "type": "ui-base",
+        "name": "ui",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": true
+    },
+    {
+        "id": "bebf3513799e0627",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "4820e8f0a0c00a84",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.29.0"
+        }
+    }
+]
