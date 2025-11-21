@@ -578,10 +578,10 @@
         "ui": "",
         "name": "",
         "order": 0,
-        "width": 0,
-        "height": 0,
+        "width": "6",
+        "height": "5",
         "head": "",
-        "format": "<div style=\"text-align: center; padding: 10px;\">\n    <img src=\"data:image/svg+xml;base64,{{msg.image}}\" \n         alt=\"Imagen del dron\" \n         style=\"max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 4px;\" />\n</div>",
+        "format": "<div style=\"text-align:center\">\n    <img id=\"frame\" src=\"{{msg.image}}\"style=\"max-width:100%;height:auto;\"/>\n    {{msg.image}}\n</div>",
         "storeOutMessages": true,
         "passthru": true,
         "resendOnRefresh": true,
@@ -1383,7 +1383,8 @@
                 "390a8718c0ccc7d2",
                 "3c6fd5a12617bf6c",
                 "bf3c2ba19d26938f",
-                "6cd267d604aa5452"
+                "6cd267d604aa5452",
+                "8a4e4d41b246ab0d"
             ]
         ]
     },
@@ -1537,7 +1538,8 @@
         "wires": [
             [
                 "bf3c2ba19d26938f",
-                "f7e7aa059f196c4e"
+                "f7e7aa059f196c4e",
+                "8a4e4d41b246ab0d"
             ]
         ]
     },
@@ -1784,6 +1786,30 @@
         "wires": []
     },
     {
+        "id": "8a4e4d41b246ab0d",
+        "type": "ui-text",
+        "z": "cb6456942b7c2176",
+        "group": "ca68580a07c37cc4",
+        "order": 0,
+        "width": "0",
+        "height": "0",
+        "name": "Texto imagen",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": true,
+        "className": "",
+        "value": "image",
+        "valueType": "msg",
+        "x": 890,
+        "y": 1000,
+        "wires": []
+    },
+    {
         "id": "244b594a533b3d05",
         "type": "ui-group",
         "name": "Input",
@@ -1983,6 +2009,20 @@
         "groupType": "default"
     },
     {
+        "id": "ca68580a07c37cc4",
+        "type": "ui-group",
+        "name": "Texto",
+        "page": "f482b7e57d798f20",
+        "width": 6,
+        "height": 1,
+        "order": -1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
         "id": "d776ec1af93d5c84",
         "type": "ui-page",
         "name": "Farm 1 Dron 1",
@@ -2015,8 +2055,8 @@
         ],
         "order": 1,
         "className": "",
-        "visible": "true",
-        "disabled": "false"
+        "visible": true,
+        "disabled": false
     },
     {
         "id": "04881b1716ea0637",
@@ -2091,6 +2131,42 @@
         "disabled": "false"
     },
     {
+        "id": "f482b7e57d798f20",
+        "type": "ui-page",
+        "name": "Test",
+        "ui": "debfeef4d9f08595",
+        "path": "/page4",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "bebf3513799e0627",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": -1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
         "id": "debfeef4d9f08595",
         "type": "ui-base",
         "name": "ui",
@@ -2130,7 +2206,7 @@
         }
     },
     {
-        "id": "1837a22a3ee1617c",
+        "id": "9f168a8842240044",
         "type": "global-config",
         "env": [],
         "modules": {
