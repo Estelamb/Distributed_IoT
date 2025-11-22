@@ -1,6 +1,6 @@
 [
     {
-        "id": "c2d3adb4a235ba22",
+        "id": "d2c104369c82d053",
         "type": "tab",
         "label": "Flujo 1",
         "disabled": false,
@@ -8,12 +8,12 @@
         "env": []
     },
     {
-        "id": "310dc9dbb243ae8e",
+        "id": "323c0c2796fc253b",
         "type": "ui-file-input",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "group": "244b594a533b3d05",
         "name": "Input file",
-        "order": 2,
+        "order": 1,
         "width": 0,
         "height": 0,
         "topic": "topic",
@@ -27,14 +27,14 @@
         "y": 260,
         "wires": [
             [
-                "fec0b7230eb37161"
+                "42010331a392c818"
             ]
         ]
     },
     {
-        "id": "6af3036e304f4ba7",
+        "id": "b1cbf3acf9ee26bf",
         "type": "mqtt out",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "",
         "topic": "farms/farm_1/mission",
         "qos": "0",
@@ -50,9 +50,9 @@
         "wires": []
     },
     {
-        "id": "9c6bfdf2bd2b6456",
+        "id": "4bb39c3d2006e176",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "validate & prepare",
         "func": "// Expected input: msg.payload === { topic?: string, payload: any }\n// Output: msg.topic, msg.payload (string or Buffer depending on use)\ntry {\n    const body = msg.payload;\n    if (body === null || typeof body !== 'object') {\n        msg.statusCode = 400;\n        msg.payload = { error: 'Invalid JSON body' };\n        return [ null, msg ]; // go to http response via second output\n    }\n\n    // choose topic: prefer body.topic if present and whitelisted, otherwise default topic\n    const defaultTopic = 'my/default/topic';\n\n    msg.topic = defaultTopic;\n    msg.payload = JSON.stringify(msg.payload);\n\n    // For the HTTP response later\n    msg._http_reply = { success: true, topic: defaultTopic };\n\n    return [ msg, null ]; // first output -> mqtt out; second output -> http response on error\n} catch (err) {\n    msg.statusCode = 500;\n    msg.payload = { error: 'Server error', details: err.message };\n    return [ null, msg ];\n}\n",
         "outputs": 2,
@@ -65,17 +65,17 @@
         "y": 260,
         "wires": [
             [
-                "6af3036e304f4ba7",
-                "14361f21bf4740e5",
-                "950c14ff0af0b8aa"
+                "b1cbf3acf9ee26bf",
+                "738152576655c7cd",
+                "8e8e7910c2df02e2"
             ],
             []
         ]
     },
     {
-        "id": "3015c12a47337e8b",
+        "id": "0259ce81bc1d0724",
         "type": "debug",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Debug parsed payload",
         "active": false,
         "tosidebar": true,
@@ -90,9 +90,9 @@
         "wires": []
     },
     {
-        "id": "14361f21bf4740e5",
+        "id": "738152576655c7cd",
         "type": "debug",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Debug before mqtt",
         "active": true,
         "tosidebar": true,
@@ -107,9 +107,9 @@
         "wires": []
     },
     {
-        "id": "743b4e763e19bf2e",
+        "id": "180ca305d6396fd8",
         "type": "mqtt in",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "",
         "topic": "farms/farm_1/#",
         "qos": "2",
@@ -123,21 +123,21 @@
         "y": 680,
         "wires": [
             [
-                "41b1c81ec9631280",
-                "4648017712766a04",
-                "ba639266a1a525bb",
-                "e4eda4421fca1030",
-                "c98ac90277e3f115",
-                "bd331189a5787790",
-                "261915dc46090da9",
-                "6e71d99cc40651e2"
+                "9d56ec916efdd3d3",
+                "7c364adef6a58484",
+                "6d9811287a65f507",
+                "56b8f89c0e33e4ec",
+                "113394b2869dd1d3",
+                "3bdc83cefbfc4f5d",
+                "d39eef21055e2fa2",
+                "d32f39123734147e"
             ]
         ]
     },
     {
-        "id": "fec0b7230eb37161",
+        "id": "42010331a392c818",
         "type": "json",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Ensure JSON",
         "property": "payload",
         "action": "obj",
@@ -146,15 +146,15 @@
         "y": 260,
         "wires": [
             [
-                "9c6bfdf2bd2b6456",
-                "3015c12a47337e8b"
+                "4bb39c3d2006e176",
+                "0259ce81bc1d0724"
             ]
         ]
     },
     {
-        "id": "41b1c81ec9631280",
+        "id": "9d56ec916efdd3d3",
         "type": "debug",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Debug parsed payload",
         "active": true,
         "tosidebar": true,
@@ -169,9 +169,9 @@
         "wires": []
     },
     {
-        "id": "1138e4fa2df76a1e",
+        "id": "3a54f7765592ef38",
         "type": "aedes broker",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "",
         "mqtt_port": "1885",
         "mqtt_ws_bind": "port",
@@ -190,17 +190,17 @@
         "y": 80,
         "wires": [
             [
-                "0a4307051b72c94a"
+                "eb45b650cc651c87"
             ],
             [
-                "aaba9634802da9cb"
+                "e6fe587f6decc49a"
             ]
         ]
     },
     {
-        "id": "0a4307051b72c94a",
+        "id": "eb45b650cc651c87",
         "type": "debug",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "debug 1",
         "active": false,
         "tosidebar": true,
@@ -214,9 +214,9 @@
         "wires": []
     },
     {
-        "id": "aaba9634802da9cb",
+        "id": "e6fe587f6decc49a",
         "type": "debug",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "debug 2",
         "active": false,
         "tosidebar": true,
@@ -230,9 +230,9 @@
         "wires": []
     },
     {
-        "id": "18884525bab576a0",
+        "id": "0a0cc88e9db1f3ef",
         "type": "mqtt out",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "",
         "topic": "farms/farm_1/drone_2",
         "qos": "0",
@@ -248,12 +248,12 @@
         "wires": []
     },
     {
-        "id": "0dded460e30cb873",
+        "id": "c4a969e0c640eeef",
         "type": "ui-file-input",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "group": "e1c65d3e46af733a",
         "name": "Input file",
-        "order": 2,
+        "order": 1,
         "width": 0,
         "height": 0,
         "topic": "topic",
@@ -267,14 +267,14 @@
         "y": 420,
         "wires": [
             [
-                "e00923ddc6bd7a1e"
+                "4096d5b7f6160bee"
             ]
         ]
     },
     {
-        "id": "f7b643b9dda062a6",
+        "id": "1ea5f8affb7c7b23",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "validate & prepare",
         "func": "// Expected input: msg.payload === { topic?: string, payload: any }\n// Output: msg.topic, msg.payload (string or Buffer depending on use)\ntry {\n    const body = msg.payload;\n    if (body === null || typeof body !== 'object') {\n        msg.statusCode = 400;\n        msg.payload = { error: 'Invalid JSON body' };\n        return [ null, msg ]; // go to http response via second output\n    }\n\n    // choose topic: prefer body.topic if present and whitelisted, otherwise default topic\n    const defaultTopic = 'my/default/topic';\n\n    msg.topic = defaultTopic;\n    msg.payload = JSON.stringify(msg.payload);\n\n    // For the HTTP response later\n    msg._http_reply = { success: true, topic: defaultTopic };\n\n    return [ msg, null ]; // first output -> mqtt out; second output -> http response on error\n} catch (err) {\n    msg.statusCode = 500;\n    msg.payload = { error: 'Server error', details: err.message };\n    return [ null, msg ];\n}\n",
         "outputs": 2,
@@ -287,17 +287,17 @@
         "y": 420,
         "wires": [
             [
-                "18884525bab576a0",
-                "289da9c38eac353b",
-                "f06d89c552534fed"
+                "0a0cc88e9db1f3ef",
+                "c02582ac7ed9a1f9",
+                "8385e45233bf85fa"
             ],
             []
         ]
     },
     {
-        "id": "d7204f7659130385",
+        "id": "e0af4f2b776ff911",
         "type": "debug",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Debug parsed payload",
         "active": false,
         "tosidebar": true,
@@ -312,9 +312,9 @@
         "wires": []
     },
     {
-        "id": "e00923ddc6bd7a1e",
+        "id": "4096d5b7f6160bee",
         "type": "json",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Ensure JSON",
         "property": "payload",
         "action": "obj",
@@ -323,15 +323,15 @@
         "y": 420,
         "wires": [
             [
-                "f7b643b9dda062a6",
-                "d7204f7659130385"
+                "1ea5f8affb7c7b23",
+                "e0af4f2b776ff911"
             ]
         ]
     },
     {
-        "id": "289da9c38eac353b",
+        "id": "c02582ac7ed9a1f9",
         "type": "debug",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Debug before mqtt",
         "active": false,
         "tosidebar": true,
@@ -346,15 +346,15 @@
         "wires": []
     },
     {
-        "id": "c24cf27606bb9204",
+        "id": "f2804a061eec9a89",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "group": "3ddafb9595fdef69",
-        "order": 0,
+        "order": 1,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/goal",
+        "label": "Goal",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -370,9 +370,9 @@
         "wires": []
     },
     {
-        "id": "4648017712766a04",
+        "id": "7c364adef6a58484",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 1",
         "func": "if (msg.topic == 'farms/farm_1/drone_1/goal') {\n    msg.payload = msg.payload.message;\n    return msg;\n}",
         "outputs": 1,
@@ -385,20 +385,20 @@
         "y": 680,
         "wires": [
             [
-                "c24cf27606bb9204"
+                "f2804a061eec9a89"
             ]
         ]
     },
     {
-        "id": "a05735ef71efdea8",
+        "id": "622c54243bf618d8",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "group": "3ddafb9595fdef69",
-        "order": 0,
+        "order": 5,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/result",
+        "label": "Result",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -414,9 +414,9 @@
         "wires": []
     },
     {
-        "id": "ba639266a1a525bb",
+        "id": "6d9811287a65f507",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 2",
         "func": "if (msg.topic == 'farms/farm_1/drone_1/result') {\n    msg.payload = msg.payload.message;\n    return msg;\n}",
         "outputs": 1,
@@ -429,20 +429,20 @@
         "y": 720,
         "wires": [
             [
-                "a05735ef71efdea8"
+                "622c54243bf618d8"
             ]
         ]
     },
     {
-        "id": "15390aa36be5e2ca",
+        "id": "59e49ecbd30e8b6d",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "group": "3ddafb9595fdef69",
-        "order": 0,
+        "order": 6,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/warning",
+        "label": "Warning",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -458,9 +458,9 @@
         "wires": []
     },
     {
-        "id": "e4eda4421fca1030",
+        "id": "56b8f89c0e33e4ec",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 3",
         "func": "if (msg.topic == 'farms/farm_1/drone_1/warning') {\n    msg.payload = msg.payload.message;\n    return msg;\n}",
         "outputs": 1,
@@ -473,20 +473,20 @@
         "y": 760,
         "wires": [
             [
-                "15390aa36be5e2ca"
+                "59e49ecbd30e8b6d"
             ]
         ]
     },
     {
-        "id": "f1065ddfca2ba29d",
+        "id": "d5e08e5d7b4ba386",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "group": "3ddafb9595fdef69",
-        "order": 0,
+        "order": 2,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/takeoff",
+        "label": "Takeoff",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -502,9 +502,9 @@
         "wires": []
     },
     {
-        "id": "c98ac90277e3f115",
+        "id": "113394b2869dd1d3",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 4",
         "func": "// Takeoff script\nif (msg.topic == 'farms/farm_1/drone_1/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (inner.message && inner.message === \"Takeoff successful\") {\n        msg.payload = \"Takeoff successful\";\n        return msg;\n    }\n}\nreturn null;",
         "outputs": 1,
@@ -517,20 +517,20 @@
         "y": 800,
         "wires": [
             [
-                "f1065ddfca2ba29d"
+                "d5e08e5d7b4ba386"
             ]
         ]
     },
     {
-        "id": "e0014a689b0f293b",
+        "id": "ed030ac9fe74b4c1",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "group": "3ddafb9595fdef69",
-        "order": 0,
+        "order": 3,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/waypoint",
+        "label": "Waypoint",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -546,15 +546,15 @@
         "wires": []
     },
     {
-        "id": "b485c4de78ed3540",
+        "id": "c8af481b041d5e8d",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "group": "3ddafb9595fdef69",
-        "order": 0,
+        "order": 4,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/return",
+        "label": "Return",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -570,9 +570,9 @@
         "wires": []
     },
     {
-        "id": "cd9ebc5ca7d26504",
+        "id": "822a8364b3250c14",
         "type": "mqtt in",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "",
         "topic": "farms/farm_1/#",
         "qos": "2",
@@ -586,21 +586,21 @@
         "y": 1020,
         "wires": [
             [
-                "d880eb0c87f2dc18",
-                "2e7007ae57998895",
-                "4ab20d74150668a5",
-                "c8a3e519f02cc6bd",
-                "c25992e7d4270556",
-                "3a3d6b09c35f9634",
-                "8c075cd47134eaed",
-                "6d97a91976d7adcf"
+                "357baac037875843",
+                "dbc7b7d4373d4149",
+                "14d18f3fe7e15435",
+                "2c7c091c6cad0d88",
+                "2c571b6c636f4da1",
+                "5481544a7b94cb04",
+                "24f278cb3dd47055",
+                "6f34a683c273d4dc"
             ]
         ]
     },
     {
-        "id": "d880eb0c87f2dc18",
+        "id": "357baac037875843",
         "type": "debug",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Debug parsed payload",
         "active": false,
         "tosidebar": true,
@@ -615,15 +615,15 @@
         "wires": []
     },
     {
-        "id": "5cc8dee1e2477379",
+        "id": "14d4edf1056d6e1d",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "46021625c6fcaf5e",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "b72461b5a6055da7",
+        "order": 1,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/goal",
+        "label": "Goal",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -639,9 +639,9 @@
         "wires": []
     },
     {
-        "id": "2e7007ae57998895",
+        "id": "dbc7b7d4373d4149",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 5",
         "func": "if (msg.topic == 'farms/farm_1/drone_2/goal') {\n    msg.payload = msg.payload.message;\n    return msg;\n}",
         "outputs": 1,
@@ -654,20 +654,20 @@
         "y": 1020,
         "wires": [
             [
-                "5cc8dee1e2477379"
+                "14d4edf1056d6e1d"
             ]
         ]
     },
     {
-        "id": "2c4e451ffd46f1f6",
+        "id": "7f7d93a131771282",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "46021625c6fcaf5e",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "b72461b5a6055da7",
+        "order": 5,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/result",
+        "label": "Result",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -683,9 +683,9 @@
         "wires": []
     },
     {
-        "id": "4ab20d74150668a5",
+        "id": "14d18f3fe7e15435",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 6",
         "func": "if (msg.topic == 'farms/farm_1/drone_2/result') {\n    msg.payload = msg.payload.message;\n    return msg;\n}",
         "outputs": 1,
@@ -698,20 +698,20 @@
         "y": 1060,
         "wires": [
             [
-                "2c4e451ffd46f1f6"
+                "7f7d93a131771282"
             ]
         ]
     },
     {
-        "id": "4af6fe7dbe668b77",
+        "id": "829770c84f72152d",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "46021625c6fcaf5e",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "b72461b5a6055da7",
+        "order": 6,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/warning",
+        "label": "Warning",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -727,9 +727,9 @@
         "wires": []
     },
     {
-        "id": "c8a3e519f02cc6bd",
+        "id": "2c7c091c6cad0d88",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 7",
         "func": "if (msg.topic == 'farms/farm_1/drone_2/warning') {\n    msg.payload = msg.payload.message;\n    return msg;\n}",
         "outputs": 1,
@@ -742,20 +742,20 @@
         "y": 1100,
         "wires": [
             [
-                "4af6fe7dbe668b77"
+                "829770c84f72152d"
             ]
         ]
     },
     {
-        "id": "0189b13169e4596e",
+        "id": "54425fe511cfb3c8",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "46021625c6fcaf5e",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "b72461b5a6055da7",
+        "order": 2,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/takeoff",
+        "label": "Takeoff",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -771,9 +771,9 @@
         "wires": []
     },
     {
-        "id": "c25992e7d4270556",
+        "id": "2c571b6c636f4da1",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 8",
         "func": "// Takeoff script\nif (msg.topic == 'farms/farm_1/drone_2/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (inner.message && inner.message === \"Takeoff successful\") {\n        msg.payload = \"Takeoff successful\";\n        return msg;\n    }\n}\nreturn null;",
         "outputs": 1,
@@ -786,20 +786,20 @@
         "y": 1140,
         "wires": [
             [
-                "0189b13169e4596e"
+                "54425fe511cfb3c8"
             ]
         ]
     },
     {
-        "id": "12669be1efb9bb37",
+        "id": "ba4ef9faecbc1d60",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "46021625c6fcaf5e",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "b72461b5a6055da7",
+        "order": 3,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/waypoint",
+        "label": "Waypoint",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -815,15 +815,15 @@
         "wires": []
     },
     {
-        "id": "b4055439e947e876",
+        "id": "110831345be745d7",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "46021625c6fcaf5e",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "b72461b5a6055da7",
+        "order": 4,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/return",
+        "label": "Return",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -839,9 +839,9 @@
         "wires": []
     },
     {
-        "id": "4b5d9e12cb270319",
+        "id": "13eb1d9d2b7ee9c6",
         "type": "mqtt in",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "",
         "topic": "farms/farm_2/#",
         "qos": "2",
@@ -851,25 +851,25 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 160,
-        "y": 1380,
+        "x": 1180,
+        "y": 760,
         "wires": [
             [
-                "5d1430ce1a286215",
-                "256e4596bf2cd01d",
-                "b549be5f1d41135e",
-                "5b6480aeb5476a5f",
-                "c0c9cf266c48b666",
-                "f1bfb55e58f68676",
-                "7607414478948996",
-                "75f32e0170266502"
+                "a2faf2f1f9856522",
+                "aa2b280021498db7",
+                "f92f29e4e1867c11",
+                "b996ac93249b9b8f",
+                "5c18e49c990d77ec",
+                "a99d089eed0f7b49",
+                "c4039e6d53c07230",
+                "696cd7f4a66bf061"
             ]
         ]
     },
     {
-        "id": "5d1430ce1a286215",
+        "id": "a2faf2f1f9856522",
         "type": "debug",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Debug parsed payload",
         "active": false,
         "tosidebar": true,
@@ -879,20 +879,20 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 390,
-        "y": 1700,
+        "x": 1410,
+        "y": 1080,
         "wires": []
     },
     {
-        "id": "e77d6a6a1d2d2f6b",
+        "id": "aa1bf4f7140d19ba",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "131f4b9e0911434d",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "122f8913d478b32b",
+        "order": 1,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/goal",
+        "label": "Goal",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -903,14 +903,14 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 670,
-        "y": 1380,
+        "x": 1690,
+        "y": 760,
         "wires": []
     },
     {
-        "id": "256e4596bf2cd01d",
+        "id": "aa2b280021498db7",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 9",
         "func": "if (msg.topic == 'farms/farm_2/drone_1/goal') {\n    msg.payload = msg.payload.message;\n    return msg;\n}",
         "outputs": 1,
@@ -919,24 +919,24 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 1380,
+        "x": 1440,
+        "y": 760,
         "wires": [
             [
-                "e77d6a6a1d2d2f6b"
+                "aa1bf4f7140d19ba"
             ]
         ]
     },
     {
-        "id": "7324e6dddc0ccd44",
+        "id": "bc0e0ae616b1ed50",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "131f4b9e0911434d",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "122f8913d478b32b",
+        "order": 5,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/result",
+        "label": "Result",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -947,14 +947,14 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 670,
-        "y": 1420,
+        "x": 1690,
+        "y": 800,
         "wires": []
     },
     {
-        "id": "b549be5f1d41135e",
+        "id": "f92f29e4e1867c11",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 10",
         "func": "if (msg.topic == 'farms/farm_2/drone_1/result') {\n    msg.payload = msg.payload.message;\n    return msg;\n}",
         "outputs": 1,
@@ -963,24 +963,24 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 1420,
+        "x": 1440,
+        "y": 800,
         "wires": [
             [
-                "7324e6dddc0ccd44"
+                "bc0e0ae616b1ed50"
             ]
         ]
     },
     {
-        "id": "fcd83e2978ee1fdd",
+        "id": "481a7d105807184e",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "131f4b9e0911434d",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "122f8913d478b32b",
+        "order": 6,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/warning",
+        "label": "Warning",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -991,14 +991,14 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 680,
-        "y": 1460,
+        "x": 1700,
+        "y": 840,
         "wires": []
     },
     {
-        "id": "5b6480aeb5476a5f",
+        "id": "b996ac93249b9b8f",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 11",
         "func": "if (msg.topic == 'farms/farm_2/drone_1/warning') {\n    msg.payload = msg.payload.message;\n    return msg;\n}",
         "outputs": 1,
@@ -1007,24 +1007,24 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 1460,
+        "x": 1440,
+        "y": 840,
         "wires": [
             [
-                "fcd83e2978ee1fdd"
+                "481a7d105807184e"
             ]
         ]
     },
     {
-        "id": "6963907641e3d7f8",
+        "id": "fe6fab173dc3b492",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "131f4b9e0911434d",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "122f8913d478b32b",
+        "order": 2,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/takeoff",
+        "label": "Takeoff",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -1035,14 +1035,14 @@
         "className": "",
         "value": "takeoffSuccess",
         "valueType": "msg",
-        "x": 680,
-        "y": 1500,
+        "x": 1700,
+        "y": 880,
         "wires": []
     },
     {
-        "id": "c0c9cf266c48b666",
+        "id": "5c18e49c990d77ec",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 12",
         "func": "// Takeoff script\nif (msg.topic == 'farms/farm_2/drone_1/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (inner.message && inner.message === \"Takeoff successful\") {\n        msg.payload = \"Takeoff successful\";\n        return msg;\n    }\n}\nreturn null;",
         "outputs": 1,
@@ -1051,24 +1051,24 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 1500,
+        "x": 1440,
+        "y": 880,
         "wires": [
             [
-                "6963907641e3d7f8"
+                "fe6fab173dc3b492"
             ]
         ]
     },
     {
-        "id": "7ef2a0d9c9918770",
+        "id": "257b7037ddf019a2",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "131f4b9e0911434d",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "122f8913d478b32b",
+        "order": 3,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/waypoint",
+        "label": "Waypoint",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -1079,20 +1079,20 @@
         "className": "",
         "value": "coords",
         "valueType": "msg",
-        "x": 680,
-        "y": 1580,
+        "x": 1700,
+        "y": 960,
         "wires": []
     },
     {
-        "id": "1270bd749152a606",
+        "id": "3b16f351b752b0c5",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "131f4b9e0911434d",
-        "order": 0,
+        "z": "d2c104369c82d053",
+        "group": "122f8913d478b32b",
+        "order": 4,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "/return",
+        "label": "Return",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -1103,14 +1103,14 @@
         "className": "",
         "value": "returnhome",
         "valueType": "msg",
-        "x": 670,
-        "y": 1540,
+        "x": 1690,
+        "y": 920,
         "wires": []
     },
     {
-        "id": "84f92c5197ce4a70",
+        "id": "73510856024a1083",
         "type": "mqtt out",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "",
         "topic": "farms/farm_2/drone_1",
         "qos": "0",
@@ -1126,12 +1126,12 @@
         "wires": []
     },
     {
-        "id": "a26bbf41948b2bc3",
+        "id": "74fb81faa5c2a6cd",
         "type": "ui-file-input",
-        "z": "c2d3adb4a235ba22",
-        "group": "f034f56730383b1b",
+        "z": "d2c104369c82d053",
+        "group": "a14ced109914e232",
         "name": "Input file",
-        "order": 2,
+        "order": 1,
         "width": 0,
         "height": 0,
         "topic": "topic",
@@ -1145,14 +1145,14 @@
         "y": 580,
         "wires": [
             [
-                "54923fb669a886b9"
+                "f48438322bcd8f5c"
             ]
         ]
     },
     {
-        "id": "90a292e813f7e6e5",
+        "id": "2f7b8115dbe3004e",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "validate & prepare",
         "func": "// Expected input: msg.payload === { topic?: string, payload: any }\n// Output: msg.topic, msg.payload (string or Buffer depending on use)\ntry {\n    const body = msg.payload;\n    if (body === null || typeof body !== 'object') {\n        msg.statusCode = 400;\n        msg.payload = { error: 'Invalid JSON body' };\n        return [ null, msg ]; // go to http response via second output\n    }\n\n    // choose topic: prefer body.topic if present and whitelisted, otherwise default topic\n    const defaultTopic = 'my/default/topic';\n\n    msg.topic = defaultTopic;\n    msg.payload = JSON.stringify(msg.payload);\n\n    // For the HTTP response later\n    msg._http_reply = { success: true, topic: defaultTopic };\n\n    return [ msg, null ]; // first output -> mqtt out; second output -> http response on error\n} catch (err) {\n    msg.statusCode = 500;\n    msg.payload = { error: 'Server error', details: err.message };\n    return [ null, msg ];\n}\n",
         "outputs": 2,
@@ -1165,17 +1165,17 @@
         "y": 580,
         "wires": [
             [
-                "84f92c5197ce4a70",
-                "a0593e8e8e7e1313",
-                "a0f46e68e05714ba"
+                "73510856024a1083",
+                "0c042fe421b46fe2",
+                "595a14a9b78c9880"
             ],
             []
         ]
     },
     {
-        "id": "33dbcd5ab08fe9b3",
+        "id": "e1ca79c345483706",
         "type": "debug",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Debug parsed payload",
         "active": false,
         "tosidebar": true,
@@ -1190,9 +1190,9 @@
         "wires": []
     },
     {
-        "id": "54923fb669a886b9",
+        "id": "f48438322bcd8f5c",
         "type": "json",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Ensure JSON",
         "property": "payload",
         "action": "obj",
@@ -1201,15 +1201,15 @@
         "y": 580,
         "wires": [
             [
-                "90a292e813f7e6e5",
-                "33dbcd5ab08fe9b3"
+                "2f7b8115dbe3004e",
+                "e1ca79c345483706"
             ]
         ]
     },
     {
-        "id": "a0593e8e8e7e1313",
+        "id": "0c042fe421b46fe2",
         "type": "debug",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "Debug before mqtt",
         "active": false,
         "tosidebar": true,
@@ -1224,15 +1224,15 @@
         "wires": []
     },
     {
-        "id": "c4ae35d8876f2f5b",
+        "id": "047a16f84f839315",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "group": "244b594a533b3d05",
-        "order": 0,
-        "width": "0",
-        "height": "0",
+        "order": 2,
+        "width": "2",
+        "height": "26",
         "name": "Mission",
-        "label": "Mission:",
+        "label": "",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -1248,11 +1248,11 @@
         "wires": []
     },
     {
-        "id": "950c14ff0af0b8aa",
+        "id": "8e8e7910c2df02e2",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 13",
-        "func": "let data = msg.payload;\n\nif (typeof data === 'string') {\n    data = JSON.parse(data);\n}\n\nif (data.commands && Array.isArray(data.commands)) {\n    // Mantener el orden ORIGINAL del array sin ordenar\n    msg.payload = data.commands\n        .map((comando, index) => `${index + 1}. ${comando.commandType}`)\n        .join('\\n\\n');\n} else {\n    msg.payload = \"No se encontraron comandos\";\n}\n\nreturn msg;",
+        "func": "let data = msg.payload;\n\nif (typeof data === 'string') {\n    data = JSON.parse(data);\n}\n\nif (data.commands && Array.isArray(data.commands)) {\n    // Mantener el orden ORIGINAL del array sin ordenar\n    msg.payload = data.commands\n        .map((comando, index) => `${index + 1}. ${comando.commandType}`)\n        .join('<br><br>');\n} else {\n    msg.payload = \"No se encontraron comandos\";\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1263,18 +1263,18 @@
         "y": 320,
         "wires": [
             [
-                "c4ae35d8876f2f5b"
+                "047a16f84f839315"
             ]
         ]
     },
     {
-        "id": "8ebf9a874ad7d084",
+        "id": "4285a4caddf8cbb9",
         "type": "ui-button",
-        "z": "c2d3adb4a235ba22",
-        "group": "d00d6627fbd36b27",
+        "z": "d2c104369c82d053",
+        "group": "3ddafb9595fdef69",
         "name": "Reset info",
         "label": "Reset Info",
-        "order": 0,
+        "order": 7,
         "width": 0,
         "height": 0,
         "emulateClick": false,
@@ -1302,25 +1302,25 @@
         "y": 780,
         "wires": [
             [
-                "c24cf27606bb9204",
-                "a05735ef71efdea8",
-                "15390aa36be5e2ca",
-                "f1065ddfca2ba29d",
-                "e0014a689b0f293b",
-                "b485c4de78ed3540",
-                "c4ae35d8876f2f5b",
-                "6ebe82b420164dda"
+                "f2804a061eec9a89",
+                "622c54243bf618d8",
+                "59e49ecbd30e8b6d",
+                "d5e08e5d7b4ba386",
+                "ed030ac9fe74b4c1",
+                "c8af481b041d5e8d",
+                "047a16f84f839315",
+                "cf1bcae3438f3310"
             ]
         ]
     },
     {
-        "id": "453195c150d7d3e6",
+        "id": "860ae40551bf354a",
         "type": "ui-button",
-        "z": "c2d3adb4a235ba22",
-        "group": "68ba4e0f2d65772c",
+        "z": "d2c104369c82d053",
+        "group": "b72461b5a6055da7",
         "name": "Reset info",
         "label": "Reset Info",
-        "order": 0,
+        "order": 7,
         "width": 0,
         "height": 0,
         "emulateClick": false,
@@ -1344,29 +1344,29 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 880,
-        "y": 1160,
+        "x": 960,
+        "y": 1080,
         "wires": [
             [
-                "5cc8dee1e2477379",
-                "2c4e451ffd46f1f6",
-                "4af6fe7dbe668b77",
-                "0189b13169e4596e",
-                "12669be1efb9bb37",
-                "b4055439e947e876",
-                "575b59fd30f54784",
-                "2917cf0555912f1f"
+                "14d4edf1056d6e1d",
+                "7f7d93a131771282",
+                "829770c84f72152d",
+                "54425fe511cfb3c8",
+                "ba4ef9faecbc1d60",
+                "110831345be745d7",
+                "2bdf4f1657958030",
+                "b5f7e72dab341319"
             ]
         ]
     },
     {
-        "id": "ef120c3145a6e184",
+        "id": "75d71c913cc386f0",
         "type": "ui-button",
-        "z": "c2d3adb4a235ba22",
-        "group": "d633db249650f11d",
+        "z": "d2c104369c82d053",
+        "group": "122f8913d478b32b",
         "name": "Reset info",
         "label": "Reset info",
-        "order": 0,
+        "order": 7,
         "width": 0,
         "height": 0,
         "emulateClick": false,
@@ -1390,25 +1390,25 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 860,
-        "y": 1480,
+        "x": 1880,
+        "y": 860,
         "wires": [
             [
-                "e77d6a6a1d2d2f6b",
-                "7324e6dddc0ccd44",
-                "fcd83e2978ee1fdd",
-                "6963907641e3d7f8",
-                "7ef2a0d9c9918770",
-                "1270bd749152a606",
-                "dddf538f519bb573",
-                "6ab811dcfe996b0a"
+                "aa1bf4f7140d19ba",
+                "bc0e0ae616b1ed50",
+                "481a7d105807184e",
+                "fe6fab173dc3b492",
+                "257b7037ddf019a2",
+                "3b16f351b752b0c5",
+                "3d67a26fc25e8506",
+                "054ef2f679ba866f"
             ]
         ]
     },
     {
-        "id": "bd331189a5787790",
+        "id": "3bdc83cefbfc4f5d",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 14",
         "func": "// Return home script\nif (msg.topic == 'farms/farm_1/drone_1/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (inner.message && inner.message === \"Returned home\") {\n        msg.payload = \"Returned home\";\n        return msg;\n    }\n}\nreturn null;",
         "outputs": 1,
@@ -1421,14 +1421,14 @@
         "y": 840,
         "wires": [
             [
-                "b485c4de78ed3540"
+                "c8af481b041d5e8d"
             ]
         ]
     },
     {
-        "id": "261915dc46090da9",
+        "id": "d39eef21055e2fa2",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 16",
         "func": "if (msg.topic == 'farms/farm_1/drone_1/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (Array.isArray(inner.message) && inner.message.length >= 2) {\n        const second = inner.message[1];\n        if (typeof second === \"string\" && second.startsWith(\"data:image/\")) {\n            msg.image = second;\n            return msg;\n        }\n    }\n}\nreturn null;",
         "outputs": 1,
@@ -1441,14 +1441,14 @@
         "y": 920,
         "wires": [
             [
-                "6ebe82b420164dda"
+                "cf1bcae3438f3310"
             ]
         ]
     },
     {
-        "id": "3a3d6b09c35f9634",
+        "id": "5481544a7b94cb04",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 17",
         "func": "// Return home script\nif (msg.topic == 'farms/farm_1/drone_2/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (inner.message && inner.message === \"Returned home\") {\n        msg.payload = \"Returned home\";\n        return msg;\n    }\n}\nreturn null;",
         "outputs": 1,
@@ -1461,16 +1461,16 @@
         "y": 1180,
         "wires": [
             [
-                "b4055439e947e876"
+                "110831345be745d7"
             ]
         ]
     },
     {
-        "id": "8c075cd47134eaed",
+        "id": "24f278cb3dd47055",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 18",
-        "func": "// Waypoint script\nif (msg.topic == 'farms/farm_1/drone_2/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (inner.message === \"Waypoint reached\") {\n        const lat = inner.latitude;\n        const lon = inner.longitude;\n        \n        // Mensaje original para el texto\n        msg.payload = `latitude: ${lat}\\nlongitude: ${lon}`;\n        \n        // Crear mensaje para el mapa (clonar)\n        var mapMsg = {\n            ...msg,\n            topic: \"waypoint\",\n            payload: {\n                name: `Drone 2 - Waypoint ${lat}, ${lon}`,\n                lat: parseFloat(lat),\n                lon: parseFloat(lon),\n                layer: \"drone2\"\n            }\n        };\n        \n        // Enviar a ambos destinos\n        return [msg, mapMsg];\n    }\n}\nreturn null;",
+        "func": "// Waypoint script\nif (msg.topic == 'farms/farm_1/drone_2/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (inner.message === \"Waypoint reached\") {\n        const lat = inner.latitude;\n        const lon = inner.longitude;\n        \n        // Mensaje original para el texto\n        msg.payload = `latitude: ${lat}\\nlongitude: ${lon}`;\n        \n        // Crear mensaje para el mapa (clonar)\n        msg.mapMsg = {\n            \"name\": \"Drone 2\",\n            \"lat\": parseFloat(lat),\n            \"lon\": parseFloat(lon),\n            \"icon\": \"green\",\n            \"layer\": \"drone2\"\n        };\n        \n        // Enviar a ambos destinos\n        return msg;\n    }\n}\nreturn null;",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -1481,15 +1481,16 @@
         "y": 1220,
         "wires": [
             [
-                "12669be1efb9bb37"
+                "ba4ef9faecbc1d60",
+                "bbf4aa0aba98926c"
             ],
             []
         ]
     },
     {
-        "id": "6d97a91976d7adcf",
+        "id": "6f34a683c273d4dc",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 19",
         "func": "// Image script\nif (msg.topic == 'farms/farm_1/drone_2/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (Array.isArray(inner.message) && inner.message.length >= 2) {\n        const second = inner.message[1];\n        if (typeof second === \"string\" && second.startsWith(\"data:image/\")) {\n            msg.image = second;\n            msg.payload = \"Imagen recibida\";\n            return msg;\n        }\n    }\n}\nreturn null;",
         "outputs": 1,
@@ -1502,14 +1503,14 @@
         "y": 1260,
         "wires": [
             [
-                "2917cf0555912f1f"
+                "b5f7e72dab341319"
             ]
         ]
     },
     {
-        "id": "f1bfb55e58f68676",
+        "id": "a99d089eed0f7b49",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 20",
         "func": "// Return home script\nif (msg.topic == 'farms/farm_2/drone_1/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (inner.message && inner.message === \"Returned home\") {\n        msg.payload = \"Returned home\";\n        return msg;\n    }\n}\nreturn null;",
         "outputs": 1,
@@ -1518,39 +1519,40 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 1540,
+        "x": 1430,
+        "y": 920,
         "wires": [
             [
-                "1270bd749152a606"
+                "3b16f351b752b0c5"
             ]
         ]
     },
     {
-        "id": "7607414478948996",
+        "id": "c4039e6d53c07230",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 21",
-        "func": "// Waypoint script\nif (msg.topic == 'farms/farm_2/drone_1/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (inner.message === \"Waypoint reached\") {\n        const lat = inner.latitude;\n        const lon = inner.longitude;\n        \n        // Mensaje original para el texto\n        msg.payload = `latitude: ${lat}\\nlongitude: ${lon}`;\n        \n        // Crear mensaje para el mapa (clonar)\n        var mapMsg = {\n            ...msg,\n            topic: \"waypoint\",\n            payload: {\n                name: `Farm 2 Drone 1 - Waypoint ${lat}, ${lon}`,\n                lat: parseFloat(lat),\n                lon: parseFloat(lon),\n                layer: \"farm2drone1\"\n            }\n        };\n        \n        // Enviar a ambos destinos\n        return [msg, mapMsg];\n    }\n}\nreturn null;",
+        "func": "// Waypoint script\nif (msg.topic == 'farms/farm_2/drone_1/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (inner.message === \"Waypoint reached\") {\n        const lat = inner.latitude;\n        const lon = inner.longitude;\n        \n        // Mensaje original para el texto\n        msg.payload = `latitude: ${lat}\\nlongitude: ${lon}`;\n        \n        // Crear mensaje para el mapa (clonar)\n        msg.mapMsg = {\n            \"name\": \"Drone 3\",\n            \"lat\": parseFloat(lat),\n            \"lon\": parseFloat(lon),\n            \"icon\": \"blue\",\n            \"layer\": \"drone3\"\n        };\n        \n        // Enviar a ambos destinos\n        return msg;\n    }\n}\nreturn null;",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 1580,
+        "x": 1430,
+        "y": 960,
         "wires": [
             [
-                "7ef2a0d9c9918770"
+                "257b7037ddf019a2",
+                "4e416d9e9cc00aee"
             ],
             []
         ]
     },
     {
-        "id": "75f32e0170266502",
+        "id": "696cd7f4a66bf061",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 22",
         "func": "// Image script\nif (msg.topic == 'farms/farm_2/drone_1/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (Array.isArray(inner.message) && inner.message.length >= 2) {\n        const second = inner.message[1];\n        if (typeof second === \"string\" && second.startsWith(\"data:image/\")) {\n            msg.image = second;\n            msg.payload = \"Imagen recibida\";\n            return msg;\n        }\n    }\n}\nreturn null;",
         "outputs": 1,
@@ -1559,20 +1561,20 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 1620,
+        "x": 1430,
+        "y": 1000,
         "wires": [
             [
-                "6ab811dcfe996b0a"
+                "054ef2f679ba866f"
             ]
         ]
     },
     {
-        "id": "f06d89c552534fed",
+        "id": "8385e45233bf85fa",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 23",
-        "func": "let data = msg.payload;\n\nif (typeof data === 'string') {\n    data = JSON.parse(data);\n}\n\nif (data.commands && Array.isArray(data.commands)) {\n    // Mantener el orden ORIGINAL del array sin ordenar\n    msg.payload = data.commands\n        .map((comando, index) => `${index + 1}. ${comando.commandType}`)\n        .join('\\n\\n');\n} else {\n    msg.payload = \"No se encontraron comandos\";\n}\n\nreturn msg;",
+        "func": "let data = msg.payload;\n\nif (typeof data === 'string') {\n    data = JSON.parse(data);\n}\n\nif (data.commands && Array.isArray(data.commands)) {\n    // Mantener el orden ORIGINAL del array sin ordenar\n    msg.payload = data.commands\n        .map((comando, index) => `${index + 1}. ${comando.commandType}`)\n        .join('<br><br>');\n} else {\n    msg.payload = \"No se encontraron comandos\";\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1583,24 +1585,24 @@
         "y": 480,
         "wires": [
             [
-                "575b59fd30f54784"
+                "2bdf4f1657958030"
             ]
         ]
     },
     {
-        "id": "575b59fd30f54784",
+        "id": "2bdf4f1657958030",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "group": "e1c65d3e46af733a",
-        "order": 0,
-        "width": "0",
-        "height": "0",
+        "order": 2,
+        "width": "2",
+        "height": "26",
         "name": "Mission",
-        "label": "Mission:",
+        "label": "",
         "format": "{{msg.payload}}",
-        "layout": "row-spread",
+        "layout": "col-center",
         "style": false,
-        "font": "",
+        "font": "Arial,Arial,Helvetica,sans-serif",
         "fontSize": 16,
         "color": "#717171",
         "wrapText": true,
@@ -1612,11 +1614,11 @@
         "wires": []
     },
     {
-        "id": "a0f46e68e05714ba",
+        "id": "595a14a9b78c9880",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 24",
-        "func": "let data = msg.payload;\n\nif (typeof data === 'string') {\n    data = JSON.parse(data);\n}\n\nif (data.commands && Array.isArray(data.commands)) {\n    // Mantener el orden ORIGINAL del array sin ordenar\n    msg.payload = data.commands\n        .map((comando, index) => `${index + 1}. ${comando.commandType}`)\n        .join('\\n\\n');\n} else {\n    msg.payload = \"No se encontraron comandos\";\n}\n\nreturn msg;",
+        "func": "let data = msg.payload;\n\nif (typeof data === 'string') {\n    data = JSON.parse(data);\n}\n\nif (data.commands && Array.isArray(data.commands)) {\n    // Mantener el orden ORIGINAL del array sin ordenar\n    msg.payload = data.commands\n        .map((comando, index) => `${index + 1}. ${comando.commandType}`)\n        .join('<br><br>');\n} else {\n    msg.payload = \"No se encontraron comandos\";\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1627,20 +1629,20 @@
         "y": 640,
         "wires": [
             [
-                "dddf538f519bb573"
+                "3d67a26fc25e8506"
             ]
         ]
     },
     {
-        "id": "dddf538f519bb573",
+        "id": "3d67a26fc25e8506",
         "type": "ui-text",
-        "z": "c2d3adb4a235ba22",
-        "group": "f034f56730383b1b",
-        "order": 0,
-        "width": "0",
-        "height": "0",
+        "z": "d2c104369c82d053",
+        "group": "a14ced109914e232",
+        "order": 2,
+        "width": "2",
+        "height": "26",
         "name": "Mission",
-        "label": "Mission:",
+        "label": "",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "style": false,
@@ -1656,10 +1658,10 @@
         "wires": []
     },
     {
-        "id": "6ebe82b420164dda",
+        "id": "cf1bcae3438f3310",
         "type": "ui_template",
-        "z": "c2d3adb4a235ba22",
-        "group": "2b22040dcfd1c2fa",
+        "z": "d2c104369c82d053",
+        "group": "c0e0f3f8c8dbcc3b",
         "name": "Image",
         "order": 0,
         "width": "15",
@@ -1677,9 +1679,9 @@
         ]
     },
     {
-        "id": "6e71d99cc40651e2",
+        "id": "d32f39123734147e",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 15",
         "func": "// Waypoint script\nif (msg.topic == 'farms/farm_1/drone_1/feedback') {\n    const inner = JSON.parse(msg.payload.message);\n    \n    if (inner.message === \"Waypoint reached\") {\n        const lat = inner.latitude;\n        const lon = inner.longitude;\n        \n        // Mensaje original para el texto\n        msg.coords = `latitude: ${lat}\\nlongitude: ${lon}`;\n        \n        // Crear mensaje para el mapa (clonar)\n        msg.mapMsg = {\n            \"name\": \"Drone 1\",\n            \"lat\": parseFloat(lat),\n            \"lon\": parseFloat(lon),\n            \"icon\": \"marker\",\n            \"layer\": \"drone1\"\n        };\n        \n        // Enviar a ambos destinos\n        return msg;\n    }\n}\nreturn null;",
         "outputs": 2,
@@ -1692,22 +1694,22 @@
         "y": 880,
         "wires": [
             [
-                "e0014a689b0f293b",
-                "5c614a4652b51537"
+                "ed030ac9fe74b4c1",
+                "47393fcf77088624"
             ],
             []
         ]
     },
     {
-        "id": "2917cf0555912f1f",
+        "id": "b5f7e72dab341319",
         "type": "ui_template",
-        "z": "c2d3adb4a235ba22",
-        "group": "f8e2a48740055fbb",
+        "z": "d2c104369c82d053",
+        "group": "f1a236baa294e841",
         "name": "Image",
         "order": 0,
-        "width": "6",
-        "height": "5",
-        "format": "<div style=\"text-align:center\">\n    <img id=\"frame\" src=\"{{msg.image}}\"style=\"max-width:100%;height:100%;\"/>\n   \n</div>",
+        "width": "15",
+        "height": "15",
+        "format": "<div style=\"width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:black;\">\n    <img id=\"frame\" src=\"{{msg.image}}\" style=\"width:100%; height:100%; object-fit:cover;\"/>\n</div>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
@@ -1720,32 +1722,32 @@
         ]
     },
     {
-        "id": "6ab811dcfe996b0a",
+        "id": "054ef2f679ba866f",
         "type": "ui_template",
-        "z": "c2d3adb4a235ba22",
-        "group": "1885fd2f2db6cc45",
+        "z": "d2c104369c82d053",
+        "group": "6fb7ae82b56abd2b",
         "name": "Image",
         "order": 0,
-        "width": "6",
-        "height": "5",
-        "format": "<div style=\"text-align:center\">\n    <img id=\"frame\" src=\"{{msg.image}}\"style=\"max-width:100%;height:100%;\"/>\n   \n</div>",
+        "width": "15",
+        "height": "15",
+        "format": "<div style=\"width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:black;\">\n    <img id=\"frame\" src=\"{{msg.image}}\" style=\"width:100%; height:100%; object-fit:cover;\"/>\n</div>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 670,
-        "y": 1620,
+        "x": 1690,
+        "y": 1000,
         "wires": [
             []
         ]
     },
     {
-        "id": "097934acbb6caef4",
+        "id": "777f382339a91690",
         "type": "ui_template",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "d": true,
-        "group": "2b22040dcfd1c2fa",
+        "group": "a92bb70592168a63",
         "name": "",
         "order": 1,
         "width": 0,
@@ -1763,9 +1765,9 @@
         ]
     },
     {
-        "id": "a2b03307316f6fc3",
+        "id": "440aef61031c10d5",
         "type": "worldmap",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "",
         "lat": "40.443546",
         "lon": "-3.738285",
@@ -1790,14 +1792,14 @@
         "mapurl": "",
         "mapopt": "",
         "mapwms": false,
-        "x": 1180,
-        "y": 920,
+        "x": 880,
+        "y": 980,
         "wires": []
     },
     {
-        "id": "5c614a4652b51537",
+        "id": "47393fcf77088624",
         "type": "function",
-        "z": "c2d3adb4a235ba22",
+        "z": "d2c104369c82d053",
         "name": "function 25",
         "func": "msg.payload=msg.mapMsg;\nreturn msg;",
         "outputs": 1,
@@ -1810,7 +1812,111 @@
         "y": 920,
         "wires": [
             [
-                "a2b03307316f6fc3"
+                "440aef61031c10d5"
+            ]
+        ]
+    },
+    {
+        "id": "438e2596733ce736",
+        "type": "worldmap",
+        "z": "d2c104369c82d053",
+        "name": "",
+        "lat": "40.443546",
+        "lon": "-3.738285",
+        "zoom": "18",
+        "layer": "EsriS",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "true",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "showgrid": "false",
+        "showruler": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 960,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "bbf4aa0aba98926c",
+        "type": "function",
+        "z": "d2c104369c82d053",
+        "name": "function 26",
+        "func": "msg.payload=msg.mapMsg;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 1280,
+        "wires": [
+            [
+                "438e2596733ce736"
+            ]
+        ]
+    },
+    {
+        "id": "943da2197173a093",
+        "type": "worldmap",
+        "z": "d2c104369c82d053",
+        "name": "",
+        "lat": "40.443546",
+        "lon": "-3.738285",
+        "zoom": "18",
+        "layer": "EsriS",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "true",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "showgrid": "false",
+        "showruler": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 1960,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "4e416d9e9cc00aee",
+        "type": "function",
+        "z": "d2c104369c82d053",
+        "name": "function 27",
+        "func": "msg.payload=msg.mapMsg;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1970,
+        "y": 980,
+        "wires": [
+            [
+                "943da2197173a093"
             ]
         ]
     },
@@ -1821,7 +1927,7 @@
         "page": "d776ec1af93d5c84",
         "width": 6,
         "height": 1,
-        "order": -1,
+        "order": 1,
         "showTitle": true,
         "className": "",
         "visible": "true",
@@ -1833,7 +1939,7 @@
         "type": "mqtt-broker",
         "name": "",
         "broker": "localhost",
-        "port": "1885",
+        "port": "1884",
         "clientid": "",
         "autoConnect": true,
         "usetls": false,
@@ -1866,7 +1972,7 @@
         "page": "04881b1716ea0637",
         "width": 6,
         "height": 1,
-        "order": -1,
+        "order": 1,
         "showTitle": true,
         "className": "",
         "visible": "true",
@@ -1880,7 +1986,7 @@
         "page": "d776ec1af93d5c84",
         "width": 6,
         "height": 1,
-        "order": -1,
+        "order": 2,
         "showTitle": true,
         "className": "",
         "visible": "true",
@@ -1888,13 +1994,13 @@
         "groupType": "default"
     },
     {
-        "id": "46021625c6fcaf5e",
+        "id": "b72461b5a6055da7",
         "type": "ui-group",
         "name": "Response",
         "page": "04881b1716ea0637",
         "width": 6,
         "height": 1,
-        "order": -1,
+        "order": 2,
         "showTitle": true,
         "className": "",
         "visible": "true",
@@ -1902,13 +2008,13 @@
         "groupType": "default"
     },
     {
-        "id": "131f4b9e0911434d",
+        "id": "122f8913d478b32b",
         "type": "ui-group",
-        "name": "Response",
-        "page": "efbfbf414443b708",
+        "name": "Group Name",
+        "page": "a6138e5c87aafcc6",
         "width": 6,
         "height": 1,
-        "order": -1,
+        "order": 2,
         "showTitle": true,
         "className": "",
         "visible": "true",
@@ -1916,13 +2022,13 @@
         "groupType": "default"
     },
     {
-        "id": "f034f56730383b1b",
+        "id": "a14ced109914e232",
         "type": "ui-group",
         "name": "Input",
-        "page": "efbfbf414443b708",
+        "page": "a6138e5c87aafcc6",
         "width": 6,
         "height": 1,
-        "order": -1,
+        "order": 1,
         "showTitle": true,
         "className": "",
         "visible": "true",
@@ -1930,52 +2036,10 @@
         "groupType": "default"
     },
     {
-        "id": "d00d6627fbd36b27",
-        "type": "ui-group",
-        "name": "Reset",
-        "page": "d776ec1af93d5c84",
-        "width": 6,
-        "height": 1,
-        "order": -1,
-        "showTitle": true,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
-        "id": "68ba4e0f2d65772c",
-        "type": "ui-group",
-        "name": "Reset",
-        "page": "04881b1716ea0637",
-        "width": 6,
-        "height": 1,
-        "order": -1,
-        "showTitle": true,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
-        "id": "d633db249650f11d",
-        "type": "ui-group",
-        "name": "Reset",
-        "page": "efbfbf414443b708",
-        "width": 6,
-        "height": 1,
-        "order": -1,
-        "showTitle": true,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
-        "id": "2b22040dcfd1c2fa",
+        "id": "c0e0f3f8c8dbcc3b",
         "type": "ui_group",
-        "name": "Image",
-        "tab": "80c2837de4c22343",
+        "name": "Dron 1",
+        "tab": "6de9a007b96e806d",
         "order": 1,
         "disp": true,
         "width": "15",
@@ -1983,33 +2047,116 @@
         "className": ""
     },
     {
-        "id": "f8e2a48740055fbb",
+        "id": "f1a236baa294e841",
         "type": "ui_group",
-        "name": "Image",
-        "tab": "9beee1dd52ce833b",
+        "name": "Dron 2",
+        "tab": "970a5f3e014fa4c3",
         "order": 1,
         "disp": true,
-        "width": 6,
+        "width": "15",
         "collapse": false,
         "className": ""
     },
     {
-        "id": "1885fd2f2db6cc45",
+        "id": "6fb7ae82b56abd2b",
         "type": "ui_group",
-        "name": "Image",
-        "tab": "b2c613880e541e49",
+        "name": "Dron 3",
+        "tab": "b4bb4a2a18f23675",
         "order": 1,
         "disp": true,
-        "width": 6,
+        "width": "15",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a92bb70592168a63",
+        "type": "ui_group",
+        "name": "Image",
+        "tab": "158da2fdad4c6ccf",
+        "order": 1,
+        "disp": true,
+        "width": "15",
         "collapse": false,
         "className": ""
     },
     {
         "id": "d776ec1af93d5c84",
         "type": "ui-page",
-        "name": "Farm 1 Dron 1",
+        "name": "Dron 1",
         "ui": "debfeef4d9f08595",
-        "path": "/farm1/dron1",
+        "path": "/dron1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "bebf3513799e0627",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 3,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "04881b1716ea0637",
+        "type": "ui-page",
+        "name": "Dron 2",
+        "ui": "debfeef4d9f08595",
+        "path": "/dron2",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "bebf3513799e0627",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 2,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "a6138e5c87aafcc6",
+        "type": "ui-page",
+        "name": "Farm2/Dron 1",
+        "ui": "debfeef4d9f08595",
+        "path": "/page3",
         "icon": "home",
         "layout": "grid",
         "theme": "bebf3513799e0627",
@@ -2037,101 +2184,29 @@
         ],
         "order": 1,
         "className": "",
-        "visible": true,
-        "disabled": false
-    },
-    {
-        "id": "04881b1716ea0637",
-        "type": "ui-page",
-        "name": "Farm 1 Dron 2",
-        "ui": "debfeef4d9f08595",
-        "path": "/farm1/dron2",
-        "icon": "home",
-        "layout": "grid",
-        "theme": "bebf3513799e0627",
-        "breakpoints": [
-            {
-                "name": "Default",
-                "px": "0",
-                "cols": "3"
-            },
-            {
-                "name": "Tablet",
-                "px": "576",
-                "cols": "6"
-            },
-            {
-                "name": "Small Desktop",
-                "px": "768",
-                "cols": "9"
-            },
-            {
-                "name": "Desktop",
-                "px": "1024",
-                "cols": "12"
-            }
-        ],
-        "order": -1,
-        "className": "",
         "visible": "true",
         "disabled": "false"
     },
     {
-        "id": "efbfbf414443b708",
-        "type": "ui-page",
-        "name": "Farm 2 Dron 1",
-        "ui": "debfeef4d9f08595",
-        "path": "/farm2/dron1",
-        "icon": "home",
-        "layout": "grid",
-        "theme": "bebf3513799e0627",
-        "breakpoints": [
-            {
-                "name": "Default",
-                "px": "0",
-                "cols": "3"
-            },
-            {
-                "name": "Tablet",
-                "px": "576",
-                "cols": "6"
-            },
-            {
-                "name": "Small Desktop",
-                "px": "768",
-                "cols": "9"
-            },
-            {
-                "name": "Desktop",
-                "px": "1024",
-                "cols": "12"
-            }
-        ],
-        "order": -1,
-        "className": "",
-        "visible": "true",
-        "disabled": "false"
-    },
-    {
-        "id": "80c2837de4c22343",
+        "id": "6de9a007b96e806d",
         "type": "ui_tab",
-        "name": "Farm 1 Drone 1",
+        "name": "Dron 1",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
     },
     {
-        "id": "9beee1dd52ce833b",
+        "id": "970a5f3e014fa4c3",
         "type": "ui_tab",
-        "name": "Farm 1 Drone 2",
+        "name": "Dron 2",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
     },
     {
-        "id": "b2c613880e541e49",
+        "id": "b4bb4a2a18f23675",
         "type": "ui_tab",
-        "name": "Farm 2 Drone 1",
+        "name": "Dron 3",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
@@ -2154,7 +2229,7 @@
         "showReconnectNotification": true,
         "notificationDisplayTime": 1,
         "showDisconnectNotification": true,
-        "allowInstall": true
+        "allowInstall": false
     },
     {
         "id": "bebf3513799e0627",
@@ -2176,7 +2251,7 @@
         }
     },
     {
-        "id": "2f4112a8ea3ba770",
+        "id": "fb5df73208b97c0c",
         "type": "global-config",
         "env": [],
         "modules": {
