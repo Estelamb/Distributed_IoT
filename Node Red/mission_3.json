@@ -1,0 +1,58 @@
+{
+    "vehicleId": 3,
+    "commands": [
+      {"missionId": 3, "commandId": 1, "commandType": "TAKEOFF",       "params":{"latitude": 40.443546, "longitude": -3.738285}},
+      {"missionId": 3, "commandId": 2, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443587, "longitude": -3.738355}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443555, "longitude": -3.738452}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443555, "longitude": -3.738452, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443555, "longitude": -3.738452, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443542, "longitude": -3.738560}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443542, "longitude": -3.738560, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443542, "longitude": -3.738560, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443527, "longitude": -3.738693}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443527, "longitude": -3.738693, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443527, "longitude": -3.738693, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443518, "longitude": -3.738819}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443518, "longitude": -3.738819, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443518, "longitude": -3.738819, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443451, "longitude": -3.738816}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443451, "longitude": -3.738816, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443451, "longitude": -3.738816, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443459, "longitude": -3.738682}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443459, "longitude": -3.738682, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443459, "longitude": -3.738682, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443475, "longitude": -3.738546}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443475, "longitude": -3.738546, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443475, "longitude": -3.738546, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443488, "longitude": -3.738429}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443488, "longitude": -3.738429, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443488, "longitude": -3.738429, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443418, "longitude": -3.738421}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443418, "longitude": -3.738421, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443418, "longitude": -3.738421, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443412, "longitude": -3.738528}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443412, "longitude": -3.738528, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443412, "longitude": -3.738528, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443399, "longitude": -3.738673}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443399, "longitude": -3.738673, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443399, "longitude": -3.738673, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_WAYPOINT",   "params":{"latitude": 40.443381, "longitude": -3.738790}},
+      {"missionId": 3, "commandId": 4, "commandType": "TAKE_PICTURE",  "params":{"latitude": 40.443381, "longitude": -3.738790, "cameraDevice": "CAM_1"}},
+      {"missionId": 3, "commandId": 5, "commandType": "ANALYSE_IMAGE", "params":{"latitude": 40.443381, "longitude": -3.738790, "analyseModel": "BUNCH"}},
+
+      {"missionId": 3, "commandId": 3, "commandType": "GO_HOME",       "params":{"latitude": 40.443546, "longitude": -3.738285}},
+      {"missionId": 3, "commandId": 3, "commandType": "LAND",          "params":{"latitude": 40.443546, "longitude": -3.738285}}
+    ]
+}
