@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Farms Manager’s Documentation &mdash; Farms Manager - Distributed Systems for IoT 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Farms Manager - Distributed Systems for IoT
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="Getting_started/how_to_run.html">How to run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting_started/docker.html">Docker Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting_started/nodered.html">Node-RED Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Code documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Farms Manager - Distributed Systems for IoT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to Farms Manager’s Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-farms-manager-s-documentation">
+<h1>Welcome to Farms Manager’s Documentation<a class="headerlink" href="#welcome-to-farms-manager-s-documentation" title="Link to this heading"></a></h1>
+<p>Welcome to the documentation of the Farms Manager project. This document provides a comprehensive guide to understanding, using, and developing a smart management system for unmanned autonomous vehicles in precision agriculture on edge.</p>
+<p>In this documentation, you will find detailed explanations of the system’s architecture, core functionalities, and deployment processes. Additionally, the document covers the usage instructions to facilitate smooth integration and further development.</p>
+<p>Whether you are a developer, researcher, or end-user, this documentation aims to serve as a valuable resource for understanding and extending the capabilities of the Farms Manager system.</p>
+<section id="what-is-farms-manager">
+<h2>What is Farms Manager?<a class="headerlink" href="#what-is-farms-manager" title="Link to this heading"></a></h2>
+<p>Farms Manager is an innovative project designed to create a smart management system for unmanned autonomous vehicles used in precision agriculture. The system leverages edge computing to enhance the efficiency and effectiveness of agricultural operations, enabling real-time data processing and decision-making directly on the field.</p>
+<p>In each farm, there is a central node that coordinates multiple autonomous vehicles (Fleet Manager), such as drones and ground robots. These vehicles are equipped with various sensors and tools to perform tasks like monitoring crop health, soil analysis, and automated planting or harvesting.</p>
+<p>The fleet manager comunicates with the vehicles via ROS2 actions, collects data, and executes commands to optimize farming operations. All the fleet managers are connected to Node Red via MQTT.</p>
+<p>Node Red provides a user interface for farmers and agricultural experts. This interface allows users to monitor the status of their missions and its results.</p>
+</section>
+<section id="missions-and-commands">
+<h2>Missions and Commands<a class="headerlink" href="#missions-and-commands" title="Link to this heading"></a></h2>
+<p>A mission is a high-level task assigned to a drone of a specific farm, which consists of a series of commands that the autonomous vehicle must execute. The commands are the specific actions that the vehicle performs to accomplish the mission.</p>
+<p>Examples of commands include:</p>
+<ul class="simple">
+<li><p>Takeoff: The vehicle takes off from the ground.</p></li>
+<li><p>Go to Waypoint: The vehicle flies to a specified GPS coordinate.</p></li>
+<li><p>Capture Image: The vehicle captures an image of the crops.</p></li>
+<li><p>Analyse Image: The vehicle processes the captured image.</p></li>
+<li><p>Spray Treatment: The vehicle sprays the specific treatment on the crops.</p></li>
+<li><p>Return Home: The vehicle returns to its starting point.</p></li>
+<li><p>Land: The vehicle lands safely on the ground.</p></li>
+</ul>
+</section>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Getting_started/how_to_run.html">How to run</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Getting_started/how_to_run.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting_started/how_to_run.html#fleet-manager">Fleet Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting_started/how_to_run.html#drone">Drone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting_started/how_to_run.html#start-node-red">Start Node-Red</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Getting_started/docker.html">Docker Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Getting_started/docker.html#docker-desktop-for-windows">Docker Desktop for Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting_started/docker.html#docker-engine-for-rpi5">Docker Engine for RPI5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting_started/docker.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Getting_started/nodered.html">Node-RED Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Getting_started/nodered.html#install-node-js">Install Node.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting_started/nodered.html#install-node-red">Install Node-RED</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting_started/nodered.html#run-node-red">Run Node-RED</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting_started/nodered.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Code documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Fleet_module/index.html">Fleet Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Drone_module/index.html">Drone</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alejandro Botas Bárcena, Javier Grimaldos Chavarría, Estela Mora Barba.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

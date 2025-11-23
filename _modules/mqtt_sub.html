@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mqtt_sub &mdash; Farms Manager - Distributed Systems for IoT 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+const style = document.createElement('style');
+style.textContent = `.mermaid-container {
+    position: relative !important;
+    display: inline-block;
+    width: 100%;
+}
+
+.mermaid-fullscreen-btn {
+    position: absolute !important;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-fullscreen-content .mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content .mermaid svg {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 85vh;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}
+`;
+document.head.appendChild(style);
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        return brightness < 128;
+    }
+    return false;
+};
+
+const initFullscreen = async () => {
+    await mermaid.run();
+
+    const all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(initFullscreen, 200);
+        return;
+    }
+
+    const darkTheme = isDarkTheme();
+
+    const modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-fullscreen-content${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    const modalContent = modal.querySelector('.mermaid-fullscreen-content');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = '';
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    const allButtons = [];
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.display = 'block';
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        container.appendChild(fullscreenBtn);
+        allButtons.push(fullscreenBtn);
+    });
+
+    // Update theme classes when theme changes
+    const updateTheme = () => {
+        const dark = isDarkTheme();
+        allButtons.forEach(btn => {
+            if (dark) {
+                btn.classList.add('dark-theme');
+            } else {
+                btn.classList.remove('dark-theme');
+            }
+        });
+        if (dark) {
+            modal.classList.add('dark-theme');
+            modalContent.classList.add('dark-theme');
+            closeBtn.classList.add('dark-theme');
+        } else {
+            modal.classList.remove('dark-theme');
+            modalContent.classList.remove('dark-theme');
+            closeBtn.classList.remove('dark-theme');
+        }
+    };
+
+    // Watch for theme changes
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style']
+    });
+};
+
+window.addEventListener("load", initFullscreen);
+</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Farms Manager - Distributed Systems for IoT
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/how_to_run.html">How to run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/docker.html">Docker Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/nodered.html">Node-RED Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Code documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Farms Manager - Distributed Systems for IoT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">mqtt_sub</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mqtt_sub</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module manages the MQTT subscription component of the Fleet Manager system.</span>
+<span class="sd">It listens for incoming mission commands from Node-RED (or test tools) and forwards</span>
+<span class="sd">them to the appropriate drones via the ROS2 Action Client.</span>
+
+<span class="sd">Main responsibilities:</span>
+<span class="sd">1. **Subscribe** to farm-specific MQTT topics (e.g., `farm/&lt;farm_id&gt;`) with QoS 2.</span>
+<span class="sd">2. **Receive** mission messages in JSON format.</span>
+<span class="sd">3. **Parse** mission data to extract `vehicleId` and the list of commands.</span>
+<span class="sd">4. **Forward** parsed commands to the ROS2 Action Client for drone execution.</span>
+<span class="sd">5. **Set Last Will** for unexpected disconnections.</span>
+
+<span class="sd">Expected message format:</span>
+<span class="sd">-------------------------</span>
+<span class="sd">The MQTT subscriber expects payloads with the following JSON structure:</span>
+
+<span class="sd">.. code-block:: json</span>
+
+<span class="sd">    {</span>
+<span class="sd">        &quot;vehicleId&quot;: 1,</span>
+<span class="sd">        &quot;commands&quot;: [</span>
+<span class="sd">            {</span>
+<span class="sd">                &quot;missionId&quot;: 101,</span>
+<span class="sd">                &quot;commandId&quot;: 1,</span>
+<span class="sd">                &quot;commandType&quot;: &quot;TAKEOFF&quot;,</span>
+<span class="sd">                &quot;params&quot;: {&quot;altitude&quot;: 10}</span>
+<span class="sd">            },</span>
+<span class="sd">            {</span>
+<span class="sd">                &quot;missionId&quot;: 101,</span>
+<span class="sd">                &quot;commandId&quot;: 2,</span>
+<span class="sd">                &quot;commandType&quot;: &quot;MOVE&quot;,</span>
+<span class="sd">                &quot;params&quot;: {&quot;x&quot;: 20, &quot;y&quot;: 30}</span>
+<span class="sd">            }</span>
+<span class="sd">        ]</span>
+<span class="sd">    }</span>
+
+<span class="sd">Once received, the subscriber automatically converts each command into a stringified</span>
+<span class="sd">JSON element and passes them to the ROS2 layer for dispatch to the corresponding drone.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">paho.mqtt.client</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mqtt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+
+
+<div class="viewcode-block" id="start_mqtt_sub">
+<a class="viewcode-back" href="../Fleet_module/MQTT/mqtt_sub_component.html#mqtt_sub.start_mqtt_sub">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">start_mqtt_sub</span><span class="p">(</span><span class="n">farm_id</span><span class="p">,</span> <span class="n">ros2_client</span><span class="p">,</span> <span class="n">fleet_logger</span><span class="p">,</span> <span class="n">mqtt_broker</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mqtt_port</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Starts an MQTT subscriber for the specified farm.</span>
+
+<span class="sd">    This function connects to the MQTT broker, subscribes to the topic corresponding</span>
+<span class="sd">    to the given farm ID with **Quality of Service 2 (QoS 2)**, and sets a</span>
+<span class="sd">    **Last Will and Testament (LWT)** message for unexpected disconnections.</span>
+
+<span class="sd">    :param farm_id: Unique identifier of the farm instance.</span>
+<span class="sd">    :type farm_id: int</span>
+<span class="sd">    :param ros2_client: Instance of the ROS2 Action Client used to send goals to drones.</span>
+<span class="sd">    :type ros2_client: CommandsActionClient</span>
+<span class="sd">    :param fleet_logger: Logger instance used for recording system activity.</span>
+<span class="sd">    :type fleet_logger: logging.Logger</span>
+<span class="sd">    :param mqtt_broker: Hostname or IP address of the MQTT broker.</span>
+<span class="sd">    :type mqtt_broker: str</span>
+<span class="sd">    :param mqtt_port: Port number of the MQTT broker.</span>
+<span class="sd">    :type mqtt_port: int</span>
+<span class="sd">    :return: Configured MQTT client instance.</span>
+<span class="sd">    :rtype: paho.mqtt.client.Client</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Topic for mission commands (subscription target)</span>
+    <span class="n">mission_topic</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;farms/farm_</span><span class="si">{</span><span class="n">farm_id</span><span class="si">}</span><span class="s2">/mission&quot;</span>
+    
+    <span class="c1"># Configuration for Last Will and Testament (LWT)</span>
+    <span class="n">lwt_topic</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;farms/farm_</span><span class="si">{</span><span class="n">farm_id</span><span class="si">}</span><span class="s2">/sub_status&quot;</span>
+    <span class="n">lwt_payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;offline&quot;</span><span class="p">,</span> <span class="s2">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;Client disconnected unexpectedly&quot;</span><span class="p">})</span>
+    
+    <span class="c1"># Assign a unique Client ID for proper session handling (important for LWT)</span>
+    <span class="n">client_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;fleet_manager_farm_</span><span class="si">{</span><span class="n">farm_id</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_connect</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">rc</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Callback triggered when the MQTT client connects to the broker.</span>
+
+<span class="sd">        Subscribes to the mission topic using **QoS 2** if the connection is successful.</span>
+<span class="sd">        QoS 2 ensures the message is received exactly once.</span>
+
+<span class="sd">        :param client: The MQTT client instance.</span>
+<span class="sd">        :type client: paho.mqtt.client.Client</span>
+<span class="sd">        :param userdata: User-defined data of any type.</span>
+<span class="sd">        :type userdata: Any</span>
+<span class="sd">        :param flags: Response flags sent by the broker.</span>
+<span class="sd">        :type flags: dict</span>
+<span class="sd">        :param rc: Connection result code (0 indicates success).</span>
+<span class="sd">        :type rc: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">fleet_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[MQTT] - Connected to broker at </span><span class="si">{</span><span class="n">mqtt_broker</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">mqtt_port</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            
+            <span class="c1"># --- Subscribe with QoS 2 ---</span>
+            <span class="c1"># Use tuple (topic, qos) to specify QoS level for subscription</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">subscribe</span><span class="p">((</span><span class="n">mission_topic</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+            
+            <span class="n">fleet_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[MQTT] - Subscribed to topic: </span><span class="si">{</span><span class="n">mission_topic</span><span class="si">}</span><span class="s2"> with QoS 2&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fleet_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[MQTT] - Connection failed with code </span><span class="si">{</span><span class="n">rc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_message</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Callback executed when a message is received from the MQTT broker.</span>
+
+<span class="sd">        Parses the message payload, extracts the drone ID and command list,</span>
+<span class="sd">        converts each command into a JSON string, and forwards the result</span>
+<span class="sd">        to the ROS2 Action Client for mission dispatch.</span>
+
+<span class="sd">        :param client: The MQTT client instance.</span>
+<span class="sd">        :type client: paho.mqtt.client.Client</span>
+<span class="sd">        :param userdata: User-defined data of any type.</span>
+<span class="sd">        :type userdata: Any</span>
+<span class="sd">        :param msg: The received MQTT message object.</span>
+<span class="sd">        :type msg: paho.mqtt.client.MQTTMessage</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+            <span class="n">fleet_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[MQTT] - Received message on </span><span class="si">{</span><span class="n">msg</span><span class="o">.</span><span class="n">topic</span><span class="si">}</span><span class="s2"> (QoS </span><span class="si">{</span><span class="n">msg</span><span class="o">.</span><span class="n">qos</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            
+            <span class="n">drone_id</span> <span class="o">=</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;vehicleId&quot;</span><span class="p">)</span>
+            <span class="n">commands_list</span> <span class="o">=</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;commands&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+            <span class="k">if</span> <span class="n">drone_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">commands_list</span><span class="p">:</span>
+                <span class="c1"># --- Convert each command to a JSON string ---</span>
+                <span class="n">string_commands</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">commands_list</span><span class="p">:</span>
+                    <span class="n">string_cmd</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+                        <span class="s2">&quot;missionId&quot;</span><span class="p">:</span> <span class="n">cmd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;missionId&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                        <span class="s2">&quot;commandId&quot;</span><span class="p">:</span> <span class="n">cmd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;commandId&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                        <span class="s2">&quot;commandType&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;commandType&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)),</span>
+                        <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="n">cmd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;params&quot;</span><span class="p">,</span> <span class="p">{})</span>
+                    <span class="p">})</span>
+                    <span class="n">string_commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">string_cmd</span><span class="p">)</span>
+                <span class="c1"># --- End conversion ---</span>
+
+                <span class="n">ros2_client</span><span class="o">.</span><span class="n">send_goal</span><span class="p">(</span><span class="n">drone_id</span><span class="p">,</span> <span class="n">string_commands</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">fleet_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;[MQTT] - Invalid message format. &#39;vehicleId&#39; or &#39;commands&#39; missing.&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">fleet_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[MQTT] - Failed to process message: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Initialize MQTT Client with a specific ID</span>
+    <span class="n">mqtt_client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">)</span>
+    <span class="n">mqtt_client</span><span class="o">.</span><span class="n">on_connect</span> <span class="o">=</span> <span class="n">on_connect</span>
+    <span class="n">mqtt_client</span><span class="o">.</span><span class="n">on_message</span> <span class="o">=</span> <span class="n">on_message</span>
+
+    <span class="c1"># --- Configure Last Will and Testament (LWT) ---</span>
+    <span class="c1"># The LWT message will be published by the broker if the client disconnects uncleanly.</span>
+    <span class="c1"># QoS=1 ensures delivery; Retain=True ensures the status remains for new subscribers.</span>
+    <span class="n">mqtt_client</span><span class="o">.</span><span class="n">will_set</span><span class="p">(</span>
+        <span class="n">lwt_topic</span><span class="p">,</span> 
+        <span class="n">lwt_payload</span><span class="p">,</span> 
+        <span class="n">qos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+        <span class="n">retain</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">fleet_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[MQTT] - Last Will configured on topic </span><span class="si">{</span><span class="n">lwt_topic</span><span class="si">}</span><span class="s2"> with payload: </span><span class="si">{</span><span class="n">lwt_payload</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># --- Use dynamic parameters for connect ---</span>
+    <span class="n">mqtt_client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">mqtt_broker</span><span class="p">,</span> <span class="n">mqtt_port</span><span class="p">,</span> <span class="n">keepalive</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="n">mqtt_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">mqtt_client</span><span class="o">.</span><span class="n">loop_forever</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">mqtt_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    
+    <span class="n">fleet_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[MQTT] - MQTT subscriber started.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">mqtt_client</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alejandro Botas Bárcena, Javier Grimaldos Chavarría, Estela Mora Barba.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

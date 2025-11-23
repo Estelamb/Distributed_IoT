@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Index &mdash; Farms Manager - Distributed Systems for IoT 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+const style = document.createElement('style');
+style.textContent = `.mermaid-container {
+    position: relative !important;
+    display: inline-block;
+    width: 100%;
+}
+
+.mermaid-fullscreen-btn {
+    position: absolute !important;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-fullscreen-content .mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content .mermaid svg {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 85vh;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}
+`;
+document.head.appendChild(style);
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        return brightness < 128;
+    }
+    return false;
+};
+
+const initFullscreen = async () => {
+    await mermaid.run();
+
+    const all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(initFullscreen, 200);
+        return;
+    }
+
+    const darkTheme = isDarkTheme();
+
+    const modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-fullscreen-content${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    const modalContent = modal.querySelector('.mermaid-fullscreen-content');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = '';
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    const allButtons = [];
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.display = 'block';
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        container.appendChild(fullscreenBtn);
+        allButtons.push(fullscreenBtn);
+    });
+
+    // Update theme classes when theme changes
+    const updateTheme = () => {
+        const dark = isDarkTheme();
+        allButtons.forEach(btn => {
+            if (dark) {
+                btn.classList.add('dark-theme');
+            } else {
+                btn.classList.remove('dark-theme');
+            }
+        });
+        if (dark) {
+            modal.classList.add('dark-theme');
+            modalContent.classList.add('dark-theme');
+            closeBtn.classList.add('dark-theme');
+        } else {
+            modal.classList.remove('dark-theme');
+            modalContent.classList.remove('dark-theme');
+            closeBtn.classList.remove('dark-theme');
+        }
+    };
+
+    // Watch for theme changes
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style']
+    });
+};
+
+window.addEventListener("load", initFullscreen);
+</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Farms Manager - Distributed Systems for IoT
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="Getting_started/how_to_run.html">How to run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting_started/docker.html">Docker Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting_started/nodered.html">Node-RED Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Code documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Farms Manager - Distributed Systems for IoT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Index</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ 
+</div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.CommandsActionClient.__init__">__init__() (commands_action_client.CommandsActionClient method)</a>
+
+      <ul>
+        <li><a href="Drone_module/ros2_component.html#commands_action_server.CommandsActionServer.__init__">(commands_action_server.CommandsActionServer method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Analyse_Image.__init__">(commands_simulator.Analyse_Image method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Command.__init__">(commands_simulator.Command method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Go_Home.__init__">(commands_simulator.Go_Home method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Go_Waypoint.__init__">(commands_simulator.Go_Waypoint method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Land.__init__">(commands_simulator.Land method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Take_Picture.__init__">(commands_simulator.Take_Picture method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.TakeOff.__init__">(commands_simulator.TakeOff method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Treatment.__init__">(commands_simulator.Treatment method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.CommandsActionClient.action_clients">action_clients (commands_action_client.CommandsActionClient attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Analyse_Image">Analyse_Image (class in commands_simulator)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Command">Command (class in commands_simulator)</a>
+</li>
+      <li>
+    commands_action_client
+
+      <ul>
+        <li><a href="Fleet_module/ros2_component.html#module-commands_action_client">module</a>
+</li>
+      </ul></li>
+      <li>
+    commands_action_server
+
+      <ul>
+        <li><a href="Drone_module/ros2_component.html#module-commands_action_server">module</a>
+</li>
+      </ul></li>
+      <li>
+    commands_processor
+
+      <ul>
+        <li><a href="Drone_module/Commands/commands_processor_component.html#module-commands_processor">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    commands_simulator
+
+      <ul>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#module-commands_simulator">module</a>
+</li>
+      </ul></li>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.CommandsActionClient">CommandsActionClient (class in commands_action_client)</a>
+</li>
+      <li><a href="Drone_module/ros2_component.html#commands_action_server.CommandsActionServer">CommandsActionServer (class in commands_action_server)</a>
+</li>
+      <li><a href="Drone_module/init_drone_component.html#init_drone.create_logger">create_logger() (in module init_drone)</a>
+
+      <ul>
+        <li><a href="Fleet_module/init_fleet_component.html#init_fleet.create_logger">(in module init_fleet)</a>
+</li>
+      </ul></li>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.create_ros2_action_client">create_ros2_action_client() (in module commands_action_client)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.CommandsActionClient.drone_busy">drone_busy (commands_action_client.CommandsActionClient attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Analyse_Image.execute">execute() (commands_simulator.Analyse_Image method)</a>
+
+      <ul>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Command.execute">(commands_simulator.Command method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Go_Home.execute">(commands_simulator.Go_Home method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Go_Waypoint.execute">(commands_simulator.Go_Waypoint method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Land.execute">(commands_simulator.Land method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Take_Picture.execute">(commands_simulator.Take_Picture method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.TakeOff.execute">(commands_simulator.TakeOff method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Treatment.execute">(commands_simulator.Treatment method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/ros2_component.html#commands_action_server.CommandsActionServer.execute_callback">execute_callback() (commands_action_server.CommandsActionServer method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.CommandsActionClient.farm_id">farm_id (commands_action_client.CommandsActionClient attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.CommandsActionClient.feedback_callback">feedback_callback() (commands_action_client.CommandsActionClient method)</a>
+</li>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.CommandsActionClient.fleet_logger">fleet_logger (commands_action_client.CommandsActionClient attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.CommandsActionClient.get_result_callback">get_result_callback() (commands_action_client.CommandsActionClient method)</a>
+</li>
+      <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Go_Home">Go_Home (class in commands_simulator)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Go_Waypoint">Go_Waypoint (class in commands_simulator)</a>
+</li>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.CommandsActionClient.goal_response_callback">goal_response_callback() (commands_action_client.CommandsActionClient method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    init_drone
+
+      <ul>
+        <li><a href="Drone_module/init_drone_component.html#module-init_drone">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    init_fleet
+
+      <ul>
+        <li><a href="Fleet_module/init_fleet_component.html#module-init_fleet">module</a>
+</li>
+      </ul></li>
+      <li><a href="Fleet_module/MQTT/mqtt_pub_component.html#mqtt_pub.initialize_publisher_client">initialize_publisher_client() (in module mqtt_pub)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Land">Land (class in commands_simulator)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/init_drone_component.html#init_drone.main">main() (in module init_drone)</a>
+
+      <ul>
+        <li><a href="Fleet_module/init_fleet_component.html#init_fleet.main">(in module init_fleet)</a>
+</li>
+      </ul></li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="Fleet_module/ros2_component.html#module-commands_action_client">commands_action_client</a>
+</li>
+        <li><a href="Drone_module/ros2_component.html#module-commands_action_server">commands_action_server</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_processor_component.html#module-commands_processor">commands_processor</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#module-commands_simulator">commands_simulator</a>
+</li>
+        <li><a href="Drone_module/init_drone_component.html#module-init_drone">init_drone</a>
+</li>
+        <li><a href="Fleet_module/init_fleet_component.html#module-init_fleet">init_fleet</a>
+</li>
+        <li><a href="Fleet_module/MQTT/mqtt_pub_component.html#module-mqtt_pub">mqtt_pub</a>
+</li>
+        <li><a href="Fleet_module/MQTT/mqtt_sub_component.html#module-mqtt_sub">mqtt_sub</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Fleet_module/MQTT/mqtt_pub_component.html#mqtt_pub.mqtt_client">mqtt_client (in module mqtt_pub)</a>
+</li>
+      <li><a href="Fleet_module/MQTT/mqtt_pub_component.html#mqtt_pub.mqtt_feedback">mqtt_feedback() (in module mqtt_pub)</a>
+</li>
+      <li><a href="Fleet_module/MQTT/mqtt_pub_component.html#mqtt_pub.mqtt_goal">mqtt_goal() (in module mqtt_pub)</a>
+</li>
+      <li><a href="Fleet_module/MQTT/mqtt_pub_component.html#mqtt_pub.MQTT_KEEPALIVE">MQTT_KEEPALIVE (in module mqtt_pub)</a>
+</li>
+      <li>
+    mqtt_pub
+
+      <ul>
+        <li><a href="Fleet_module/MQTT/mqtt_pub_component.html#module-mqtt_pub">module</a>
+</li>
+      </ul></li>
+      <li><a href="Fleet_module/MQTT/mqtt_pub_component.html#mqtt_pub.mqtt_result">mqtt_result() (in module mqtt_pub)</a>
+</li>
+      <li>
+    mqtt_sub
+
+      <ul>
+        <li><a href="Fleet_module/MQTT/mqtt_sub_component.html#module-mqtt_sub">module</a>
+</li>
+      </ul></li>
+      <li><a href="Fleet_module/MQTT/mqtt_pub_component.html#mqtt_pub.mqtt_warning">mqtt_warning() (in module mqtt_pub)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/Commands/commands_processor_component.html#commands_processor.parse_command">parse_command() (in module commands_processor)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.parse_feedback_data">parse_feedback_data() (in module commands_action_client)</a>
+</li>
+      <li><a href="Drone_module/Commands/commands_processor_component.html#commands_processor.process_command">process_command() (in module commands_processor)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Analyse_Image.result">result() (commands_simulator.Analyse_Image method)</a>
+
+      <ul>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Command.result">(commands_simulator.Command method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Go_Home.result">(commands_simulator.Go_Home method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Go_Waypoint.result">(commands_simulator.Go_Waypoint method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Land.result">(commands_simulator.Land method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Take_Picture.result">(commands_simulator.Take_Picture method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.TakeOff.result">(commands_simulator.TakeOff method)</a>
+</li>
+        <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Treatment.result">(commands_simulator.Treatment method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.CommandsActionClient.ros2_action_queue">ros2_action_queue (commands_action_client.CommandsActionClient attribute)</a>
+</li>
+      <li><a href="Drone_module/ros2_component.html#commands_action_server.run_action_server">run_action_server() (in module commands_action_server)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/Commands/commands_processor_component.html#commands_processor.select_command">select_command() (in module commands_processor)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Fleet_module/ros2_component.html#commands_action_client.CommandsActionClient.send_goal">send_goal() (commands_action_client.CommandsActionClient method)</a>
+</li>
+      <li><a href="Fleet_module/MQTT/mqtt_sub_component.html#mqtt_sub.start_mqtt_sub">start_mqtt_sub() (in module mqtt_sub)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Take_Picture">Take_Picture (class in commands_simulator)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.TakeOff">TakeOff (class in commands_simulator)</a>
+</li>
+      <li><a href="Drone_module/Commands/commands_simulator_component.html#commands_simulator.Treatment">Treatment (class in commands_simulator)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alejandro Botas Bárcena, Javier Grimaldos Chavarría, Estela Mora Barba.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

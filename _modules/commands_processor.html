@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>commands_processor &mdash; Farms Manager - Distributed Systems for IoT 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+const style = document.createElement('style');
+style.textContent = `.mermaid-container {
+    position: relative !important;
+    display: inline-block;
+    width: 100%;
+}
+
+.mermaid-fullscreen-btn {
+    position: absolute !important;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-fullscreen-content .mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content .mermaid svg {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 85vh;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}
+`;
+document.head.appendChild(style);
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        return brightness < 128;
+    }
+    return false;
+};
+
+const initFullscreen = async () => {
+    await mermaid.run();
+
+    const all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(initFullscreen, 200);
+        return;
+    }
+
+    const darkTheme = isDarkTheme();
+
+    const modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-fullscreen-content${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    const modalContent = modal.querySelector('.mermaid-fullscreen-content');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = '';
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    const allButtons = [];
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.display = 'block';
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        container.appendChild(fullscreenBtn);
+        allButtons.push(fullscreenBtn);
+    });
+
+    // Update theme classes when theme changes
+    const updateTheme = () => {
+        const dark = isDarkTheme();
+        allButtons.forEach(btn => {
+            if (dark) {
+                btn.classList.add('dark-theme');
+            } else {
+                btn.classList.remove('dark-theme');
+            }
+        });
+        if (dark) {
+            modal.classList.add('dark-theme');
+            modalContent.classList.add('dark-theme');
+            closeBtn.classList.add('dark-theme');
+        } else {
+            modal.classList.remove('dark-theme');
+            modalContent.classList.remove('dark-theme');
+            closeBtn.classList.remove('dark-theme');
+        }
+    };
+
+    // Watch for theme changes
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style']
+    });
+};
+
+window.addEventListener("load", initFullscreen);
+</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Farms Manager - Distributed Systems for IoT
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/how_to_run.html">How to run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/docker.html">Docker Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/nodered.html">Node-RED Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Code documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Farms Manager - Distributed Systems for IoT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">commands_processor</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for commands_processor</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module is responsible for parsing, interpreting, and executing mission commands</span>
+<span class="sd">received by the drone&#39;s ROS2 Action Server. It serves as the bridge between the</span>
+<span class="sd">high-level mission definitions (sent by the Fleet Manager) and the specific simulated</span>
+<span class="sd">actions implemented in the `Commands.commands_simulator` module.</span>
+
+<span class="sd">Main responsibilities:</span>
+<span class="sd">-----------------------</span>
+<span class="sd">1. **Parse** incoming command JSON strings and normalize their keys.</span>
+<span class="sd">2. **Select** the appropriate command class (e.g., `TakeOff`, `Land`, `Go_Waypoint`, etc.).</span>
+<span class="sd">3. **Execute** the command and capture its result or error.</span>
+<span class="sd">4. **Return** structured feedback to the calling ROS2 Action Server.</span>
+
+<span class="sd">Expected command format:</span>
+<span class="sd">------------------------</span>
+<span class="sd">Each command is expected to be a JSON-formatted string with the following structure:</span>
+
+<span class="sd">.. code-block:: json</span>
+
+<span class="sd">    {</span>
+<span class="sd">        &quot;missionId&quot;: 101,</span>
+<span class="sd">        &quot;commandId&quot;: 1,</span>
+<span class="sd">        &quot;commandType&quot;: &quot;TAKEOFF&quot;,</span>
+<span class="sd">        &quot;params&quot;: {</span>
+<span class="sd">            &quot;altitude&quot;: 10</span>
+<span class="sd">        }</span>
+<span class="sd">    }</span>
+
+<span class="sd">The parser accepts both *camelCase* and *snake_case* naming conventions for compatibility.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Commands.commands_simulator</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Command</span><span class="p">,</span>
+    <span class="n">TakeOff</span><span class="p">,</span>
+    <span class="n">Land</span><span class="p">,</span>
+    <span class="n">Go_Waypoint</span><span class="p">,</span>
+    <span class="n">Go_Home</span><span class="p">,</span>
+    <span class="n">Take_Picture</span><span class="p">,</span>
+    <span class="n">Analyse_Image</span><span class="p">,</span>
+    <span class="n">Treatment</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="process_command">
+<a class="viewcode-back" href="../Drone_module/Commands/commands_processor_component.html#commands_processor.process_command">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">process_command</span><span class="p">(</span><span class="n">command_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Process a command received as a JSON string, execute it, and return the result.</span>
+
+<span class="sd">    This function orchestrates the full command lifecycle:</span>
+<span class="sd">    - Parses the input JSON string into a Python dictionary.</span>
+<span class="sd">    - Selects the corresponding command class based on its type.</span>
+<span class="sd">    - Executes the command using its `execute()` method.</span>
+<span class="sd">    - Collects and returns the resulting data or error details.</span>
+
+<span class="sd">    :param command_str: Command in JSON string format (supports both camelCase and snake_case).</span>
+<span class="sd">    :type command_str: str</span>
+<span class="sd">    :param logger: Logger instance used to record command execution progress and results.</span>
+<span class="sd">    :type logger: logging.Logger</span>
+<span class="sd">    :return: A tuple containing the execution status and the resulting data.</span>
+<span class="sd">    :rtype: Tuple[int, Dict]</span>
+<span class="sd">    :raises ValueError: If the input command string cannot be parsed as valid JSON.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">command_dict</span> <span class="o">=</span> <span class="n">parse_command</span><span class="p">(</span><span class="n">command_str</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="n">select_command</span><span class="p">(</span><span class="n">command_dict</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">command</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+        <span class="n">command_data</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+        <span class="n">status_code</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># success</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[COMMANDS] - Command executed successfully&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">command_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)}</span>
+        <span class="n">status_code</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># failure</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[COMMANDS] - Command execution failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">status_code</span><span class="p">,</span> <span class="n">command_data</span></div>
+
+
+
+<div class="viewcode-block" id="parse_command">
+<a class="viewcode-back" href="../Drone_module/Commands/commands_processor_component.html#commands_processor.parse_command">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_command</span><span class="p">(</span><span class="n">command_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse a JSON-formatted string and normalize its keys to `snake_case`.</span>
+
+<span class="sd">    This function allows flexible input by supporting both `camelCase` and `snake_case`</span>
+<span class="sd">    naming conventions in the incoming JSON. It ensures that the resulting dictionary</span>
+<span class="sd">    always contains consistent field names.</span>
+
+<span class="sd">    :param command_str: JSON string containing the command definition.</span>
+<span class="sd">    :type command_str: str</span>
+<span class="sd">    :param logger: Logger instance used for debug or error messages.</span>
+<span class="sd">    :type logger: logging.Logger</span>
+<span class="sd">    :return: Normalized command dictionary with the following keys:</span>
+<span class="sd">             - `mission_id`</span>
+<span class="sd">             - `command_id`</span>
+<span class="sd">             - `command_type`</span>
+<span class="sd">             - `params`</span>
+<span class="sd">    :rtype: Dict</span>
+<span class="sd">    :raises ValueError: If the JSON string is invalid or cannot be parsed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">command_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">command_str</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">logger</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;[COMMANDS] - Invalid JSON format in command string&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid command string format&quot;</span><span class="p">)</span>
+
+    <span class="n">normalized_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;mission_id&#39;</span><span class="p">:</span> <span class="n">command_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;missionId&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">command_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;mission_id&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;command_id&#39;</span><span class="p">:</span> <span class="n">command_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commandId&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">command_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;command_id&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;command_type&#39;</span><span class="p">:</span> <span class="n">command_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commandType&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">command_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;command_type&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">command_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;params&#39;</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">logger</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[COMMANDS] - Parsed command: </span><span class="si">{</span><span class="n">normalized_dict</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">normalized_dict</span></div>
+
+
+
+<div class="viewcode-block" id="select_command">
+<a class="viewcode-back" href="../Drone_module/Commands/commands_processor_component.html#commands_processor.select_command">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">select_command</span><span class="p">(</span><span class="n">command_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Command</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Select the appropriate command class based on the `command_type` field.</span>
+
+<span class="sd">    This function maps each command type to its corresponding command class from</span>
+<span class="sd">    the `Commands.commands_simulator` module. If the command type is unrecognized,</span>
+<span class="sd">    it defaults to the base `Command` class.</span>
+
+<span class="sd">    :param command_dict: Dictionary containing normalized command data.</span>
+<span class="sd">    :type command_dict: Dict</span>
+<span class="sd">    :param logger: Logger instance used for logging the command type being processed.</span>
+<span class="sd">    :type logger: logging.Logger</span>
+<span class="sd">    :return: Instance of a command class ready to be executed.</span>
+<span class="sd">    :rtype: Command</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mission_id</span> <span class="o">=</span> <span class="n">command_dict</span><span class="p">[</span><span class="s1">&#39;mission_id&#39;</span><span class="p">]</span>
+    <span class="n">command_id</span> <span class="o">=</span> <span class="n">command_dict</span><span class="p">[</span><span class="s1">&#39;command_id&#39;</span><span class="p">]</span>
+    <span class="n">command_type</span> <span class="o">=</span> <span class="n">command_dict</span><span class="p">[</span><span class="s1">&#39;command_type&#39;</span><span class="p">]</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">command_dict</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span>
+
+    <span class="n">command_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;TAKEOFF&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">TakeOff</span><span class="p">,</span> <span class="s2">&quot;TAKEOFF&quot;</span><span class="p">),</span>
+        <span class="s1">&#39;LAND&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">Land</span><span class="p">,</span> <span class="s2">&quot;LAND&quot;</span><span class="p">),</span>
+        <span class="s1">&#39;GO_WAYPOINT&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">Go_Waypoint</span><span class="p">,</span> <span class="s2">&quot;GO_WAYPOINT&quot;</span><span class="p">),</span>
+        <span class="s1">&#39;GO_HOME&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">Go_Home</span><span class="p">,</span> <span class="s2">&quot;GO_HOME&quot;</span><span class="p">),</span>
+        <span class="s1">&#39;TAKE_PICTURE&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">Take_Picture</span><span class="p">,</span> <span class="s2">&quot;TAKE_PICTURE&quot;</span><span class="p">),</span>
+        <span class="s1">&#39;ANALYSE_IMAGE&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">Analyse_Image</span><span class="p">,</span> <span class="s2">&quot;ANALYSE_IMAGE&quot;</span><span class="p">),</span>
+        <span class="s1">&#39;TREATMENT&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">Treatment</span><span class="p">,</span> <span class="s2">&quot;TREATMENT&quot;</span><span class="p">),</span>
+    <span class="p">}</span>
+
+    <span class="n">command_class</span><span class="p">,</span> <span class="n">log_name</span> <span class="o">=</span> <span class="n">command_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">command_type</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="p">(</span><span class="n">Command</span><span class="p">,</span> <span class="s2">&quot;UNKNOWN&quot;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">logger</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[COMMANDS] - Processing </span><span class="si">{</span><span class="n">log_name</span><span class="si">}</span><span class="s2"> command&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">command_class</span><span class="p">(</span><span class="n">mission_id</span><span class="p">,</span> <span class="n">command_id</span><span class="p">,</span> <span class="n">command_type</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alejandro Botas Bárcena, Javier Grimaldos Chavarría, Estela Mora Barba.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

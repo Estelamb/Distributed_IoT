@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commands Simulator &mdash; Farms Manager - Distributed Systems for IoT 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Commands Processor" href="commands_processor_component.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Farms Manager - Distributed Systems for IoT
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Getting_started/how_to_run.html">How to run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Getting_started/docker.html">Docker Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Getting_started/nodered.html">Node-RED Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">Code documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Fleet_module/index.html">Fleet Manager</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Drone</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../init_drone_component.html">Init Drone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ros2_component.html">Commands Action Server</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../commands_component.html">Commands Components</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="commands_processor_component.html">Commands Processor</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Commands Simulator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Farms Manager - Distributed Systems for IoT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../modules.html">Code documentation</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Drone</a></li>
+          <li class="breadcrumb-item"><a href="../commands_component.html">Commands Components</a></li>
+      <li class="breadcrumb-item active">Commands Simulator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/Drone_module/Commands/commands_simulator_component.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-commands_simulator">
+<span id="commands-simulator"></span><h1>Commands Simulator<a class="headerlink" href="#module-commands_simulator" title="Link to this heading"></a></h1>
+<p>This module simulates the execution of drone mission commands in a controlled
+environment. It defines a hierarchy of command classes representing possible
+actions a drone can perform, such as takeoff, landing, moving to a waypoint,
+taking pictures, analyzing images, and applying treatments.</p>
+<p>Each command follows a consistent interface defined by the abstract base class
+<cite>Command</cite>, which enforces the implementation of two key methods:
+- <code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code>: Simulates the command’s operation.
+- <code class="xref py py-meth docutils literal notranslate"><span class="pre">result()</span></code>: Returns structured data summarizing the outcome.</p>
+<p>This simulation layer allows for testing the drone mission workflow
+without requiring physical drones or real sensors.</p>
+<section id="typical-command-parameters">
+<h2>Typical command parameters<a class="headerlink" href="#typical-command-parameters" title="Link to this heading"></a></h2>
+<p>All commands expect a set of parameters passed as a dictionary, usually
+containing:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code> (<em>float</em>): Target latitude coordinate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code> (<em>float</em>): Target longitude coordinate.</p></li>
+<li><p>Additional fields depending on the command type (e.g., <code class="docutils literal notranslate"><span class="pre">cameraDevice</span></code>, <code class="docutils literal notranslate"><span class="pre">analyseModel</span></code>, etc.).</p></li>
+</ul>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="commands_simulator.Command">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">commands_simulator.</span></span><span class="sig-name descname"><span class="pre">Command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Command" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract base class for all simulated drone commands.</p>
+<p>Defines the common interface used by all command types
+and provides access to basic metadata and logging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mission_id</strong> (<em>int</em>) – Mission identifier associated with this command.</p></li>
+<li><p><strong>command_id</strong> (<em>int</em>) – Unique identifier of this command within the mission.</p></li>
+<li><p><strong>command_type</strong> (<em>str</em>) – Command type string (e.g., “TAKEOFF”, “LAND”).</p></li>
+<li><p><strong>logger</strong> (<em>logging.Logger</em>) – Logger instance for structured message output.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Command.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Command.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Command.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Command.execute">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Command.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Command.execute" title="Link to this definition"></a></dt>
+<dd><p>Execute the command simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Command.result">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Command.result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Command.result" title="Link to this definition"></a></dt>
+<dd><p>Return a structured dictionary with the command results.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="commands_simulator.TakeOff">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">commands_simulator.</span></span><span class="sig-name descname"><span class="pre">TakeOff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#TakeOff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.TakeOff" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#commands_simulator.Command" title="commands_simulator.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a></p>
+<p>Simulates a drone takeoff operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>dict</em>) – Dictionary containing ‘latitude’ and ‘longitude’ keys.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.TakeOff.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#TakeOff.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.TakeOff.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.TakeOff.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#TakeOff.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.TakeOff.execute" title="Link to this definition"></a></dt>
+<dd><p>Simulates the drone ascending into flight.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.TakeOff.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#TakeOff.result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.TakeOff.result" title="Link to this definition"></a></dt>
+<dd><p>Returns confirmation of a successful takeoff.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="commands_simulator.Land">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">commands_simulator.</span></span><span class="sig-name descname"><span class="pre">Land</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Land"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Land" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#commands_simulator.Command" title="commands_simulator.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a></p>
+<p>Simulates a drone landing operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>dict</em>) – Dictionary containing ‘latitude’ and ‘longitude’ keys.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Land.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Land.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Land.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Land.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Land.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Land.execute" title="Link to this definition"></a></dt>
+<dd><p>Simulates the drone descending and landing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Land.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Land.result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Land.result" title="Link to this definition"></a></dt>
+<dd><p>Returns confirmation of a successful landing.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="commands_simulator.Go_Waypoint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">commands_simulator.</span></span><span class="sig-name descname"><span class="pre">Go_Waypoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Go_Waypoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Go_Waypoint" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#commands_simulator.Command" title="commands_simulator.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a></p>
+<p>Simulates movement to a specific waypoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>dict</em>) – Dictionary containing ‘latitude’ and ‘longitude’ keys.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Go_Waypoint.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Go_Waypoint.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Go_Waypoint.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Go_Waypoint.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Go_Waypoint.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Go_Waypoint.execute" title="Link to this definition"></a></dt>
+<dd><p>Simulates travel to the target waypoint.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Go_Waypoint.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Go_Waypoint.result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Go_Waypoint.result" title="Link to this definition"></a></dt>
+<dd><p>Returns confirmation that the waypoint has been reached.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="commands_simulator.Go_Home">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">commands_simulator.</span></span><span class="sig-name descname"><span class="pre">Go_Home</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Go_Home"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Go_Home" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#commands_simulator.Command" title="commands_simulator.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a></p>
+<p>Simulates the drone returning to its home base.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>dict</em>) – Dictionary containing ‘latitude’ and ‘longitude’ keys.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Go_Home.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Go_Home.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Go_Home.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Go_Home.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Go_Home.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Go_Home.execute" title="Link to this definition"></a></dt>
+<dd><p>Simulates the drone flying back to its home location.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Go_Home.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Go_Home.result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Go_Home.result" title="Link to this definition"></a></dt>
+<dd><p>Returns confirmation of a successful return.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="commands_simulator.Take_Picture">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">commands_simulator.</span></span><span class="sig-name descname"><span class="pre">Take_Picture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Take_Picture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Take_Picture" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#commands_simulator.Command" title="commands_simulator.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a></p>
+<p>Simulates taking a picture using the drone’s camera.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>dict</em>) – Dictionary containing ‘latitude’, ‘longitude’, and ‘cameraDevice’ keys.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Take_Picture.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Take_Picture.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Take_Picture.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Take_Picture.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Take_Picture.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Take_Picture.execute" title="Link to this definition"></a></dt>
+<dd><p>Simulates image capture from the drone camera.</p>
+<p>Attempts to load a predefined image from the <cite>Data/</cite> directory
+based on the current coordinates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Take_Picture.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Take_Picture.result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Take_Picture.result" title="Link to this definition"></a></dt>
+<dd><p>Returns a base64-encoded image string along with metadata.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="commands_simulator.Analyse_Image">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">commands_simulator.</span></span><span class="sig-name descname"><span class="pre">Analyse_Image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Analyse_Image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Analyse_Image" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#commands_simulator.Command" title="commands_simulator.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a></p>
+<p>Simulates image analysis using a preloaded model or mock dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>dict</em>) – Dictionary containing ‘latitude’, ‘longitude’, and ‘analyseModel’ keys.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Analyse_Image.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Analyse_Image.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Analyse_Image.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Analyse_Image.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Analyse_Image.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Analyse_Image.execute" title="Link to this definition"></a></dt>
+<dd><p>Simulates image processing and analysis.</p>
+<p>Loads a mock result from <cite>Data/amounts.json</cite> and an analyzed image
+from <cite>Data/&lt;lat&gt;_&lt;lon&gt;_analysed.png</cite> if available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Analyse_Image.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Analyse_Image.result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Analyse_Image.result" title="Link to this definition"></a></dt>
+<dd><p>Returns analysis results and the processed image (if available).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="commands_simulator.Treatment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">commands_simulator.</span></span><span class="sig-name descname"><span class="pre">Treatment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Treatment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Treatment" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#commands_simulator.Command" title="commands_simulator.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a></p>
+<p>Simulates the application of an agricultural treatment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>dict</em>) – Dictionary containing ‘latitude’, ‘longitude’, ‘treatment’, and ‘amount’ keys.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Treatment.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Treatment.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Treatment.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Treatment.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Treatment.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Treatment.execute" title="Link to this definition"></a></dt>
+<dd><p>Simulates spraying or applying a treatment at a target location.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_simulator.Treatment.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/commands_simulator.html#Treatment.result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_simulator.Treatment.result" title="Link to this definition"></a></dt>
+<dd><p>Returns confirmation of treatment application.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="commands_processor_component.html" class="btn btn-neutral float-left" title="Commands Processor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alejandro Botas Bárcena, Javier Grimaldos Chavarría, Estela Mora Barba.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

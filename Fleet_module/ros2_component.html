@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commands Action Client &mdash; Farms Manager - Distributed Systems for IoT 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MQTT Components" href="mqtt_component.html" />
+    <link rel="prev" title="Init Fleet Manager" href="init_fleet_component.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Farms Manager - Distributed Systems for IoT
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/how_to_run.html">How to run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/docker.html">Docker Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/nodered.html">Node-RED Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Code documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Fleet Manager</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="init_fleet_component.html">Init Fleet Manager</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Commands Action Client</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#commands_action_client.CommandsActionClient"><code class="docutils literal notranslate"><span class="pre">CommandsActionClient</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commands_action_client.create_ros2_action_client"><code class="docutils literal notranslate"><span class="pre">create_ros2_action_client()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commands_action_client.parse_feedback_data"><code class="docutils literal notranslate"><span class="pre">parse_feedback_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mqtt_component.html">MQTT Components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Drone_module/index.html">Drone</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Farms Manager - Distributed Systems for IoT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../modules.html">Code documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Fleet Manager</a></li>
+      <li class="breadcrumb-item active">Commands Action Client</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Fleet_module/ros2_component.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-commands_action_client">
+<span id="commands-action-client"></span><h1>Commands Action Client<a class="headerlink" href="#module-commands_action_client" title="Link to this heading"></a></h1>
+<p>This module manages the communication between the Fleet Manager and the drones
+using ROS2 Actions. It supports automatic drone discovery, concurrent communication
+with multiple drones, and integrates with MQTT for mission status reporting.</p>
+<p>Main responsibilities:
+1. Automatically discovers and connects to drones via ROS2 action topics.
+2. Sends mission goals (command sequences) to specific drones.
+3. Handles feedback and results asynchronously using callbacks.
+4. Reports mission progress and outcomes to the Fleet Manager via MQTT.</p>
+<p>It serves as the core bridge between the ROS2-based drone layer and the MQTT-based
+Fleet Manager system.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="commands_action_client.CommandsActionClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">commands_action_client.</span></span><span class="sig-name descname"><span class="pre">CommandsActionClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/commands_action_client.html#CommandsActionClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_action_client.CommandsActionClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
+<p>ROS2 Action Client node for managing communication with multiple drones.</p>
+<p>This class enables the Fleet Manager to send missions to drones, receive feedback,
+and handle mission results. It dynamically creates and manages multiple ROS2
+Action Clients (one per connected drone).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>farm_id</strong> (<em>int</em>) – Unique identifier for the farm instance associated with this Fleet Manager.</p></li>
+<li><p><strong>fleet_logger</strong> (<em>logging.Logger</em>) – Logger instance used for recording Fleet Manager events.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_action_client.CommandsActionClient.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">farm_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fleet_logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/commands_action_client.html#CommandsActionClient.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_action_client.CommandsActionClient.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="commands_action_client.CommandsActionClient.action_clients">
+<span class="sig-name descname"><span class="pre">action_clients</span></span><a class="headerlink" href="#commands_action_client.CommandsActionClient.action_clients" title="Link to this definition"></a></dt>
+<dd><p>Dictionary mapping drone IDs to their respective ActionClient instances.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="commands_action_client.CommandsActionClient.drone_busy">
+<span class="sig-name descname"><span class="pre">drone_busy</span></span><a class="headerlink" href="#commands_action_client.CommandsActionClient.drone_busy" title="Link to this definition"></a></dt>
+<dd><p>Dictionary tracking whether each drone is currently executing a mission.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="commands_action_client.CommandsActionClient.farm_id">
+<span class="sig-name descname"><span class="pre">farm_id</span></span><a class="headerlink" href="#commands_action_client.CommandsActionClient.farm_id" title="Link to this definition"></a></dt>
+<dd><p>Farm ID corresponding to this Fleet Manager instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="commands_action_client.CommandsActionClient.fleet_logger">
+<span class="sig-name descname"><span class="pre">fleet_logger</span></span><a class="headerlink" href="#commands_action_client.CommandsActionClient.fleet_logger" title="Link to this definition"></a></dt>
+<dd><p>Logger for system activity.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="commands_action_client.CommandsActionClient.ros2_action_queue">
+<span class="sig-name descname"><span class="pre">ros2_action_queue</span></span><a class="headerlink" href="#commands_action_client.CommandsActionClient.ros2_action_queue" title="Link to this definition"></a></dt>
+<dd><p>Queue used for internal ROS2 action event management.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_action_client.CommandsActionClient.send_goal">
+<span class="sig-name descname"><span class="pre">send_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">drone_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commands_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/commands_action_client.html#CommandsActionClient.send_goal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_action_client.CommandsActionClient.send_goal" title="Link to this definition"></a></dt>
+<dd><p>Sends a mission (list of commands) to the specified drone via ROS2.</p>
+<p>If the drone is already executing another mission, the request is rejected.
+Otherwise, a new ROS2 Action Client is created if necessary, and the mission
+is transmitted asynchronously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>drone_id</strong> (<em>int</em>) – Identifier of the target drone.</p></li>
+<li><p><strong>commands_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of mission commands to be executed by the drone.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_action_client.CommandsActionClient.goal_response_callback">
+<span class="sig-name descname"><span class="pre">goal_response_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">future</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drone_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/commands_action_client.html#CommandsActionClient.goal_response_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_action_client.CommandsActionClient.goal_response_callback" title="Link to this definition"></a></dt>
+<dd><p>Callback executed when the drone responds to a mission goal request.</p>
+<p>Handles both acceptance and rejection of the mission by the drone.
+If accepted, it attaches a callback to handle mission result retrieval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>future</strong> (<em>rclpy.task.Future</em>) – Future object representing the asynchronous goal response.</p></li>
+<li><p><strong>drone_id</strong> (<em>int</em>) – Identifier of the drone that responded to the mission.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_action_client.CommandsActionClient.get_result_callback">
+<span class="sig-name descname"><span class="pre">get_result_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">future</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drone_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/commands_action_client.html#CommandsActionClient.get_result_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_action_client.CommandsActionClient.get_result_callback" title="Link to this definition"></a></dt>
+<dd><p>Callback executed when the drone finishes executing the mission.</p>
+<p>Publishes the mission result to MQTT and marks the drone as available again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>future</strong> (<em>rclpy.task.Future</em>) – Future object containing the mission result.</p></li>
+<li><p><strong>drone_id</strong> (<em>int</em>) – Identifier of the drone that completed the mission.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="commands_action_client.CommandsActionClient.feedback_callback">
+<span class="sig-name descname"><span class="pre">feedback_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback_msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drone_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/commands_action_client.html#CommandsActionClient.feedback_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_action_client.CommandsActionClient.feedback_callback" title="Link to this definition"></a></dt>
+<dd><p>Callback executed when the drone provides feedback during mission execution.</p>
+<p>Each feedback message is logged and published to the MQTT topic corresponding
+to the farm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feedback_msg</strong> (<em>commands_action_interface.action.Commands.FeedbackMessage</em>) – ROS2 feedback message from the drone.</p></li>
+<li><p><strong>drone_id</strong> (<em>int</em>) – Identifier of the drone sending the feedback.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="commands_action_client.create_ros2_action_client">
+<span class="sig-prename descclassname"><span class="pre">commands_action_client.</span></span><span class="sig-name descname"><span class="pre">create_ros2_action_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">farm_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fleet_logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/commands_action_client.html#create_ros2_action_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_action_client.create_ros2_action_client" title="Link to this definition"></a></dt>
+<dd><p>Initializes the ROS2 environment and creates a multi-threaded Action Client
+for managing drone communication.</p>
+<p>The Action Client runs in a separate thread, allowing concurrent handling
+of ROS2 callbacks without blocking the main Fleet Manager process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>farm_id</strong> (<em>int</em>) – Unique identifier for the farm instance.</p></li>
+<li><p><strong>fleet_logger</strong> (<em>logging.Logger</em>) – Logger instance used for recording Fleet Manager events.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Instance of <a class="reference internal" href="#commands_action_client.CommandsActionClient" title="commands_action_client.CommandsActionClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandsActionClient</span></code></a> ready to communicate with drones.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#commands_action_client.CommandsActionClient" title="commands_action_client.CommandsActionClient">CommandsActionClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="commands_action_client.parse_feedback_data">
+<span class="sig-prename descclassname"><span class="pre">commands_action_client.</span></span><span class="sig-name descname"><span class="pre">parse_feedback_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/commands_action_client.html#parse_feedback_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#commands_action_client.parse_feedback_data" title="Link to this definition"></a></dt>
+<dd><p>Attempts to convert the incoming data to a dict.
+Accepts:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dict objects directly</p></li>
+<li><p>JSON strings</p></li>
+<li><p>strings using single quotes like a Python dict</p></li>
+<li><p>lists of characters (as you’re receiving)</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="init_fleet_component.html" class="btn btn-neutral float-left" title="Init Fleet Manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mqtt_component.html" class="btn btn-neutral float-right" title="MQTT Components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alejandro Botas Bárcena, Javier Grimaldos Chavarría, Estela Mora Barba.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

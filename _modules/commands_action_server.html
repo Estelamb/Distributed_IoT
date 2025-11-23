@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>commands_action_server &mdash; Farms Manager - Distributed Systems for IoT 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+const style = document.createElement('style');
+style.textContent = `.mermaid-container {
+    position: relative !important;
+    display: inline-block;
+    width: 100%;
+}
+
+.mermaid-fullscreen-btn {
+    position: absolute !important;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-fullscreen-content .mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-fullscreen-content .mermaid svg {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 85vh;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}
+`;
+document.head.appendChild(style);
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        return brightness < 128;
+    }
+    return false;
+};
+
+const initFullscreen = async () => {
+    await mermaid.run();
+
+    const all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(initFullscreen, 200);
+        return;
+    }
+
+    const darkTheme = isDarkTheme();
+
+    const modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-fullscreen-content${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    const modalContent = modal.querySelector('.mermaid-fullscreen-content');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = '';
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    const allButtons = [];
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.display = 'block';
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        container.appendChild(fullscreenBtn);
+        allButtons.push(fullscreenBtn);
+    });
+
+    // Update theme classes when theme changes
+    const updateTheme = () => {
+        const dark = isDarkTheme();
+        allButtons.forEach(btn => {
+            if (dark) {
+                btn.classList.add('dark-theme');
+            } else {
+                btn.classList.remove('dark-theme');
+            }
+        });
+        if (dark) {
+            modal.classList.add('dark-theme');
+            modalContent.classList.add('dark-theme');
+            closeBtn.classList.add('dark-theme');
+        } else {
+            modal.classList.remove('dark-theme');
+            modalContent.classList.remove('dark-theme');
+            closeBtn.classList.remove('dark-theme');
+        }
+    };
+
+    // Watch for theme changes
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style']
+    });
+};
+
+window.addEventListener("load", initFullscreen);
+</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Farms Manager - Distributed Systems for IoT
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/how_to_run.html">How to run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/docker.html">Docker Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started/nodered.html">Node-RED Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Code documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Farms Manager - Distributed Systems for IoT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">commands_action_server</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for commands_action_server</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module implements the **ROS2 Action Server** for each drone in the fleet.</span>
+<span class="sd">It defines how the drone receives mission commands from the Fleet Manager via ROS2 Actions,</span>
+<span class="sd">processes them sequentially, and reports real-time feedback and final results.</span>
+
+<span class="sd">Main responsibilities:</span>
+<span class="sd">-----------------------</span>
+<span class="sd">1. **Initialize** a ROS2 Action Server in a drone-specific namespace (`/drone&lt;ID&gt;/commands`).</span>
+<span class="sd">2. **Receive** missions as lists of commands from the Fleet Manager.</span>
+<span class="sd">3. **Execute** each command using the `process_command` function.</span>
+<span class="sd">4. **Publish feedback** for each executed command.</span>
+<span class="sd">5. **Return results** once the entire command sequence is completed.</span>
+
+<span class="sd">Flow overview:</span>
+<span class="sd">--------------</span>
+<span class="sd">.. code-block:: text</span>
+
+<span class="sd">    Fleet Manager  --&gt;  ROS2 Action Client  --&gt;  Drone Action Server</span>
+<span class="sd">         ↑                                              ↓</span>
+<span class="sd">         └────────── Feedback / Result Messages ─────────┘</span>
+
+<span class="sd">Each command received is processed sequentially, and a delay (`sleep`) is introduced to</span>
+<span class="sd">simulate realistic drone behavior. Feedback messages are sent after each command, while</span>
+<span class="sd">results are sent once all commands have been processed.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.action</span><span class="w"> </span><span class="kn">import</span> <span class="n">ActionServer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.executors</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiThreadedExecutor</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">commands_action_interface.action</span><span class="w"> </span><span class="kn">import</span> <span class="n">Commands</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Commands.commands_processor</span><span class="w"> </span><span class="kn">import</span> <span class="n">process_command</span>
+
+
+<div class="viewcode-block" id="CommandsActionServer">
+<a class="viewcode-back" href="../Drone_module/ros2_component.html#commands_action_server.CommandsActionServer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CommandsActionServer</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ROS2 Action Server node responsible for executing drone missions.</span>
+
+<span class="sd">    This class handles incoming action goals from the Fleet Manager, simulates</span>
+<span class="sd">    command execution using the `process_command` function, publishes feedback messages,</span>
+<span class="sd">    and returns results when the mission completes.</span>
+
+<span class="sd">    :param drone_id: Unique identifier of the drone instance.</span>
+<span class="sd">    :type drone_id: int</span>
+<span class="sd">    :param drone_logger: Logger instance used for recording drone system activity.</span>
+<span class="sd">    :type drone_logger: logging.Logger</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CommandsActionServer.__init__">
+<a class="viewcode-back" href="../Drone_module/ros2_component.html#commands_action_server.CommandsActionServer.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drone_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">drone_logger</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="s1">&#39;commands_action_server&#39;</span><span class="p">,</span>
+            <span class="n">namespace</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;drone</span><span class="si">{</span><span class="n">drone_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="n">allow_undeclared_parameters</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vehicle_id</span> <span class="o">=</span> <span class="n">drone_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drone_logger</span> <span class="o">=</span> <span class="n">drone_logger</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_action_server</span> <span class="o">=</span> <span class="n">ActionServer</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">Commands</span><span class="p">,</span>
+            <span class="s1">&#39;commands&#39;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">execute_callback</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">drone_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[ROS2] - Commands action server initialized for drone </span><span class="si">{</span><span class="n">drone_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drone_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[ROS2] - Action service available at: /drone</span><span class="si">{</span><span class="n">drone_id</span><span class="si">}</span><span class="s2">/commands&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CommandsActionServer.execute_callback">
+<a class="viewcode-back" href="../Drone_module/ros2_component.html#commands_action_server.CommandsActionServer.execute_callback">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal_handle</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Executes a mission goal received from the Fleet Manager.</span>
+
+<span class="sd">        This method processes each command in the received mission sequentially.</span>
+<span class="sd">        For each command:</span>
+<span class="sd">        - It simulates execution via `process_command()`</span>
+<span class="sd">        - Publishes feedback with the current command status</span>
+<span class="sd">        - Waits briefly between commands to emulate real drone timing</span>
+
+<span class="sd">        Once all commands are executed, it publishes the final result.</span>
+
+<span class="sd">        :param goal_handle: Handle representing the received goal.</span>
+<span class="sd">        :type goal_handle: rclpy.action.server.ServerGoalHandle</span>
+<span class="sd">        :return: Result message containing mission completion information.</span>
+<span class="sd">        :rtype: commands_action_interface.action.Commands.Result</span>
+<span class="sd">        :raises Exception: If the ROS2 system is interrupted or a command fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drone_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[ROS2] - Executing command sequence goal with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">goal_handle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">commands_list</span><span class="p">)</span><span class="si">}</span><span class="s2"> commands&quot;</span><span class="p">)</span>
+        <span class="n">feedback_msg</span> <span class="o">=</span> <span class="n">Commands</span><span class="o">.</span><span class="n">Feedback</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">command</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">goal_handle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">commands_list</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">ok</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">drone_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;[ROS2] - ROS2 shutdown requested during execution&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Shutdown requested during command execution&quot;</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">drone_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[ROS2] - Processing command </span><span class="si">{</span><span class="n">idx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">goal_handle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">commands_list</span><span class="p">)</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">command_id</span><span class="p">,</span> <span class="n">command_data</span> <span class="o">=</span> <span class="n">process_command</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">drone_logger</span><span class="p">)</span>
+
+                <span class="n">feedback_msg</span><span class="o">.</span><span class="n">command_status</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">command_data</span><span class="p">)</span>
+                <span class="n">goal_handle</span><span class="o">.</span><span class="n">publish_feedback</span><span class="p">(</span><span class="n">feedback_msg</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">drone_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[ROS2] - Feedback published: </span><span class="si">{</span><span class="n">feedback_msg</span><span class="o">.</span><span class="n">command_status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="n">goal_handle</span><span class="o">.</span><span class="n">succeed</span><span class="p">()</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Commands</span><span class="o">.</span><span class="n">Result</span><span class="p">()</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">plan_result</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vehicle_id</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;Result&quot;</span><span class="p">)]</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">drone_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[ROS2] - Command sequence completed successfully: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">plan_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">drone_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[ROS2] - Error during command execution: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">goal_handle</span><span class="o">.</span><span class="n">abort</span><span class="p">()</span>
+            <span class="k">raise</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="run_action_server">
+<a class="viewcode-back" href="../Drone_module/ros2_component.html#commands_action_server.run_action_server">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_action_server</span><span class="p">(</span><span class="n">drone_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">drone_logger</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Starts and manages the ROS2 Action Server for a given drone.</span>
+
+<span class="sd">    This function initializes the ROS2 environment, spins up the action server,</span>
+<span class="sd">    and handles clean shutdowns upon keyboard interruption or system stop.</span>
+
+<span class="sd">    :param drone_id: Unique identifier of the drone instance.</span>
+<span class="sd">    :type drone_id: int</span>
+<span class="sd">    :param drone_logger: Logger instance used for recording drone system activity.</span>
+<span class="sd">    :type drone_logger: logging.Logger</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">CommandsActionServer</span><span class="p">(</span><span class="n">drone_id</span><span class="p">,</span> <span class="n">drone_logger</span><span class="p">)</span>
+    <span class="n">executor</span> <span class="o">=</span> <span class="n">MultiThreadedExecutor</span><span class="p">()</span>
+    <span class="n">executor</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">server</span><span class="p">)</span>
+
+    <span class="n">executor_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">executor</span><span class="o">.</span><span class="n">spin</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">executor_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">ok</span><span class="p">():</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="n">drone_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[ROS2] - Ctrl+C received, shutting down gracefully&quot;</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">drone_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[ROS2] - Cleaning up executor and server&quot;</span><span class="p">)</span>
+        <span class="n">executor</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+        <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alejandro Botas Bárcena, Javier Grimaldos Chavarría, Estela Mora Barba.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
