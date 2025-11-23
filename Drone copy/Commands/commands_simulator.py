@@ -83,7 +83,7 @@ class TakeOff(Command):
     def execute(self):
         """Simulates the drone ascending into flight."""
         self.logger.info("[TAKEOFF] - Taking off...")
-        time.sleep(10)
+        time.sleep(5)
         
     def result(self):
         """Returns confirmation of a successful takeoff."""
@@ -91,6 +91,7 @@ class TakeOff(Command):
         return {
             "mission_id": self.mission_id,
             "command_id": self.command_id,
+            "command_type": self.command_type,
             "message": "Takeoff successful",
             "latitude": self.latitude,
             "longitude": self.longitude
@@ -113,7 +114,7 @@ class Land(Command):
     def execute(self):
         """Simulates the drone descending and landing."""
         self.logger.info("[LAND] - Landing...")
-        time.sleep(10)
+        time.sleep(5)
         
     def result(self):
         """Returns confirmation of a successful landing."""
@@ -121,6 +122,7 @@ class Land(Command):
         return {
             "mission_id": self.mission_id,
             "command_id": self.command_id,
+            "command_type": self.command_type,
             "message": "Landing successful",
             "latitude": self.latitude,
             "longitude": self.longitude
@@ -143,7 +145,7 @@ class Go_Waypoint(Command):
     def execute(self):
         """Simulates travel to the target waypoint."""
         self.logger.info("[GO_WAYPOINT] - Going to waypoint...")
-        time.sleep(10)
+        time.sleep(5)
         
     def result(self):
         """Returns confirmation that the waypoint has been reached."""
@@ -151,6 +153,7 @@ class Go_Waypoint(Command):
         return {
             "mission_id": self.mission_id,
             "command_id": self.command_id,
+            "command_type": self.command_type,
             "message": "Waypoint reached",
             "latitude": self.latitude,
             "longitude": self.longitude
@@ -173,7 +176,7 @@ class Go_Home(Command):
     def execute(self):
         """Simulates the drone flying back to its home location."""
         self.logger.info("[GO_HOME] - Returning home...")
-        time.sleep(10)
+        time.sleep(5)
         
     def result(self):
         """Returns confirmation of a successful return."""
@@ -181,6 +184,7 @@ class Go_Home(Command):
         return {
             "mission_id": self.mission_id,
             "command_id": self.command_id,
+            "command_type": self.command_type,
             "message": "Returned home",
             "latitude": self.latitude,
             "longitude": self.longitude
@@ -222,13 +226,14 @@ class Take_Picture(Command):
             self.logger.warning(f"[TAKE_PICTURE] - Image not found at {image_path}")
             self.image_b64 = None
 
-        time.sleep(10)
+        time.sleep(5)
 
     def result(self):
         """Returns a base64-encoded image string along with metadata."""
         return {
             "mission_id": self.mission_id,
             "command_id": self.command_id,
+            "command_type": self.command_type,
             "message": [f"Picture taken with {self.camera_device}", self.image_b64],
             "latitude": self.latitude,
             "longitude": self.longitude
@@ -281,7 +286,7 @@ class Analyse_Image(Command):
             self.logger.warning(f"[ANALYSE_IMAGE] - Analysed image not found at {analysed_img_path}")
             self.image_b64 = None
 
-        time.sleep(10)
+        time.sleep(5)
         
     def result(self):
         """Returns analysis results and the processed image (if available)."""
@@ -289,6 +294,7 @@ class Analyse_Image(Command):
         return {
             "mission_id": self.mission_id,
             "command_id": self.command_id,
+            "command_type": self.command_type,
             "message": [f"Picture analysed: {self.amount}", self.image_b64],
             "latitude": self.latitude,
             "longitude": self.longitude
@@ -313,7 +319,7 @@ class Treatment(Command):
     def execute(self):
         """Simulates spraying or applying a treatment at a target location."""
         self.logger.info("[TREATMENT] - Applying treatment...")
-        time.sleep(10)
+        time.sleep(5)
         
     def result(self):
         """Returns confirmation of treatment application."""
@@ -321,6 +327,7 @@ class Treatment(Command):
         return {
             "mission_id": self.mission_id,
             "command_id": self.command_id,
+            "command_type": self.command_type,
             "message": f"Treatment applied: {self.treatment}-{self.amount}",
             "latitude": self.latitude,
             "longitude": self.longitude

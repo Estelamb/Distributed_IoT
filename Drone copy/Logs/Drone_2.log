@@ -616,3 +616,1005 @@
 [2025-11-22 19:29:10,237][Drone 2][INFO][ROS2] - Processing command 16/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443475, "longitude": -3.738546, "treatment": "FERTILIZER", "amount": 0}}
 [2025-11-22 19:29:10,239][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
 [2025-11-22 19:29:10,242][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:03:22,367][Drone 2][INFO][Init ROS2] - Initializing ROS2 drone system for drone ID: 2
+[2025-11-23 11:03:22,424][Drone 2][INFO][ROS2] - Commands action server initialized for drone 2
+[2025-11-23 11:03:22,426][Drone 2][INFO][ROS2] - Action service available at: /drone2/commands
+[2025-11-23 11:08:43,468][Drone 2][INFO][ROS2] - Executing command sequence goal with 28 commands
+[2025-11-23 11:08:43,469][Drone 2][INFO][ROS2] - Processing command 1/28: {"missionId": 2, "commandId": 1, "commandType": "TAKEOFF", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 11:08:43,471][Drone 2][INFO][COMMANDS] - Processing TAKEOFF command
+[2025-11-23 11:08:43,472][Drone 2][INFO][TAKEOFF] - Taking off...
+[2025-11-23 11:08:53,467][Drone 2][INFO][TAKEOFF] - Takeoff successful
+[2025-11-23 11:08:53,470][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:08:53,472][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 1, 'message': 'Takeoff successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 11:08:54,475][Drone 2][INFO][ROS2] - Processing command 2/28: {"missionId": 2, "commandId": 2, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443587, "longitude": -3.738355}}
+[2025-11-23 11:08:54,478][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:08:54,480][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:09:04,481][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:09:04,484][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:09:04,487][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 2, 'message': 'Waypoint reached', 'latitude': 40.443587, 'longitude': -3.738355}
+[2025-11-23 11:09:05,488][Drone 2][INFO][ROS2] - Processing command 3/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443555, "longitude": -3.738452}}
+[2025-11-23 11:09:05,491][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:09:05,493][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:09:15,489][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:09:15,492][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:09:15,494][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 11:09:16,496][Drone 2][INFO][ROS2] - Processing command 4/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443555, "longitude": -3.738452, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 11:09:16,500][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:09:16,502][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:09:26,503][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:09:26,507][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:09:26,510][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 11:09:27,511][Drone 2][INFO][ROS2] - Processing command 5/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443542, "longitude": -3.73856}}
+[2025-11-23 11:09:27,514][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:09:27,516][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:09:37,518][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:09:37,521][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:09:37,523][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 11:09:38,524][Drone 2][INFO][ROS2] - Processing command 6/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443542, "longitude": -3.73856, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:09:38,528][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:09:38,529][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:09:48,536][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:09:48,538][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:09:48,540][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 11:09:49,542][Drone 2][INFO][ROS2] - Processing command 7/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443527, "longitude": -3.738693}}
+[2025-11-23 11:09:49,544][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:09:49,546][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:09:59,548][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:09:59,551][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:09:59,553][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 11:10:00,554][Drone 2][INFO][ROS2] - Processing command 8/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443527, "longitude": -3.738693, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:10:00,557][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:10:00,559][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:10:10,561][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:10:10,563][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:10:10,566][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 11:10:11,567][Drone 2][INFO][ROS2] - Processing command 9/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443518, "longitude": -3.738819}}
+[2025-11-23 11:10:11,570][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:10:11,573][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:10:21,580][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:10:21,582][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:10:21,584][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 11:10:22,585][Drone 2][INFO][ROS2] - Processing command 10/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443518, "longitude": -3.738819, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:10:22,587][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:10:22,589][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:10:32,590][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:10:32,593][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:10:32,595][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 11:10:33,597][Drone 2][INFO][ROS2] - Processing command 11/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443451, "longitude": -3.738816}}
+[2025-11-23 11:10:33,598][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:10:33,600][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:10:43,601][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:10:43,604][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:10:43,605][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 11:10:44,606][Drone 2][INFO][ROS2] - Processing command 12/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443451, "longitude": -3.738816, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:10:44,609][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:10:44,610][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:10:54,612][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:10:54,614][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:10:54,616][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 11:10:55,617][Drone 2][INFO][ROS2] - Processing command 13/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443459, "longitude": -3.738682}}
+[2025-11-23 11:10:55,619][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:10:55,621][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:11:05,622][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:11:05,625][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:11:05,627][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 11:11:06,629][Drone 2][INFO][ROS2] - Processing command 14/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443459, "longitude": -3.738682, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:11:06,630][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:11:06,631][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:11:16,634][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:11:16,637][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:11:16,639][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 11:11:17,641][Drone 2][INFO][ROS2] - Processing command 15/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443475, "longitude": -3.738546}}
+[2025-11-23 11:11:17,644][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:11:17,645][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:11:27,646][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:11:27,648][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:11:27,650][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 11:11:28,651][Drone 2][INFO][ROS2] - Processing command 16/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443475, "longitude": -3.738546, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 11:11:28,653][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:11:28,655][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:11:38,656][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:11:38,658][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:11:38,661][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 11:11:39,663][Drone 2][INFO][ROS2] - Processing command 17/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443488, "longitude": -3.738429}}
+[2025-11-23 11:11:39,665][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:11:39,667][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:11:49,670][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:11:49,671][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:11:49,673][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 11:11:50,675][Drone 2][INFO][ROS2] - Processing command 18/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443488, "longitude": -3.738429, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 11:11:50,676][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:11:50,678][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:12:00,679][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:12:00,682][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:12:00,684][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 11:12:01,685][Drone 2][INFO][ROS2] - Processing command 19/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443418, "longitude": -3.738421}}
+[2025-11-23 11:12:01,688][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:12:01,690][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:12:11,692][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:12:11,695][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:12:11,697][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 11:12:12,699][Drone 2][INFO][ROS2] - Processing command 20/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443418, "longitude": -3.738421, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:12:12,701][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:12:12,703][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:12:22,701][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:12:22,704][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:12:22,706][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 11:12:23,708][Drone 2][INFO][ROS2] - Processing command 21/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443412, "longitude": -3.738528}}
+[2025-11-23 11:12:23,711][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:12:23,712][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:12:33,713][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:12:33,715][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:12:33,717][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443412, 'longitude': -3.738528}
+[2025-11-23 11:12:34,718][Drone 2][INFO][ROS2] - Processing command 22/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443412, "longitude": -3.738528, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:12:34,721][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:12:34,723][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:12:44,725][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:12:44,727][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:12:44,729][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443412, 'longitude': -3.738528}
+[2025-11-23 11:12:45,728][Drone 2][INFO][ROS2] - Processing command 23/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443399, "longitude": -3.738673}}
+[2025-11-23 11:12:45,730][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:12:45,732][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:12:55,734][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:12:55,735][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:12:55,737][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443399, 'longitude': -3.738673}
+[2025-11-23 11:12:56,739][Drone 2][INFO][ROS2] - Processing command 24/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443399, "longitude": -3.738673, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:12:56,743][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:12:56,745][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:13:06,746][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:13:06,749][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:13:06,751][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443399, 'longitude': -3.738673}
+[2025-11-23 11:13:07,753][Drone 2][INFO][ROS2] - Processing command 25/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443381, "longitude": -3.73879}}
+[2025-11-23 11:13:07,756][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:13:07,757][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:13:17,753][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:13:17,756][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:13:17,758][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Waypoint reached', 'latitude': 40.443381, 'longitude': -3.73879}
+[2025-11-23 11:13:18,759][Drone 2][INFO][ROS2] - Processing command 26/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443381, "longitude": -3.73879, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:13:18,763][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:13:18,764][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:13:28,765][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:13:28,766][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:13:28,769][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443381, 'longitude': -3.73879}
+[2025-11-23 11:13:29,770][Drone 2][INFO][ROS2] - Processing command 27/28: {"missionId": 2, "commandId": 3, "commandType": "GO_HOME", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 11:13:29,773][Drone 2][INFO][COMMANDS] - Processing GO_HOME command
+[2025-11-23 11:13:29,774][Drone 2][INFO][GO_HOME] - Returning home...
+[2025-11-23 11:13:39,776][Drone 2][INFO][GO_HOME] - Return home successful
+[2025-11-23 11:13:39,778][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:13:39,780][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Returned home', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 11:13:40,782][Drone 2][INFO][ROS2] - Processing command 28/28: {"missionId": 2, "commandId": 3, "commandType": "LAND", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 11:13:40,784][Drone 2][INFO][COMMANDS] - Processing LAND command
+[2025-11-23 11:13:40,785][Drone 2][INFO][LAND] - Landing...
+[2025-11-23 11:13:50,784][Drone 2][INFO][LAND] - Landing successful
+[2025-11-23 11:13:50,786][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:13:50,788][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'Landing successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 11:13:51,791][Drone 2][INFO][ROS2] - Command sequence completed successfully: ['2', 'Result']
+[2025-11-23 11:39:24,766][Drone 2][INFO][ROS2] - Cleaning up executor and server
+[2025-11-23 11:39:36,617][Drone 2][INFO][Init ROS2] - Initializing ROS2 drone system for drone ID: 2
+[2025-11-23 11:39:36,673][Drone 2][INFO][ROS2] - Commands action server initialized for drone 2
+[2025-11-23 11:39:36,674][Drone 2][INFO][ROS2] - Action service available at: /drone2/commands
+[2025-11-23 11:39:53,891][Drone 2][INFO][ROS2] - Executing command sequence goal with 28 commands
+[2025-11-23 11:39:53,893][Drone 2][INFO][ROS2] - Processing command 1/28: {"missionId": 2, "commandId": 1, "commandType": "TAKEOFF", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 11:39:53,894][Drone 2][INFO][COMMANDS] - Processing TAKEOFF command
+[2025-11-23 11:39:53,896][Drone 2][INFO][TAKEOFF] - Taking off...
+[2025-11-23 11:40:03,897][Drone 2][INFO][TAKEOFF] - Takeoff successful
+[2025-11-23 11:40:03,901][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:40:03,903][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 1, 'message': '1. TAKEOFF: Takeoff successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 11:40:04,905][Drone 2][INFO][ROS2] - Processing command 2/28: {"missionId": 2, "commandId": 2, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443587, "longitude": -3.738355}}
+[2025-11-23 11:40:04,908][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:40:04,909][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:40:14,911][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:40:14,915][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:40:14,917][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 2, 'message': '2. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443587, 'longitude': -3.738355}
+[2025-11-23 11:40:15,934][Drone 2][INFO][ROS2] - Processing command 3/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443555, "longitude": -3.738452}}
+[2025-11-23 11:40:15,938][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:40:15,940][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:40:25,941][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:40:25,944][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:40:25,946][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 11:40:26,948][Drone 2][INFO][ROS2] - Processing command 4/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443555, "longitude": -3.738452, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 11:40:26,951][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:40:26,953][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:40:36,955][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:40:36,957][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:40:36,959][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-0', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 11:40:37,961][Drone 2][INFO][ROS2] - Processing command 5/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443542, "longitude": -3.73856}}
+[2025-11-23 11:40:37,964][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:40:37,966][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:40:47,974][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:40:47,977][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:40:47,980][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 11:40:48,982][Drone 2][INFO][ROS2] - Processing command 6/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443542, "longitude": -3.73856, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:40:48,985][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:40:48,987][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:40:58,989][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:40:58,991][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:40:58,993][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-2', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 11:40:59,994][Drone 2][INFO][ROS2] - Processing command 7/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443527, "longitude": -3.738693}}
+[2025-11-23 11:40:59,995][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:40:59,997][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:41:10,042][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:41:10,044][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:41:10,046][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 11:41:11,047][Drone 2][INFO][ROS2] - Processing command 8/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443527, "longitude": -3.738693, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:41:11,049][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:41:11,052][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:41:21,072][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:41:21,075][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:41:21,077][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-1', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 11:41:22,078][Drone 2][INFO][ROS2] - Processing command 9/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443518, "longitude": -3.738819}}
+[2025-11-23 11:41:22,079][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:41:22,080][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:41:32,082][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:41:32,084][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:41:32,086][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 11:41:33,087][Drone 2][INFO][ROS2] - Processing command 10/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443518, "longitude": -3.738819, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:41:33,090][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:41:33,092][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:41:43,093][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:41:43,095][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:41:43,097][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-1', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 11:41:44,098][Drone 2][INFO][ROS2] - Processing command 11/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443451, "longitude": -3.738816}}
+[2025-11-23 11:41:44,100][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:41:44,102][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:41:54,114][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:41:54,116][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:41:54,117][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 11:41:55,118][Drone 2][INFO][ROS2] - Processing command 12/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443451, "longitude": -3.738816, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:41:55,120][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:41:55,122][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:42:05,123][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:42:05,126][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:42:05,128][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-2', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 11:42:06,129][Drone 2][INFO][ROS2] - Processing command 13/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443459, "longitude": -3.738682}}
+[2025-11-23 11:42:06,133][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:42:06,134][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:42:16,143][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:42:16,145][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:42:16,147][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 11:42:17,148][Drone 2][INFO][ROS2] - Processing command 14/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443459, "longitude": -3.738682, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:42:17,152][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:42:17,154][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:42:27,155][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:42:27,158][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:42:27,160][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-1', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 11:42:28,161][Drone 2][INFO][ROS2] - Processing command 15/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443475, "longitude": -3.738546}}
+[2025-11-23 11:42:28,163][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:42:28,165][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:42:38,168][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:42:38,171][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:42:38,172][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 11:42:39,174][Drone 2][INFO][ROS2] - Processing command 16/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443475, "longitude": -3.738546, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 11:42:39,178][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:42:39,179][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:42:49,199][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:42:49,201][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:42:49,203][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-0', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 11:42:50,204][Drone 2][INFO][ROS2] - Processing command 17/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443488, "longitude": -3.738429}}
+[2025-11-23 11:42:50,208][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:42:50,210][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:43:00,211][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:43:00,213][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:43:00,215][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 11:43:01,216][Drone 2][INFO][ROS2] - Processing command 18/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443488, "longitude": -3.738429, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 11:43:01,219][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:43:01,222][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:43:11,223][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:43:11,226][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:43:11,227][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-0', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 11:43:12,229][Drone 2][INFO][ROS2] - Processing command 19/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443418, "longitude": -3.738421}}
+[2025-11-23 11:43:12,231][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:43:12,232][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:43:22,251][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:43:22,254][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:43:22,255][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 11:43:23,256][Drone 2][INFO][ROS2] - Processing command 20/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443418, "longitude": -3.738421, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:43:23,259][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:43:23,261][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:43:33,262][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:43:33,264][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:43:33,266][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-1', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 11:43:34,267][Drone 2][INFO][ROS2] - Processing command 21/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443412, "longitude": -3.738528}}
+[2025-11-23 11:43:34,270][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:43:34,271][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:43:39,251][Drone 2][INFO][ROS2] - Cleaning up executor and server
+[2025-11-23 11:43:44,272][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:43:44,274][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:43:44,276][Drone 2][ERROR][ROS2] - Error during command execution: Failed to publish feedback with an action server: feedback publisher is invalid, at ./src/rcl_action/action_server.c:1002
+Traceback (most recent call last):
+  File "/home/Drone/src/commands_action_interface/commands_action_interface/commands_action_server.py", line 104, in execute_callback
+    goal_handle.publish_feedback(feedback_msg)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/action/server.py", line 147, in publish_feedback
+    self._action_server._handle.publish_feedback(feedback_message)
+rclpy._rclpy_pybind11.RCLError: Failed to publish feedback with an action server: feedback publisher is invalid, at ./src/rcl_action/action_server.c:1002
+[2025-11-23 11:43:55,865][Drone 2][INFO][Init ROS2] - Initializing ROS2 drone system for drone ID: 2
+[2025-11-23 11:43:55,922][Drone 2][INFO][ROS2] - Commands action server initialized for drone 2
+[2025-11-23 11:43:55,923][Drone 2][INFO][ROS2] - Action service available at: /drone2/commands
+[2025-11-23 11:44:47,155][Drone 2][INFO][ROS2] - Executing command sequence goal with 28 commands
+[2025-11-23 11:44:47,157][Drone 2][INFO][ROS2] - Processing command 1/28: {"missionId": 2, "commandId": 1, "commandType": "TAKEOFF", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 11:44:47,160][Drone 2][INFO][COMMANDS] - Processing TAKEOFF command
+[2025-11-23 11:44:47,161][Drone 2][INFO][TAKEOFF] - Taking off...
+[2025-11-23 11:44:57,162][Drone 2][INFO][TAKEOFF] - Takeoff successful
+[2025-11-23 11:44:57,165][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:44:57,168][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 1, 'message': '1. TAKEOFF: Takeoff successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 11:44:58,170][Drone 2][INFO][ROS2] - Processing command 2/28: {"missionId": 2, "commandId": 2, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443587, "longitude": -3.738355}}
+[2025-11-23 11:44:58,172][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:44:58,174][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:45:08,176][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:45:08,180][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:45:08,182][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 2, 'message': '2. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443587, 'longitude': -3.738355}
+[2025-11-23 11:45:09,184][Drone 2][INFO][ROS2] - Processing command 3/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443555, "longitude": -3.738452}}
+[2025-11-23 11:45:09,188][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:45:09,191][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:45:19,196][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:45:19,198][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:45:19,200][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 11:45:20,202][Drone 2][INFO][ROS2] - Processing command 4/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443555, "longitude": -3.738452, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 11:45:20,206][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:45:20,208][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:45:30,209][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:45:30,211][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:45:30,213][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-0', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 11:45:31,215][Drone 2][INFO][ROS2] - Processing command 5/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443542, "longitude": -3.73856}}
+[2025-11-23 11:45:31,215][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:45:31,217][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:45:41,218][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:45:41,221][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:45:41,223][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 11:45:42,225][Drone 2][INFO][ROS2] - Processing command 6/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443542, "longitude": -3.73856, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:45:42,229][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:45:42,231][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:45:52,246][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:45:52,249][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:45:52,251][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-2', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 11:45:53,253][Drone 2][INFO][ROS2] - Processing command 7/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443527, "longitude": -3.738693}}
+[2025-11-23 11:45:53,256][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:45:53,258][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:46:03,259][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:46:03,263][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:46:03,266][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 11:46:04,268][Drone 2][INFO][ROS2] - Processing command 8/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443527, "longitude": -3.738693, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:46:04,270][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:46:04,272][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:46:14,273][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:46:14,277][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:46:14,280][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-1', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 11:46:15,282][Drone 2][INFO][ROS2] - Processing command 9/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443518, "longitude": -3.738819}}
+[2025-11-23 11:46:15,285][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:46:15,287][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:46:25,310][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:46:25,314][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:46:25,317][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 11:46:26,319][Drone 2][INFO][ROS2] - Processing command 10/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443518, "longitude": -3.738819, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:46:26,323][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:46:26,325][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:46:36,326][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:46:36,330][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:46:36,332][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-1', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 11:46:37,333][Drone 2][INFO][ROS2] - Processing command 11/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443451, "longitude": -3.738816}}
+[2025-11-23 11:46:37,335][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:46:37,336][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:46:47,356][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:46:47,360][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:46:47,363][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 11:46:48,364][Drone 2][INFO][ROS2] - Processing command 12/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443451, "longitude": -3.738816, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:46:48,367][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:46:48,369][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:46:58,370][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:46:58,373][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:46:58,376][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-2', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 11:46:59,378][Drone 2][INFO][ROS2] - Processing command 13/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443459, "longitude": -3.738682}}
+[2025-11-23 11:46:59,381][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:46:59,383][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:47:09,385][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:47:09,389][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:47:09,391][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 11:47:10,394][Drone 2][INFO][ROS2] - Processing command 14/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443459, "longitude": -3.738682, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:47:10,397][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:47:10,399][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:47:20,416][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:47:20,420][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:47:20,422][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-1', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 11:47:21,424][Drone 2][INFO][ROS2] - Processing command 15/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443475, "longitude": -3.738546}}
+[2025-11-23 11:47:21,427][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:47:21,428][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:47:31,430][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:47:31,434][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:47:31,436][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 11:47:32,438][Drone 2][INFO][ROS2] - Processing command 16/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443475, "longitude": -3.738546, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 11:47:32,442][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:47:32,444][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:47:42,446][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:47:42,449][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:47:42,450][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-0', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 11:47:43,452][Drone 2][INFO][ROS2] - Processing command 17/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443488, "longitude": -3.738429}}
+[2025-11-23 11:47:43,455][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:47:43,457][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:47:53,452][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:47:53,453][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:47:53,455][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 11:47:54,458][Drone 2][INFO][ROS2] - Processing command 18/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443488, "longitude": -3.738429, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 11:47:54,460][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:47:54,461][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:48:04,462][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:48:04,466][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:48:04,469][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-0', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 11:48:05,470][Drone 2][INFO][ROS2] - Processing command 19/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443418, "longitude": -3.738421}}
+[2025-11-23 11:48:05,472][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:48:05,474][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:48:15,475][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:48:15,477][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:48:15,479][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 11:48:16,480][Drone 2][INFO][ROS2] - Processing command 20/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443418, "longitude": -3.738421, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:48:16,484][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:48:16,486][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:48:26,488][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:48:26,492][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:48:26,494][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-1', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 11:48:27,496][Drone 2][INFO][ROS2] - Processing command 21/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443412, "longitude": -3.738528}}
+[2025-11-23 11:48:27,499][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:48:27,501][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:48:37,503][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:48:37,505][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:48:37,507][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443412, 'longitude': -3.738528}
+[2025-11-23 11:48:38,508][Drone 2][INFO][ROS2] - Processing command 22/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443412, "longitude": -3.738528, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:48:38,510][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:48:38,512][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:48:48,515][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:48:48,518][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:48:48,521][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-2', 'latitude': 40.443412, 'longitude': -3.738528}
+[2025-11-23 11:48:49,524][Drone 2][INFO][ROS2] - Processing command 23/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443399, "longitude": -3.738673}}
+[2025-11-23 11:48:49,525][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:48:49,527][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:48:59,528][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:48:59,532][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:48:59,534][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443399, 'longitude': -3.738673}
+[2025-11-23 11:49:00,535][Drone 2][INFO][ROS2] - Processing command 24/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443399, "longitude": -3.738673, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:49:00,537][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:49:00,539][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:49:10,546][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:49:10,547][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:49:10,549][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-2', 'latitude': 40.443399, 'longitude': -3.738673}
+[2025-11-23 11:49:11,551][Drone 2][INFO][ROS2] - Processing command 25/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443381, "longitude": -3.73879}}
+[2025-11-23 11:49:11,553][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:49:11,554][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:49:21,578][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:49:21,579][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:49:21,581][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. GO_WAYPOINT: Waypoint reached', 'latitude': 40.443381, 'longitude': -3.73879}
+[2025-11-23 11:49:22,582][Drone 2][INFO][ROS2] - Processing command 26/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443381, "longitude": -3.73879, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:49:22,586][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:49:22,588][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:49:32,589][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:49:32,593][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:49:32,595][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'message': '4. TREATMENT: Treatment applied: FERTILIZER-2', 'latitude': 40.443381, 'longitude': -3.73879}
+[2025-11-23 11:49:33,597][Drone 2][INFO][ROS2] - Processing command 27/28: {"missionId": 2, "commandId": 3, "commandType": "GO_HOME", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 11:49:33,601][Drone 2][INFO][COMMANDS] - Processing GO_HOME command
+[2025-11-23 11:49:33,603][Drone 2][INFO][GO_HOME] - Returning home...
+[2025-11-23 11:49:43,604][Drone 2][INFO][GO_HOME] - Return home successful
+[2025-11-23 11:49:43,607][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:49:43,609][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': 'GO_HOME: Returned home', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 11:49:44,611][Drone 2][INFO][ROS2] - Processing command 28/28: {"missionId": 2, "commandId": 3, "commandType": "LAND", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 11:49:44,614][Drone 2][INFO][COMMANDS] - Processing LAND command
+[2025-11-23 11:49:44,615][Drone 2][INFO][LAND] - Landing...
+[2025-11-23 11:49:54,609][Drone 2][INFO][LAND] - Landing successful
+[2025-11-23 11:49:54,612][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:49:54,615][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'message': '3. LAND: Landing successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 11:49:55,617][Drone 2][INFO][ROS2] - Command sequence completed successfully: ['2', 'Result']
+[2025-11-23 11:58:22,800][Drone 2][INFO][Init ROS2] - Initializing ROS2 drone system for drone ID: 2
+[2025-11-23 11:58:22,857][Drone 2][INFO][ROS2] - Commands action server initialized for drone 2
+[2025-11-23 11:58:22,858][Drone 2][INFO][ROS2] - Action service available at: /drone2/commands
+[2025-11-23 11:58:41,611][Drone 2][INFO][ROS2] - Executing command sequence goal with 28 commands
+[2025-11-23 11:58:41,613][Drone 2][INFO][ROS2] - Processing command 1/28: {"missionId": 2, "commandId": 1, "commandType": "TAKEOFF", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 11:58:41,615][Drone 2][INFO][COMMANDS] - Processing TAKEOFF command
+[2025-11-23 11:58:41,617][Drone 2][INFO][TAKEOFF] - Taking off...
+[2025-11-23 11:58:51,636][Drone 2][INFO][TAKEOFF] - Takeoff successful
+[2025-11-23 11:58:51,640][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:58:51,643][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 1, 'command_type': 'TAKEOFF', 'message': 'Takeoff successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 11:58:52,645][Drone 2][INFO][ROS2] - Processing command 2/28: {"missionId": 2, "commandId": 2, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443587, "longitude": -3.738355}}
+[2025-11-23 11:58:52,648][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:58:52,650][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:59:02,652][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:59:02,654][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:59:02,656][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 2, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443587, 'longitude': -3.738355}
+[2025-11-23 11:59:03,657][Drone 2][INFO][ROS2] - Processing command 3/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443555, "longitude": -3.738452}}
+[2025-11-23 11:59:03,660][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:59:03,662][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:59:13,663][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:59:13,666][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:59:13,668][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 11:59:14,669][Drone 2][INFO][ROS2] - Processing command 4/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443555, "longitude": -3.738452, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 11:59:14,672][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:59:14,674][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:59:24,696][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:59:24,698][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:59:24,701][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 11:59:25,703][Drone 2][INFO][ROS2] - Processing command 5/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443542, "longitude": -3.73856}}
+[2025-11-23 11:59:25,706][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:59:25,708][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:59:35,709][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:59:35,711][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:59:35,713][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 11:59:36,715][Drone 2][INFO][ROS2] - Processing command 6/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443542, "longitude": -3.73856, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 11:59:36,718][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:59:36,720][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 11:59:46,730][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 11:59:46,733][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:59:46,735][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 11:59:47,737][Drone 2][INFO][ROS2] - Processing command 7/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443527, "longitude": -3.738693}}
+[2025-11-23 11:59:47,740][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 11:59:47,742][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 11:59:57,744][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 11:59:57,747][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 11:59:57,749][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 11:59:58,751][Drone 2][INFO][ROS2] - Processing command 8/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443527, "longitude": -3.738693, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 11:59:58,753][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 11:59:58,755][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:00:08,757][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:00:08,759][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:00:08,761][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 12:00:09,762][Drone 2][INFO][ROS2] - Processing command 9/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443518, "longitude": -3.738819}}
+[2025-11-23 12:00:09,764][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:00:09,766][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:00:19,804][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:00:19,806][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:00:19,808][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 12:00:20,810][Drone 2][INFO][ROS2] - Processing command 10/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443518, "longitude": -3.738819, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 12:00:20,812][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:00:20,814][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:00:30,815][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:00:30,819][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:00:30,822][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 12:00:31,823][Drone 2][INFO][ROS2] - Processing command 11/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443451, "longitude": -3.738816}}
+[2025-11-23 12:00:31,826][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:00:31,827][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:00:41,829][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:00:41,832][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:00:41,840][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 12:00:42,843][Drone 2][INFO][ROS2] - Processing command 12/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443451, "longitude": -3.738816, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:00:42,845][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:00:42,846][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:00:52,856][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:00:52,858][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:00:52,860][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 12:00:53,862][Drone 2][INFO][ROS2] - Processing command 13/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443459, "longitude": -3.738682}}
+[2025-11-23 12:00:53,864][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:00:53,866][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:01:03,867][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:01:03,870][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:01:03,871][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 12:01:04,873][Drone 2][INFO][ROS2] - Processing command 14/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443459, "longitude": -3.738682, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 12:01:04,876][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:01:04,878][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:01:14,879][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:01:14,882][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:01:14,884][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 12:01:15,886][Drone 2][INFO][ROS2] - Processing command 15/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443475, "longitude": -3.738546}}
+[2025-11-23 12:01:15,889][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:01:15,891][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:01:25,896][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:01:25,899][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:01:25,901][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 12:01:26,902][Drone 2][INFO][ROS2] - Processing command 16/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443475, "longitude": -3.738546, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 12:01:26,905][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:01:26,907][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:01:36,908][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:01:36,911][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:01:36,912][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 12:01:37,918][Drone 2][INFO][ROS2] - Processing command 17/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443488, "longitude": -3.738429}}
+[2025-11-23 12:01:37,920][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:01:37,922][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:01:47,926][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:01:47,930][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:01:47,932][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 12:01:48,935][Drone 2][INFO][ROS2] - Processing command 18/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443488, "longitude": -3.738429, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 12:01:48,938][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:01:48,940][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:01:58,941][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:01:58,944][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:01:58,946][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 12:01:59,948][Drone 2][INFO][ROS2] - Processing command 19/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443418, "longitude": -3.738421}}
+[2025-11-23 12:01:59,951][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:01:59,953][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:02:09,954][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:02:09,958][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:02:09,960][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 12:02:10,962][Drone 2][INFO][ROS2] - Processing command 20/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443418, "longitude": -3.738421, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 12:02:10,965][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:02:10,967][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:02:20,979][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:02:20,983][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:02:20,985][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 12:02:21,987][Drone 2][INFO][ROS2] - Processing command 21/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443412, "longitude": -3.738528}}
+[2025-11-23 12:02:21,990][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:02:21,994][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:02:31,997][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:02:32,001][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:02:32,004][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443412, 'longitude': -3.738528}
+[2025-11-23 12:02:33,009][Drone 2][INFO][ROS2] - Processing command 22/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443412, "longitude": -3.738528, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:02:33,011][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:02:33,012][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:02:43,014][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:02:43,017][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:02:43,019][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443412, 'longitude': -3.738528}
+[2025-11-23 12:02:44,021][Drone 2][INFO][ROS2] - Processing command 23/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443399, "longitude": -3.738673}}
+[2025-11-23 12:02:44,024][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:02:44,026][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:02:54,045][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:02:54,048][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:02:54,050][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443399, 'longitude': -3.738673}
+[2025-11-23 12:02:55,052][Drone 2][INFO][ROS2] - Processing command 24/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443399, "longitude": -3.738673, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:02:55,054][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:02:55,056][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:03:05,057][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:03:05,059][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:03:05,061][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443399, 'longitude': -3.738673}
+[2025-11-23 12:03:06,063][Drone 2][INFO][ROS2] - Processing command 25/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443381, "longitude": -3.73879}}
+[2025-11-23 12:03:06,066][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:03:06,068][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:03:16,069][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:03:16,070][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:03:16,072][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443381, 'longitude': -3.73879}
+[2025-11-23 12:03:17,102][Drone 2][INFO][ROS2] - Processing command 26/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443381, "longitude": -3.73879, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:03:17,105][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:03:17,107][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:03:27,108][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:03:27,110][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:03:27,113][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443381, 'longitude': -3.73879}
+[2025-11-23 12:03:28,114][Drone 2][INFO][ROS2] - Processing command 27/28: {"missionId": 2, "commandId": 3, "commandType": "GO_HOME", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 12:03:28,116][Drone 2][INFO][COMMANDS] - Processing GO_HOME command
+[2025-11-23 12:03:28,118][Drone 2][INFO][GO_HOME] - Returning home...
+[2025-11-23 12:03:38,120][Drone 2][INFO][GO_HOME] - Return home successful
+[2025-11-23 12:03:38,121][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:03:38,123][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_HOME', 'message': 'Returned home', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 12:03:39,125][Drone 2][INFO][ROS2] - Processing command 28/28: {"missionId": 2, "commandId": 3, "commandType": "LAND", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 12:03:39,127][Drone 2][INFO][COMMANDS] - Processing LAND command
+[2025-11-23 12:03:39,129][Drone 2][INFO][LAND] - Landing...
+[2025-11-23 12:03:49,150][Drone 2][INFO][LAND] - Landing successful
+[2025-11-23 12:03:49,151][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:03:49,153][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'LAND', 'message': 'Landing successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 12:03:50,156][Drone 2][INFO][ROS2] - Command sequence completed successfully: ['2', 'Result']
+[2025-11-23 12:09:02,542][Drone 2][INFO][ROS2] - Cleaning up executor and server
+[2025-11-23 12:09:18,370][Drone 2][INFO][Init ROS2] - Initializing ROS2 drone system for drone ID: 2
+[2025-11-23 12:09:18,456][Drone 2][INFO][ROS2] - Commands action server initialized for drone 2
+[2025-11-23 12:09:18,457][Drone 2][INFO][ROS2] - Action service available at: /drone2/commands
+[2025-11-23 12:09:44,343][Drone 2][INFO][ROS2] - Executing command sequence goal with 28 commands
+[2025-11-23 12:09:44,344][Drone 2][INFO][ROS2] - Processing command 1/28: {"missionId": 2, "commandId": 1, "commandType": "TAKEOFF", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 12:09:44,345][Drone 2][INFO][COMMANDS] - Processing TAKEOFF command
+[2025-11-23 12:09:44,347][Drone 2][INFO][TAKEOFF] - Taking off...
+[2025-11-23 12:09:49,351][Drone 2][INFO][TAKEOFF] - Takeoff successful
+[2025-11-23 12:09:49,353][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:09:49,355][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 1, 'command_type': 'TAKEOFF', 'message': 'Takeoff successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 12:09:50,356][Drone 2][INFO][ROS2] - Processing command 2/28: {"missionId": 2, "commandId": 2, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443587, "longitude": -3.738355}}
+[2025-11-23 12:09:50,360][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:09:50,362][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:09:55,363][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:09:55,367][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:09:55,369][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 2, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443587, 'longitude': -3.738355}
+[2025-11-23 12:09:56,371][Drone 2][INFO][ROS2] - Processing command 3/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443555, "longitude": -3.738452}}
+[2025-11-23 12:09:56,375][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:09:56,376][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:10:01,378][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:10:01,381][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:10:01,382][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 12:10:02,384][Drone 2][INFO][ROS2] - Processing command 4/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443555, "longitude": -3.738452, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 12:10:02,386][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:10:02,388][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:10:07,389][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:10:07,393][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:10:07,395][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 12:10:08,397][Drone 2][INFO][ROS2] - Processing command 5/28: {"missionId": 2, "commandId": 5, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443542, "longitude": -3.73856}}
+[2025-11-23 12:10:08,398][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:10:08,400][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:10:13,402][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:10:13,404][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:10:13,407][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 5, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 12:10:14,409][Drone 2][INFO][ROS2] - Processing command 6/28: {"missionId": 2, "commandId": 6, "commandType": "TREATMENT", "params": {"latitude": 40.443542, "longitude": -3.73856, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:10:14,411][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:10:14,413][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:10:19,445][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:10:19,448][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:10:19,450][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 6, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 12:10:20,452][Drone 2][INFO][ROS2] - Processing command 7/28: {"missionId": 2, "commandId": 7, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443527, "longitude": -3.738693}}
+[2025-11-23 12:10:20,454][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:10:20,455][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:10:25,457][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:10:25,460][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:10:25,463][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 7, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 12:10:26,464][Drone 2][INFO][ROS2] - Processing command 8/28: {"missionId": 2, "commandId": 8, "commandType": "TREATMENT", "params": {"latitude": 40.443527, "longitude": -3.738693, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 12:10:26,467][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:10:26,470][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:10:31,471][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:10:31,475][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:10:31,477][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 8, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 12:10:32,479][Drone 2][INFO][ROS2] - Processing command 9/28: {"missionId": 2, "commandId": 9, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443518, "longitude": -3.738819}}
+[2025-11-23 12:10:32,480][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:10:32,481][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:10:37,482][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:10:37,485][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:10:37,488][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 9, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 12:10:38,490][Drone 2][INFO][ROS2] - Processing command 10/28: {"missionId": 2, "commandId": 10, "commandType": "TREATMENT", "params": {"latitude": 40.443518, "longitude": -3.738819, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 12:10:38,492][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:10:38,495][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:10:43,496][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:10:43,500][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:10:43,502][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 10, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 12:10:44,503][Drone 2][INFO][ROS2] - Processing command 11/28: {"missionId": 2, "commandId": 11, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443451, "longitude": -3.738816}}
+[2025-11-23 12:10:44,507][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:10:44,510][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:10:49,538][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:10:49,542][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:10:49,545][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 11, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 12:10:50,547][Drone 2][INFO][ROS2] - Processing command 12/28: {"missionId": 2, "commandId": 12, "commandType": "TREATMENT", "params": {"latitude": 40.443451, "longitude": -3.738816, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:10:50,551][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:10:50,553][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:10:55,555][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:10:55,558][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:10:55,560][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 12, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 12:10:56,562][Drone 2][INFO][ROS2] - Processing command 13/28: {"missionId": 2, "commandId": 13, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443459, "longitude": -3.738682}}
+[2025-11-23 12:10:56,565][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:10:56,567][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:11:01,569][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:11:01,571][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:11:01,574][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 13, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 12:11:02,575][Drone 2][INFO][ROS2] - Processing command 14/28: {"missionId": 2, "commandId": 14, "commandType": "TREATMENT", "params": {"latitude": 40.443459, "longitude": -3.738682, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 12:11:02,578][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:11:02,580][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:11:07,581][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:11:07,585][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:11:07,588][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 14, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 12:11:08,589][Drone 2][INFO][ROS2] - Processing command 15/28: {"missionId": 2, "commandId": 15, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443475, "longitude": -3.738546}}
+[2025-11-23 12:11:08,592][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:11:08,594][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:11:13,595][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:11:13,599][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:11:13,601][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 15, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 12:11:14,603][Drone 2][INFO][ROS2] - Processing command 16/28: {"missionId": 2, "commandId": 16, "commandType": "TREATMENT", "params": {"latitude": 40.443475, "longitude": -3.738546, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 12:11:14,606][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:11:14,609][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:11:19,629][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:11:19,631][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:11:19,634][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 16, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 12:11:20,635][Drone 2][INFO][ROS2] - Processing command 17/28: {"missionId": 2, "commandId": 17, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443488, "longitude": -3.738429}}
+[2025-11-23 12:11:20,638][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:11:20,640][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:11:25,642][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:11:25,646][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:11:25,648][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 17, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 12:11:26,650][Drone 2][INFO][ROS2] - Processing command 18/28: {"missionId": 2, "commandId": 18, "commandType": "TREATMENT", "params": {"latitude": 40.443488, "longitude": -3.738429, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 12:11:26,654][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:11:26,656][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:11:31,657][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:11:31,661][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:11:31,664][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 18, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 12:11:32,665][Drone 2][INFO][ROS2] - Processing command 19/28: {"missionId": 2, "commandId": 19, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443418, "longitude": -3.738421}}
+[2025-11-23 12:11:32,669][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:11:32,671][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:11:37,672][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:11:37,675][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:11:37,677][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 19, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 12:11:38,679][Drone 2][INFO][ROS2] - Processing command 20/28: {"missionId": 2, "commandId": 20, "commandType": "TREATMENT", "params": {"latitude": 40.443418, "longitude": -3.738421, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 12:11:38,682][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:11:38,684][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:11:43,686][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:11:43,689][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:11:43,692][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 20, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 12:11:44,694][Drone 2][INFO][ROS2] - Processing command 21/28: {"missionId": 2, "commandId": 21, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443412, "longitude": -3.738528}}
+[2025-11-23 12:11:44,697][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:11:44,699][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:11:49,715][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:11:49,718][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:11:49,720][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 21, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443412, 'longitude': -3.738528}
+[2025-11-23 12:11:50,722][Drone 2][INFO][ROS2] - Processing command 22/28: {"missionId": 2, "commandId": 22, "commandType": "TREATMENT", "params": {"latitude": 40.443412, "longitude": -3.738528, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:11:50,726][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:11:50,728][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:11:55,730][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:11:55,733][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:11:55,736][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 22, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443412, 'longitude': -3.738528}
+[2025-11-23 12:11:56,738][Drone 2][INFO][ROS2] - Processing command 23/28: {"missionId": 2, "commandId": 23, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443399, "longitude": -3.738673}}
+[2025-11-23 12:11:56,742][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:11:56,745][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:12:01,746][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:12:01,750][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:12:01,753][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 23, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443399, 'longitude': -3.738673}
+[2025-11-23 12:12:02,755][Drone 2][INFO][ROS2] - Processing command 24/28: {"missionId": 2, "commandId": 24, "commandType": "TREATMENT", "params": {"latitude": 40.443399, "longitude": -3.738673, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:12:02,758][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:12:02,761][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:12:07,762][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:12:07,766][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:12:07,768][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 24, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443399, 'longitude': -3.738673}
+[2025-11-23 12:12:08,770][Drone 2][INFO][ROS2] - Processing command 25/28: {"missionId": 2, "commandId": 25, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443381, "longitude": -3.73879}}
+[2025-11-23 12:12:08,774][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:12:08,777][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:12:13,778][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:12:13,781][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:12:13,783][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 25, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443381, 'longitude': -3.73879}
+[2025-11-23 12:12:14,785][Drone 2][INFO][ROS2] - Processing command 26/28: {"missionId": 2, "commandId": 26, "commandType": "TREATMENT", "params": {"latitude": 40.443381, "longitude": -3.73879, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:12:14,788][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:12:14,790][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:12:19,811][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:12:19,814][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:12:19,816][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 26, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443381, 'longitude': -3.73879}
+[2025-11-23 12:12:20,818][Drone 2][INFO][ROS2] - Processing command 27/28: {"missionId": 2, "commandId": 27, "commandType": "GO_HOME", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 12:12:20,822][Drone 2][INFO][COMMANDS] - Processing GO_HOME command
+[2025-11-23 12:12:20,824][Drone 2][INFO][GO_HOME] - Returning home...
+[2025-11-23 12:12:25,825][Drone 2][INFO][GO_HOME] - Return home successful
+[2025-11-23 12:12:25,829][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:12:25,831][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 27, 'command_type': 'GO_HOME', 'message': 'Returned home', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 12:12:26,833][Drone 2][INFO][ROS2] - Processing command 28/28: {"missionId": 2, "commandId": 28, "commandType": "LAND", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 12:12:26,837][Drone 2][INFO][COMMANDS] - Processing LAND command
+[2025-11-23 12:12:26,839][Drone 2][INFO][LAND] - Landing...
+[2025-11-23 12:12:31,841][Drone 2][INFO][LAND] - Landing successful
+[2025-11-23 12:12:31,843][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:12:31,845][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 28, 'command_type': 'LAND', 'message': 'Landing successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 12:12:32,847][Drone 2][INFO][ROS2] - Command sequence completed successfully: ['2', 'Result']
+[2025-11-23 12:19:03,553][Drone 2][INFO][ROS2] - Executing command sequence goal with 28 commands
+[2025-11-23 12:19:03,554][Drone 2][INFO][ROS2] - Processing command 1/28: {"missionId": 2, "commandId": 1, "commandType": "TAKEOFF", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 12:19:03,556][Drone 2][INFO][COMMANDS] - Processing TAKEOFF command
+[2025-11-23 12:19:03,557][Drone 2][INFO][TAKEOFF] - Taking off...
+[2025-11-23 12:19:08,558][Drone 2][INFO][TAKEOFF] - Takeoff successful
+[2025-11-23 12:19:08,560][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:19:08,562][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 1, 'command_type': 'TAKEOFF', 'message': 'Takeoff successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 12:19:09,564][Drone 2][INFO][ROS2] - Processing command 2/28: {"missionId": 2, "commandId": 2, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443587, "longitude": -3.738355}}
+[2025-11-23 12:19:09,565][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:19:09,567][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:19:14,569][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:19:14,571][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:19:14,574][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 2, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443587, 'longitude': -3.738355}
+[2025-11-23 12:19:15,576][Drone 2][INFO][ROS2] - Processing command 3/28: {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443555, "longitude": -3.738452}}
+[2025-11-23 12:19:15,579][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:19:15,581][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:19:20,632][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:19:20,636][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:19:20,638][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 3, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 12:19:21,640][Drone 2][INFO][ROS2] - Processing command 4/28: {"missionId": 2, "commandId": 4, "commandType": "TREATMENT", "params": {"latitude": 40.443555, "longitude": -3.738452, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 12:19:21,643][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:19:21,645][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:19:26,646][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:19:26,650][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:19:26,652][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 4, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443555, 'longitude': -3.738452}
+[2025-11-23 12:19:27,654][Drone 2][INFO][ROS2] - Processing command 5/28: {"missionId": 2, "commandId": 5, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443542, "longitude": -3.73856}}
+[2025-11-23 12:19:27,657][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:19:27,659][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:19:32,661][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:19:32,664][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:19:32,666][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 5, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 12:19:33,668][Drone 2][INFO][ROS2] - Processing command 6/28: {"missionId": 2, "commandId": 6, "commandType": "TREATMENT", "params": {"latitude": 40.443542, "longitude": -3.73856, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:19:33,670][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:19:33,672][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:19:38,674][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:19:38,677][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:19:38,679][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 6, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443542, 'longitude': -3.73856}
+[2025-11-23 12:19:39,681][Drone 2][INFO][ROS2] - Processing command 7/28: {"missionId": 2, "commandId": 7, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443527, "longitude": -3.738693}}
+[2025-11-23 12:19:39,682][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:19:39,683][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:19:44,685][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:19:44,687][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:19:44,690][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 7, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 12:19:45,692][Drone 2][INFO][ROS2] - Processing command 8/28: {"missionId": 2, "commandId": 8, "commandType": "TREATMENT", "params": {"latitude": 40.443527, "longitude": -3.738693, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 12:19:45,694][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:19:45,695][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:19:50,692][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:19:50,695][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:19:50,696][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 8, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443527, 'longitude': -3.738693}
+[2025-11-23 12:19:51,698][Drone 2][INFO][ROS2] - Processing command 9/28: {"missionId": 2, "commandId": 9, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443518, "longitude": -3.738819}}
+[2025-11-23 12:19:51,701][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:19:51,702][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:19:56,704][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:19:56,707][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:19:56,708][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 9, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 12:19:57,710][Drone 2][INFO][ROS2] - Processing command 10/28: {"missionId": 2, "commandId": 10, "commandType": "TREATMENT", "params": {"latitude": 40.443518, "longitude": -3.738819, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 12:19:57,713][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:19:57,715][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:20:02,717][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:20:02,722][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:20:02,726][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 10, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443518, 'longitude': -3.738819}
+[2025-11-23 12:20:03,729][Drone 2][INFO][ROS2] - Processing command 11/28: {"missionId": 2, "commandId": 11, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443451, "longitude": -3.738816}}
+[2025-11-23 12:20:03,732][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:20:03,733][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:20:08,735][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:20:08,738][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:20:08,740][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 11, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 12:20:09,741][Drone 2][INFO][ROS2] - Processing command 12/28: {"missionId": 2, "commandId": 12, "commandType": "TREATMENT", "params": {"latitude": 40.443451, "longitude": -3.738816, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:20:09,745][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:20:09,747][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:20:14,748][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:20:14,751][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:20:14,753][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 12, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443451, 'longitude': -3.738816}
+[2025-11-23 12:20:15,754][Drone 2][INFO][ROS2] - Processing command 13/28: {"missionId": 2, "commandId": 13, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443459, "longitude": -3.738682}}
+[2025-11-23 12:20:15,756][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:20:15,757][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:20:20,805][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:20:20,807][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:20:20,809][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 13, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 12:20:21,811][Drone 2][INFO][ROS2] - Processing command 14/28: {"missionId": 2, "commandId": 14, "commandType": "TREATMENT", "params": {"latitude": 40.443459, "longitude": -3.738682, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 12:20:21,812][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:20:21,813][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:20:26,814][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:20:26,816][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:20:26,817][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 14, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443459, 'longitude': -3.738682}
+[2025-11-23 12:20:27,818][Drone 2][INFO][ROS2] - Processing command 15/28: {"missionId": 2, "commandId": 15, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443475, "longitude": -3.738546}}
+[2025-11-23 12:20:27,822][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:20:27,824][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:20:32,825][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:20:32,826][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:20:32,828][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 15, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 12:20:33,829][Drone 2][INFO][ROS2] - Processing command 16/28: {"missionId": 2, "commandId": 16, "commandType": "TREATMENT", "params": {"latitude": 40.443475, "longitude": -3.738546, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 12:20:33,832][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:20:33,833][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:20:38,834][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:20:38,837][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:20:38,840][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 16, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443475, 'longitude': -3.738546}
+[2025-11-23 12:20:39,841][Drone 2][INFO][ROS2] - Processing command 17/28: {"missionId": 2, "commandId": 17, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443488, "longitude": -3.738429}}
+[2025-11-23 12:20:39,843][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:20:39,845][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:20:44,846][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:20:44,848][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:20:44,849][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 17, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 12:20:45,851][Drone 2][INFO][ROS2] - Processing command 18/28: {"missionId": 2, "commandId": 18, "commandType": "TREATMENT", "params": {"latitude": 40.443488, "longitude": -3.738429, "treatment": "FERTILIZER", "amount": 0}}
+[2025-11-23 12:20:45,852][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:20:45,854][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:20:50,897][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:20:50,900][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:20:50,902][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 18, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-0', 'latitude': 40.443488, 'longitude': -3.738429}
+[2025-11-23 12:20:51,904][Drone 2][INFO][ROS2] - Processing command 19/28: {"missionId": 2, "commandId": 19, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443418, "longitude": -3.738421}}
+[2025-11-23 12:20:51,908][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:20:51,911][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:20:56,912][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:20:56,914][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:20:56,916][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 19, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 12:20:57,917][Drone 2][INFO][ROS2] - Processing command 20/28: {"missionId": 2, "commandId": 20, "commandType": "TREATMENT", "params": {"latitude": 40.443418, "longitude": -3.738421, "treatment": "FERTILIZER", "amount": 1}}
+[2025-11-23 12:20:57,921][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:20:57,923][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:21:02,925][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:21:02,926][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:21:02,928][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 20, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-1', 'latitude': 40.443418, 'longitude': -3.738421}
+[2025-11-23 12:21:03,929][Drone 2][INFO][ROS2] - Processing command 21/28: {"missionId": 2, "commandId": 21, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443412, "longitude": -3.738528}}
+[2025-11-23 12:21:03,932][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:21:03,934][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:21:08,936][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:21:08,938][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:21:08,940][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 21, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443412, 'longitude': -3.738528}
+[2025-11-23 12:21:09,941][Drone 2][INFO][ROS2] - Processing command 22/28: {"missionId": 2, "commandId": 22, "commandType": "TREATMENT", "params": {"latitude": 40.443412, "longitude": -3.738528, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:21:09,946][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:21:09,948][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:21:14,949][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:21:14,952][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:21:14,954][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 22, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443412, 'longitude': -3.738528}
+[2025-11-23 12:21:15,955][Drone 2][INFO][ROS2] - Processing command 23/28: {"missionId": 2, "commandId": 23, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443399, "longitude": -3.738673}}
+[2025-11-23 12:21:15,959][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:21:15,961][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:21:20,990][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:21:20,994][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:21:20,996][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 23, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443399, 'longitude': -3.738673}
+[2025-11-23 12:21:21,997][Drone 2][INFO][ROS2] - Processing command 24/28: {"missionId": 2, "commandId": 24, "commandType": "TREATMENT", "params": {"latitude": 40.443399, "longitude": -3.738673, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:21:22,000][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:21:22,002][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:21:27,003][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:21:27,005][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:21:27,007][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 24, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443399, 'longitude': -3.738673}
+[2025-11-23 12:21:28,008][Drone 2][INFO][ROS2] - Processing command 25/28: {"missionId": 2, "commandId": 25, "commandType": "GO_WAYPOINT", "params": {"latitude": 40.443381, "longitude": -3.73879}}
+[2025-11-23 12:21:28,010][Drone 2][INFO][COMMANDS] - Processing GO_WAYPOINT command
+[2025-11-23 12:21:28,012][Drone 2][INFO][GO_WAYPOINT] - Going to waypoint...
+[2025-11-23 12:21:33,013][Drone 2][INFO][GO_WAYPOINT] - Waypoint reached
+[2025-11-23 12:21:33,015][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:21:33,016][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 25, 'command_type': 'GO_WAYPOINT', 'message': 'Waypoint reached', 'latitude': 40.443381, 'longitude': -3.73879}
+[2025-11-23 12:21:34,018][Drone 2][INFO][ROS2] - Processing command 26/28: {"missionId": 2, "commandId": 26, "commandType": "TREATMENT", "params": {"latitude": 40.443381, "longitude": -3.73879, "treatment": "FERTILIZER", "amount": 2}}
+[2025-11-23 12:21:34,019][Drone 2][INFO][COMMANDS] - Processing TREATMENT command
+[2025-11-23 12:21:34,020][Drone 2][INFO][TREATMENT] - Applying treatment...
+[2025-11-23 12:21:39,022][Drone 2][INFO][TREATMENT] - Treatment applied successfully
+[2025-11-23 12:21:39,025][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:21:39,028][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 26, 'command_type': 'TREATMENT', 'message': 'Treatment applied: FERTILIZER-2', 'latitude': 40.443381, 'longitude': -3.73879}
+[2025-11-23 12:21:40,030][Drone 2][INFO][ROS2] - Processing command 27/28: {"missionId": 2, "commandId": 27, "commandType": "GO_HOME", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 12:21:40,031][Drone 2][INFO][COMMANDS] - Processing GO_HOME command
+[2025-11-23 12:21:40,032][Drone 2][INFO][GO_HOME] - Returning home...
+[2025-11-23 12:21:45,034][Drone 2][INFO][GO_HOME] - Return home successful
+[2025-11-23 12:21:45,036][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:21:45,038][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 27, 'command_type': 'GO_HOME', 'message': 'Returned home', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 12:21:46,039][Drone 2][INFO][ROS2] - Processing command 28/28: {"missionId": 2, "commandId": 28, "commandType": "LAND", "params": {"latitude": 40.443546, "longitude": -3.738285}}
+[2025-11-23 12:21:46,043][Drone 2][INFO][COMMANDS] - Processing LAND command
+[2025-11-23 12:21:46,045][Drone 2][INFO][LAND] - Landing...
+[2025-11-23 12:21:51,075][Drone 2][INFO][LAND] - Landing successful
+[2025-11-23 12:21:51,078][Drone 2][INFO][COMMANDS] - Command executed successfully
+[2025-11-23 12:21:51,080][Drone 2][INFO][ROS2] - Feedback published: {'mission_id': 2, 'command_id': 28, 'command_type': 'LAND', 'message': 'Landing successful', 'latitude': 40.443546, 'longitude': -3.738285}
+[2025-11-23 12:21:52,082][Drone 2][INFO][ROS2] - Command sequence completed successfully: ['2', 'Result']
+[2025-11-23 12:38:52,106][Drone 2][INFO][ROS2] - Cleaning up executor and server

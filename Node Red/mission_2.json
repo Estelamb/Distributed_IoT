@@ -7,40 +7,40 @@
       {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443555, "longitude": -3.738452}},
       {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443555, "longitude": -3.738452, "treatment": "FERTILIZER", "amount": 0}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443542, "longitude": -3.738560}},
-      {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443542, "longitude": -3.738560, "treatment": "FERTILIZER", "amount": 2}},
+      {"missionId": 2, "commandId": 5, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443542, "longitude": -3.738560}},
+      {"missionId": 2, "commandId": 6, "commandType": "TREATMENT",   "params":{"latitude": 40.443542, "longitude": -3.738560, "treatment": "FERTILIZER", "amount": 2}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443527, "longitude": -3.738693}},
-      {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443527, "longitude": -3.738693, "treatment": "FERTILIZER", "amount": 1}},
+      {"missionId": 2, "commandId": 7, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443527, "longitude": -3.738693}},
+      {"missionId": 2, "commandId": 8, "commandType": "TREATMENT",   "params":{"latitude": 40.443527, "longitude": -3.738693, "treatment": "FERTILIZER", "amount": 1}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443518, "longitude": -3.738819}},
-      {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443518, "longitude": -3.738819, "treatment": "FERTILIZER", "amount": 1}},
+      {"missionId": 2, "commandId": 9, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443518, "longitude": -3.738819}},
+      {"missionId": 2, "commandId": 10, "commandType": "TREATMENT",   "params":{"latitude": 40.443518, "longitude": -3.738819, "treatment": "FERTILIZER", "amount": 1}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443451, "longitude": -3.738816}},
-      {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443451, "longitude": -3.738816, "treatment": "FERTILIZER", "amount": 2}},
+      {"missionId": 2, "commandId": 11, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443451, "longitude": -3.738816}},
+      {"missionId": 2, "commandId": 12, "commandType": "TREATMENT",   "params":{"latitude": 40.443451, "longitude": -3.738816, "treatment": "FERTILIZER", "amount": 2}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443459, "longitude": -3.738682}},
-      {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443459, "longitude": -3.738682, "treatment": "FERTILIZER", "amount": 1}},
+      {"missionId": 2, "commandId": 13, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443459, "longitude": -3.738682}},
+      {"missionId": 2, "commandId": 14, "commandType": "TREATMENT",   "params":{"latitude": 40.443459, "longitude": -3.738682, "treatment": "FERTILIZER", "amount": 1}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443475, "longitude": -3.738546}},
-      {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443475, "longitude": -3.738546, "treatment": "FERTILIZER", "amount": 0}},
+      {"missionId": 2, "commandId": 15, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443475, "longitude": -3.738546}},
+      {"missionId": 2, "commandId": 16, "commandType": "TREATMENT",   "params":{"latitude": 40.443475, "longitude": -3.738546, "treatment": "FERTILIZER", "amount": 0}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443488, "longitude": -3.738429}},
-      {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443488, "longitude": -3.738429, "treatment": "FERTILIZER", "amount": 0}},
+      {"missionId": 2, "commandId": 17, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443488, "longitude": -3.738429}},
+      {"missionId": 2, "commandId": 18, "commandType": "TREATMENT",   "params":{"latitude": 40.443488, "longitude": -3.738429, "treatment": "FERTILIZER", "amount": 0}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443418, "longitude": -3.738421}},
-      {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443418, "longitude": -3.738421, "treatment": "FERTILIZER", "amount": 1}},
+      {"missionId": 2, "commandId": 19, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443418, "longitude": -3.738421}},
+      {"missionId": 2, "commandId": 20, "commandType": "TREATMENT",   "params":{"latitude": 40.443418, "longitude": -3.738421, "treatment": "FERTILIZER", "amount": 1}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443412, "longitude": -3.738528}},
-      {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443412, "longitude": -3.738528, "treatment": "FERTILIZER", "amount": 2}},
+      {"missionId": 2, "commandId": 21, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443412, "longitude": -3.738528}},
+      {"missionId": 2, "commandId": 22, "commandType": "TREATMENT",   "params":{"latitude": 40.443412, "longitude": -3.738528, "treatment": "FERTILIZER", "amount": 2}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443399, "longitude": -3.738673}},
-      {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443399, "longitude": -3.738673, "treatment": "FERTILIZER", "amount": 2}},
+      {"missionId": 2, "commandId": 23, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443399, "longitude": -3.738673}},
+      {"missionId": 2, "commandId": 24, "commandType": "TREATMENT",   "params":{"latitude": 40.443399, "longitude": -3.738673, "treatment": "FERTILIZER", "amount": 2}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443381, "longitude": -3.738790}},
-      {"missionId": 2, "commandId": 4, "commandType": "TREATMENT",   "params":{"latitude": 40.443381, "longitude": -3.738790, "treatment": "FERTILIZER", "amount": 2}},
+      {"missionId": 2, "commandId": 25, "commandType": "GO_WAYPOINT", "params":{"latitude": 40.443381, "longitude": -3.738790}},
+      {"missionId": 2, "commandId": 26, "commandType": "TREATMENT",   "params":{"latitude": 40.443381, "longitude": -3.738790, "treatment": "FERTILIZER", "amount": 2}},
 
-      {"missionId": 2, "commandId": 3, "commandType": "GO_HOME",     "params":{"latitude": 40.443546, "longitude": -3.738285}},
-      {"missionId": 2, "commandId": 3, "commandType": "LAND",        "params":{"latitude": 40.443546, "longitude": -3.738285}}
+      {"missionId": 2, "commandId": 27, "commandType": "GO_HOME",     "params":{"latitude": 40.443546, "longitude": -3.738285}},
+      {"missionId": 2, "commandId": 28, "commandType": "LAND",        "params":{"latitude": 40.443546, "longitude": -3.738285}}
     ]
 }
