@@ -73,14 +73,16 @@ You can open your browser and navigate to:
 
     http://localhost:1880
 
-Install the palette ``node-red-dashboard`` and ``node-red-contrib-aedes`` in Node-Red.
+Install the palette ``node-red-dashboard``, ``node-red-contrib-aedes`` and ``node-red-contrib-web-worldmap`` in Node-Red.
 
 Import the Node-Red json flow that is in the ``Node-Red`` directory and deploy it.
 
-To see the Node-Red UI, open your browser and navigate to:
+To see the Node-Red environment, open your browser and navigate to:
 
 .. code-block:: bash
 
-    http://localhost:1880/dashboard
+   http://localhost:1880/dashboard
+   http://localhost:1880/ui
+   http://localhost:1880/worldmap/
 
 
